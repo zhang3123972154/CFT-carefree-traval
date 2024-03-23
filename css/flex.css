@@ -1,0 +1,66 @@
+.flex-center-both {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-center-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-equal-horizontal {
+    display: flex;
+    align-items: center;
+}
+
+.flex-equal-horizontal > * {
+    flex: 1;
+}
+
+.flex-horizontal {
+    display: flex;
+    align-items: center;
+}
+
+.flex-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.block-width {
+    width: 100%;
+}
+
+.flex-fill {
+    /* 填剩余空间 */
+    flex-grow: 1;
+  }
+
+.m-5 {
+    margin: 5px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.gap-5 {
+    gap: 5px;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-1 {
+    gap: 1px;
+}

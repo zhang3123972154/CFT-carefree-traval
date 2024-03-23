@@ -1,0 +1,411 @@
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+uni-view[data-v-ac70166d], uni-scroll-view[data-v-ac70166d], uni-swiper-item[data-v-ac70166d] {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+  align-items: stretch;
+  align-content: flex-start;
+}
+@font-face {
+  font-family: "uicon-iconfont";
+  src: url("https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf") format("truetype");
+}
+.u-icon[data-v-ac70166d] {
+  display: flex;
+  align-items: center;
+}
+.u-icon--left[data-v-ac70166d] {
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.u-icon--right[data-v-ac70166d] {
+  flex-direction: row;
+  align-items: center;
+}
+.u-icon--top[data-v-ac70166d] {
+  flex-direction: column-reverse;
+  justify-content: center;
+}
+.u-icon--bottom[data-v-ac70166d] {
+  flex-direction: column;
+  justify-content: center;
+}
+.u-icon__icon[data-v-ac70166d] {
+  font-family: uicon-iconfont;
+  position: relative;
+
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+}
+.u-icon__icon--primary[data-v-ac70166d] {
+  color: #3c9cff;
+}
+.u-icon__icon--success[data-v-ac70166d] {
+  color: #5ac725;
+}
+.u-icon__icon--error[data-v-ac70166d] {
+  color: #f56c6c;
+}
+.u-icon__icon--warning[data-v-ac70166d] {
+  color: #f9ae3d;
+}
+.u-icon__icon--info[data-v-ac70166d] {
+  color: #909399;
+}
+.u-icon__img[data-v-ac70166d] {
+  height: auto;
+  will-change: transform;
+}
+.u-icon__label[data-v-ac70166d] {
+  line-height: 1;
+}
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+uni-view[data-v-5cec8177], uni-scroll-view[data-v-5cec8177], uni-swiper-item[data-v-5cec8177] {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+  align-items: stretch;
+  align-content: flex-start;
+}
+
+/**
+ * vue版本动画内置的动画模式有如下：
+ * fade：淡入
+ * zoom：缩放
+ * fade-zoom：缩放淡入
+ * fade-up：上滑淡入
+ * fade-down：下滑淡入
+ * fade-left：左滑淡入
+ * fade-right：右滑淡入
+ * slide-up：上滑进入
+ * slide-down：下滑进入
+ * slide-left：左滑进入
+ * slide-right：右滑进入
+ */
+.u-fade-enter-active[data-v-5cec8177],
+.u-fade-leave-active[data-v-5cec8177] {
+  transition-property: opacity;
+}
+.u-fade-enter[data-v-5cec8177],
+.u-fade-leave-to[data-v-5cec8177] {
+  opacity: 0;
+}
+.u-fade-zoom-enter[data-v-5cec8177],
+.u-fade-zoom-leave-to[data-v-5cec8177] {
+  transform: scale(0.95);
+  opacity: 0;
+}
+.u-fade-zoom-enter-active[data-v-5cec8177],
+.u-fade-zoom-leave-active[data-v-5cec8177] {
+  transition-property: transform, opacity;
+}
+.u-fade-down-enter-active[data-v-5cec8177],
+.u-fade-down-leave-active[data-v-5cec8177],
+.u-fade-left-enter-active[data-v-5cec8177],
+.u-fade-left-leave-active[data-v-5cec8177],
+.u-fade-right-enter-active[data-v-5cec8177],
+.u-fade-right-leave-active[data-v-5cec8177],
+.u-fade-up-enter-active[data-v-5cec8177],
+.u-fade-up-leave-active[data-v-5cec8177] {
+  transition-property: opacity, transform;
+}
+.u-fade-up-enter[data-v-5cec8177],
+.u-fade-up-leave-to[data-v-5cec8177] {
+  transform: translate3d(0, 100%, 0);
+  opacity: 0;
+}
+.u-fade-down-enter[data-v-5cec8177],
+.u-fade-down-leave-to[data-v-5cec8177] {
+  transform: translate3d(0, -100%, 0);
+  opacity: 0;
+}
+.u-fade-left-enter[data-v-5cec8177],
+.u-fade-left-leave-to[data-v-5cec8177] {
+  transform: translate3d(-100%, 0, 0);
+  opacity: 0;
+}
+.u-fade-right-enter[data-v-5cec8177],
+.u-fade-right-leave-to[data-v-5cec8177] {
+  transform: translate3d(100%, 0, 0);
+  opacity: 0;
+}
+.u-slide-down-enter-active[data-v-5cec8177],
+.u-slide-down-leave-active[data-v-5cec8177],
+.u-slide-left-enter-active[data-v-5cec8177],
+.u-slide-left-leave-active[data-v-5cec8177],
+.u-slide-right-enter-active[data-v-5cec8177],
+.u-slide-right-leave-active[data-v-5cec8177],
+.u-slide-up-enter-active[data-v-5cec8177],
+.u-slide-up-leave-active[data-v-5cec8177] {
+  transition-property: transform;
+}
+.u-slide-up-enter[data-v-5cec8177],
+.u-slide-up-leave-to[data-v-5cec8177] {
+  transform: translate3d(0, 100%, 0);
+}
+.u-slide-down-enter[data-v-5cec8177],
+.u-slide-down-leave-to[data-v-5cec8177] {
+  transform: translate3d(0, -100%, 0);
+}
+.u-slide-left-enter[data-v-5cec8177],
+.u-slide-left-leave-to[data-v-5cec8177] {
+  transform: translate3d(-100%, 0, 0);
+}
+.u-slide-right-enter[data-v-5cec8177],
+.u-slide-right-leave-to[data-v-5cec8177] {
+  transform: translate3d(100%, 0, 0);
+}
+.u-zoom-enter-active[data-v-5cec8177],
+.u-zoom-leave-active[data-v-5cec8177] {
+  transition-property: transform;
+}
+.u-zoom-enter[data-v-5cec8177],
+.u-zoom-leave-to[data-v-5cec8177] {
+  transform: scale(0.95);
+}
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+uni-view[data-v-abebd402], uni-scroll-view[data-v-abebd402], uni-swiper-item[data-v-abebd402] {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.u-image[data-v-abebd402] {
+  position: relative;
+  transition: opacity 0.5s ease-in-out;
+}
+.u-image__image[data-v-abebd402] {
+  width: 100%;
+  height: 100%;
+}
+.u-image__loading[data-v-abebd402], .u-image__error[data-v-abebd402] {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  color: #909193;
+  font-size: 1.4375rem;
+}
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+uni-view[data-v-12f6646d], uni-scroll-view[data-v-12f6646d], uni-swiper-item[data-v-12f6646d] {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.u-link[data-v-12f6646d] {
+  line-height: 1;
+
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1;
+}
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+uni-view[data-v-0a574502], uni-scroll-view[data-v-0a574502], uni-swiper-item[data-v-0a574502] {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.u-text[data-v-0a574502] {
+
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex: 1;
+  width: 100%;
+}
+.u-text__price[data-v-0a574502] {
+  font-size: 14px;
+  color: #606266;
+}
+.u-text__value[data-v-0a574502] {
+  font-size: 14px;
+
+  display: flex;
+
+  flex-direction: row;
+  color: #606266;
+  flex-wrap: wrap;
+  text-overflow: ellipsis;
+  align-items: center;
+}
+.u-text__value--primary[data-v-0a574502] {
+  color: #3c9cff;
+}
+.u-text__value--warning[data-v-0a574502] {
+  color: #f9ae3d;
+}
+.u-text__value--success[data-v-0a574502] {
+  color: #5ac725;
+}
+.u-text__value--info[data-v-0a574502] {
+  color: #909399;
+}
+.u-text__value--error[data-v-0a574502] {
+  color: #f56c6c;
+}
+.u-text__value--main[data-v-0a574502] {
+  color: #303133;
+}
+.u-text__value--content[data-v-0a574502] {
+  color: #606266;
+}
+.u-text__value--tips[data-v-0a574502] {
+  color: #909193;
+}
+.u-text__value--light[data-v-0a574502] {
+  color: #c0c4cc;
+}
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+uni-view[data-v-34d954f9], uni-scroll-view[data-v-34d954f9], uni-swiper-item[data-v-34d954f9] {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.u-avatar[data-v-34d954f9] {
+
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.u-avatar--circle[data-v-34d954f9] {
+  border-radius: 100px;
+}
+.u-avatar--square[data-v-34d954f9] {
+  border-radius: 4px;
+}
+.u-avatar__image--circle[data-v-34d954f9] {
+  border-radius: 100px;
+}
+.u-avatar__image--square[data-v-34d954f9] {
+  border-radius: 4px;
+}
+
+.container[data-v-e67f798e] {
+    flex: 1 1 180px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+.img-container[data-v-e67f798e] {
+    position: relative;
+    border-radius: 10px;
+    height: 200px;
+}
+.text-container[data-v-e67f798e] {
+    width: var(--card-width);
+}
+.location[data-v-e67f798e] {
+    position: absolute;
+    bottom: 12px;
+    left: 15px;
+
+    /* font */
+    font-size: 8px;
+    font-family: SourceHanSansCN;
+    line-height: 9px;
+    color: #ffffff;
+}
+.title[data-v-e67f798e] {
+    font-size: 14px;
+    font-family: SourceHanSansCN;
+    line-height: 13px;
+    color: #000000;
+    
+    margin-left: 6px;
+}
+.information[data-v-e67f798e] {
+    padding: 0 4px;
+}
+.user-container[data-v-e67f798e] {
+    font-size: 10px;
+    font-family: SourceHanSansCN;
+    line-height: 9px;
+    font-weight: 300;
+    color: #999999;
+}
+.like-container[data-v-e67f798e] {
+    font-size: 12px;
+    font-family: SourceHanSansCN;
+    line-height: 9px;
+    font-weight: 300;
+    color: #999999;
+    line-height: 9px;
+}
+
+
+
+.container[data-v-b1c8f734] {
+    width: 100%;    /* mark 块级元素 */
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 9px; */ /* 转为通过 子控件 的 ma 来实现 */
+    padding: 7px;
+}
+.scroll[data-v-b1c8f734] {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+.item[data-v-b1c8f734] {
+    flex-shrink: 0; /* 防止子控件缩放 */
+    margin-right: 9px;
+    margin-bottom: 9px;
+}
+

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23" height="23" viewBox="0 0 23 23" fill="none">
+<path   fill="rgba(51, 51, 51, 1)"  d="M11.5 0C17.8513 0 23 5.14873 23 11.5C23 17.8513 17.8513 23 11.5 23L5.5 23C2.46243 23 0 20.5376 0 17.5L0 11.5C0 5.14873 5.14873 0 11.5 0ZM11.5 1C5.70101 1 1 5.70101 1 11.5L1 17.5C1 19.9853 3.01472 22 5.5 22L11.5 22C17.299 22 22 17.299 22 11.5C22 5.70101 17.299 1 11.5 1Z">
+</path>
+<path    stroke="rgba(51, 51, 51, 1)" stroke-width="1"  stroke-linecap="round"  d="M7.5 15.5L14.5 15.5">
+</path>
+<path    stroke="rgba(51, 51, 51, 1)" stroke-width="1"  stroke-linecap="round"  d="M7.5 8.5L15.5 8.5">
+</path>
+</svg>

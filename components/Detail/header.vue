@@ -1,0 +1,86 @@
+<template>
+    <view class="flex-center-horizontal container">
+        <view class="flex-horizontal">
+            <u-icon class="flex-center-both top-icon" :name="iconArrows.left"></u-icon>
+            <up-avatar :src="props.avatar" size="30"></up-avatar>
+            <text class="user-name">{{ props.usrName }}</text>
+        </view>
+        <view class="flex-center-horizontal">
+            <text class="flex-center-both no-wrap attention-text">关注</text> <!--todo 函数实现-->
+            <u-icon class="flex-center-both top-icon" :name="iconPath.share"></u-icon>
+        </view>
+    </view>
+</template>
+
+<script setup>
+    import { ref } from "vue";
+    // store
+    import { useDetailIconPath, useArrowsIconPath } from "@/store/dataBase";
+    const iconPath = useDetailIconPath();
+    const iconArrows = useArrowsIconPath();
+// DATA
+    const props = defineProps({
+        avatar: {
+            type: String,
+            default: "/static/example/User/avatar-2.svg"
+        },
+        usrName: {
+            type: String,
+            default: "逍遥游用户1"
+        },
+        attentionFlag: {    // 是否关注
+            type: Boolean,
+            default: false
+        },
+
+    });
+    const emits = defineEmits([]);
+
+// FUNC
+
+</script>
+
+<style scoped>
+
+.container {
+    position: sticky;
+    top: 0px;
+    z-index: 10000;
+
+    background-color: #fff;
+
+    padding: 4px;
+}
+
+.top-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.user-name {
+    margin-left: 10px;
+
+    font-size: 14px;
+    font-weight: 300;
+    color: #666666;
+    line-height: 13px;
+}
+
+.attention-text {
+    padding: 2px 8px;
+    border-radius: 15px;
+    width: 40px;
+    height: 20px;
+    border: solid 1px #ffc300;
+
+    color: #ffc300;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 11px;
+}
+
+.attention-text-light { /* todo */
+
+}
+
+</style>        
