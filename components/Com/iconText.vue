@@ -1,5 +1,5 @@
 <template>
-    <view class="flex-horizontal">
+    <view class="flex-center-horizontal">
         <u-icon :size="props.iconSize + 'px'" :name="props.icon"></u-icon>
         <text class="ml-4 text" :style="textStyle">{{ props.text }}</text>
     </view>

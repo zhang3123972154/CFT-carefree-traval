@@ -24,6 +24,12 @@
     align-items: center;
 }
 
+.flex-top-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* 根据需要，可以改为center使得子项垂直居中 */
+}
+
 .flex-vertical {
     display: flex;
     flex-direction: column;
@@ -40,17 +46,17 @@
     width: 100%;
 }
 
+.no-shrink {
+    flex: 0 0 auto;
+}
+
+.shrink {
+    flex: 1;
+}
+
 .flex-fill {
     /* 填剩余空间 */
     flex-grow: 1;
-  }
-
-.m-5 {
-    margin: 5px;
-}
-
-.ml-20 {
-    margin-left: 20px;
 }
 
 .gap-5 {

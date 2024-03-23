@@ -1,86 +1,72 @@
 <template>
-    <view class="flex-horizontal">
-        <up-avatar :src="props.avatar" size="35"></up-avatar>
-        <view class="flex-vertical gap-5">
-            <text class="user-name">{{ props.userName }}</text>
-            <text class="content flex-fill wrap">
-                {{ props.content }}
-            </text>
-            <text class="time">
-                {{ props.time }}
-                <span class="replay">回复</span>
+    <view>
+        <!--一级评论-->
+        <comment-sub :information="props.self"/>
+            <!-- :avatar="props.self.avatar"/> -->
+        <!--附属评论-->
+        <view class="sub-container">
+            <view>
+                <comment-sub v-for="(item, index) in props.replay" :key="index"
+                    v-show="index < (openFlag ? length : 1)"
+                    :information="item"/>
+            </view>
+            <text v-if="length > 1" 
+                class="open-comment"
+                @click="openFlag = !openFlag">
+                {{ openFlag ? "收起回复" : `展开${length - 1}条回复` }}
             </text>
         </view>
-        <iconText :icon="props.likeFlag ? iconPath.heartLight : iconPath.heart" :text="props.likeNum"/>
     </view>
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed } from "vue";  
     // com
-    import iconText from "../Com/iconText.vue";
+    import commentSub from "./commentSub.vue";
     // store
-    import { useDetailIconPath } from '@/store/dataBase';
-    const iconPath = useDetailIconPath();
+
 // DATA
     const props = defineProps({
-        avatar: {
-            type: String,
-            default: "/static/example/User/avatar-1.svg"
+        self: {
+            type: Object,
+            default: () => ({
+                avatar: '/static/example/User/avatar-1.svg',
+                userName: '用户1',
+                likeNum: 0,
+                likeFlag: false,
+                content: '默认文本',
+                time: '0000-00-00'
+            })
         },
-        userName: {
-            type: String,
-            default: "用户1"
-        },
-        content: {
-            type: String,   
-            default: "默认文本"
-        },
-        likeNum: {
-            type:[String, Number],
-            default: 0
-        },
-        likeFlag: {
-            type: Boolean,
-            default: false
-        },
-        time: {
-            type: String,
-            default: "0000-00-00"
+        replay: {
+            type: Array,
+            default: () => []
         }
     });
     const emits = defineEmits([]);
 
+    // flag
+    const openFlag = ref(false);
+
 // FUNC
+    // gatter
+    const length = computed(() => {
+        return props.replay.length;
+    })
 
 </script>
 
 <style scoped>
 
-.user-name {
+.sub-container {
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+.open-comment {
     font-size: 14px;
-    font-weight: 300;
-    color: #999999;
-    line-height: 13px;
-}
-
-.content {
-    font-size: 14px;
-    line-height: 17px;
-    font-weight: 300;
-}
-
-.time {
-    font-size: 10px;
-    line-height: 12px;
-    font-weight: 300;
-    color: #cccccc;
-}
-
-.replay {
-    font-size: 10px;
-    line-height: 12px;
-    color: #999999;
+    font-weight: 500;
+    color: #806201;
 }
 
 </style>        

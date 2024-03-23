@@ -6,7 +6,7 @@
         </view>
         <view>
             <text class="title">推荐标签</text>
-            <chipGroup />
+            <chipGroup class="chip-container"/>
         </view>
         <!--hot key-->
         <view class="container-fire flex-vertical gap-10">
@@ -15,8 +15,9 @@
                 <text class="title-fire">逍遥游热点</text>
             </view>
             <view>
-                <searchBox v-for="(item, index) in hotSearch" :key="index" :index="index + 1" :content="item.content"
-                    :num="item.searchNum" />
+                <searchBox v-for="(item, index) in hotSearch" :key="index" :index="index + 1" 
+                :content="item.content"
+                :num="item.searchNum" />
             </view>
         </view>
     </view>
@@ -72,6 +73,10 @@
     font-family: SourceHanSansCN;
     line-height: 13px;
     color: #ffc300;
+}
+
+.chip-container {
+    padding: 10px;
 }
 
 </style>

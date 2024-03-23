@@ -35,12 +35,9 @@
 
 .container {
     width: 100%;
-    /* mark 块级元素 */
     display: flex;
     flex-wrap: wrap;
     gap: 9px;
-    /* 转为通过 子控件 的 ma 来实现 */
-    padding: 7px;
 }
 
 .item {
