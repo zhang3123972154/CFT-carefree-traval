@@ -369,7 +369,7 @@
   width: 20px;
 
   color: #000;
-  font-size: 5px;
+  font-size: 10px;
   font-weight: bold;
   white-space: nowrap; /* 文本不换行 */
 

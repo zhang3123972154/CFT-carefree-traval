@@ -58,14 +58,13 @@
             </view>
             <!-- <Test/> -->
         </view>
-        <!--相似栏-->
-        <u-overlay class="flex-center-both" :show="similarWinFlag" @click="similarWinFlag = false">
+        <!-- todo 相似栏 放到合适的位置去-->
+        <!-- <u-overlay class="flex-center-both" :show="similarWinFlag" @click="similarWinFlag = false">
             <view class="flex-center-both">
                 <similarWin />
             </view>
-        </u-overlay>
+        </u-overlay> -->
         <!--end-->
-        <!--float window-->
         <t-tabbar />
     </view>
 </template>
