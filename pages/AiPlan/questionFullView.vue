@@ -38,11 +38,16 @@
             }">完成</t-btn>
         </view>
     </view>
+    <!--todo test-->
+    <u-overlay class="flex-center-both" :show="true">
+        <questionWin/>
+    </u-overlay>
 </template>
 
 <script setup>
     import { ref, computed } from "vue";
     // com
+    import questionWin from "./questionWin.vue";
     // store
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();

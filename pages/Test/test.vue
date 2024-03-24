@@ -1,3 +1,4 @@
+<!--mark AITALK 的内容-->
 <template>
     <view class="flex-vertical">
         <header-ai></header-ai>
