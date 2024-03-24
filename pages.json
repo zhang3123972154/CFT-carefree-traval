@@ -22,9 +22,6 @@
     },
     {
       "path": "pages/Test/test"
-    },
-    {
-      "path": "pages/Test/testDesi"
     }
   ],
   "globalStyle": {

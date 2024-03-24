@@ -44,7 +44,7 @@
 
 .container {
     position: sticky;
-    top: 0px;
+    top: 0;
     z-index: 10000;
     height: 50px;
 

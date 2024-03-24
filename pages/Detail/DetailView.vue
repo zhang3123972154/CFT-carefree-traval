@@ -16,7 +16,7 @@
                 <funcBtn :icon="iconPath.group" title="旅行圈子"/>
                 <funcBtn :icon="iconPath.helper" title="旅行助手"/>
             </view>
-            <!--tag ocation-->
+            <!--tag location-->
             <view class="flex-center-horizontal container-location">
                 <view class="flex-horizontal gap-5">
                     <u-icon :name="iconPath.location"></u-icon>

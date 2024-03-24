@@ -1,16 +1,14 @@
 <template>
-    <view>  <!--mark 用来档掉样式-->
-        <headerBase>
-            <template #prefix>
-                <u-icon class="flex-center-both top-icon" size="30" :name="iconPath.AI"></u-icon>
-                <text class="ai-name ml-5">旅行助手</text>
-            </template>
-            <template #suffix>
-                <t-btn-icon :icon="iconPath.phone"></t-btn-icon>
-                <t-btn-icon :icon="iconPath.information"></t-btn-icon>
-            </template>            
-        </headerBase>
-    </view>
+    <headerBase>
+        <template #prefix>
+            <u-icon class="flex-center-both top-icon" size="30" :name="iconPath.AI"></u-icon>
+            <text class="ai-name ml-5">旅行助手</text>
+        </template>
+        <template #suffix>
+            <t-btn-icon :icon="iconPath.phone"></t-btn-icon>
+            <t-btn-icon :icon="iconPath.information"></t-btn-icon>
+        </template>            
+    </headerBase>
 </template>
 
 <script setup>
