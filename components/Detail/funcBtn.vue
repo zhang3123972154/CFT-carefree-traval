@@ -14,7 +14,6 @@
 
 <script setup>
     import { ref } from "vue";
-    import tBtn from "@/components/Com/Button.vue";
     // store
 // DATA
     const props = defineProps({

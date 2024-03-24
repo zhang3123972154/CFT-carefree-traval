@@ -61,9 +61,9 @@
             type: Boolean,
             default: false
         },
-        shape: {
-            type: String,
-            default: "square"
+        radius: {
+            type: [String, Number],
+            default: 15
         },
         // bigger Style
         customStyle: {
@@ -100,8 +100,8 @@
     // tag 外部容器的样式
     const getOutsideStyle = computed(() => {
         return {
-            ...props.customStyle,
-            '--shape': props.shape + 'px'
+            '--border-radius': props.radius.toString() + 'px',
+            ...props.customStyle,   // 外部优先级高，覆盖前者。
         }
     })
 
@@ -114,7 +114,7 @@
     padding: 6px 2px;
     background-color: #fff;
     height: inherit;
-    border-radius: var(--shape);
+    border-radius: var(--border-radius);
 
     transition: background-color 0.2s ease;
 }

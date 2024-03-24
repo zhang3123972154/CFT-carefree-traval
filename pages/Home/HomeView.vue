@@ -25,6 +25,7 @@
             </view>
         </view>
         <!--菜单功能-->
+        <!--bug 移动端无效-->
         <transition name="fade">
             <FunctionMenu v-show="functionFlag" class="function-menu" />
         </transition>
@@ -36,9 +37,12 @@
         </u-popup>
         <!--规划功能-->
         <u-overlay class="flex-center-both" :show="planFlag" @click="planFlag = false">
-            <view class="flex-center-both">
+            <!--未有规划之时-->
+            <questionFullView/>
+            <!--已有规划之时-->
+            <!-- <view class="flex-center-both">
                 <planStartVue />
-            </view>
+            </view> -->
         </u-overlay>
         <!--star-->
         <!--todo star的调整-->
@@ -82,6 +86,8 @@
     import planStartVue from './planStart.vue';
     import starVue from './star.vue';
     import similarWin from './similarWin.vue';
+
+    import questionFullView from '@/pages/AiPlan/questionFullView.vue';
 
 // DATA
     // const

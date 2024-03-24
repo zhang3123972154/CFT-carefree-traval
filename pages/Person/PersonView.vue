@@ -9,9 +9,7 @@
             <text>{{ content }}</text>
             <chipGroup :topicList="chipsList.topicList" :locationList="chipsList.locationList"
             :foodList="chipsList.foodList" />
-            <view class="flex-equal-horizontal" :style="{
-                margin: '-10px 0'
-            }">
+            <view class="flex-center-both">
                 <funcBtn :icon="iconPath.plan" title="热门规划"/>
                 <funcBtn :icon="iconPath.group" title="旅行圈子"/>
                 <funcBtn :icon="iconPath.helper" title="旅行助手"/>

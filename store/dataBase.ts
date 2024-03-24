@@ -93,7 +93,7 @@ export const useWindowIconPath = defineStore("iconWindow", {
     }
 })
 
-// Card
+// tag Card
 export const useCardIconPath = defineStore("iconCard", {
     state: (): {
         like: string,
@@ -167,6 +167,7 @@ export const useDetailIconPath = defineStore("iconDetail", {
     }
 });
 
+// tag Ai
 export const useAiIconPath = defineStore("iconAi", {
     state: (): {
         dir: string,
@@ -192,5 +193,11 @@ export const useAiIconPath = defineStore("iconAi", {
         voice: function(): string {
             return iconDirPath + this.dir + "voice.svg";
         },
+        LOGO: function(): string {
+            return iconDirPath + "LOGO.svg";
+        },
+        clear: function(): string {
+            return iconDirPath + this.dir + "clear.svg";
+        }
     }
 })

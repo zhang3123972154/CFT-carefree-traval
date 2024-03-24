@@ -20,6 +20,7 @@ let i18nConfig = {
   // tag small
 import btnIcon from "./components/Com/btnIcon.vue";
 import chip from "./components/Com/chip.vue";
+import btn from "./components/Com/Button.vue";
   // tag mid
 import tabber from "./components/Com/tabbar.vue";
 
@@ -54,6 +55,7 @@ const pinia = createPinia()
   app.component("t-btn-icon", btnIcon);
   app.component("t-tabbar", tabber);
   app.component("t-chip", chip);
+  app.component("t-btn", btn);
 
   return {
     app,
