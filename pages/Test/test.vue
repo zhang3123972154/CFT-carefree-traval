@@ -12,6 +12,11 @@
         </view>
         <tabber-ai></tabber-ai>
     </view>
+    <!--top flod window-->
+    <u-popup :show="topFlodFlag" mode="top" round="20" safeAreaInsetTop
+        @click="topFlodFlag = false">
+        <chipGroup class="top-flod-container"></chipGroup>
+    </u-popup>
 </template>
 
 <script setup>
@@ -21,6 +26,8 @@
     import tabberAi from "@/components/AiTalk/tabber.vue";
     import userBubble from "@/components/AiTalk/userBubble.vue";
     import aiBubble from "@/components/AiTalk/aiBubble.vue";
+
+    import chipGroup from "@/components/Home/chipGroup.vue";
     // store
 // DATA
     const dialogTEST = ref([
@@ -68,6 +75,8 @@
             ]
         },
     ])
+    // flag
+    const topFlodFlag = ref(true);
 
 // FUNC
 
@@ -80,6 +89,10 @@
    min-height: calc(100vh - 100px);
 
    padding: 5px 10px;
+}
+
+.top-flod-container {
+    padding: 20px;
 }
 
 </style>        
