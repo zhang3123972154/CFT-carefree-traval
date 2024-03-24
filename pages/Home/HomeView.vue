@@ -82,8 +82,6 @@
     import planStartVue from './planStart.vue';
     import starVue from './star.vue';
     import similarWin from './similarWin.vue';
-    // test
-    import Test from "../Test/testDesi.vue";
 
 // DATA
     // const
