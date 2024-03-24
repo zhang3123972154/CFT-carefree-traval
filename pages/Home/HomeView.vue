@@ -82,9 +82,6 @@
     import planStartVue from './planStart.vue';
     import starVue from './star.vue';
     import similarWin from './similarWin.vue';
-
-    import scrollStop from '../../components/Handle/scrollStop.vue';
-
     // test
     import Test from "../Test/testDesi.vue";
 

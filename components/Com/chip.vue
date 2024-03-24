@@ -17,11 +17,11 @@
     const props = defineProps({
         kind: {
             type: String,
-            default: "topic"
+            default: "way"
         },
         text: {
             type: String,
-            default: "话题"
+            default: "风格"
         }
     });
     const emits = defineEmits(["choose"]);  // todo 用于历史记录的消息传递
@@ -33,11 +33,11 @@
     })
 
     const style = {
-        topic: { backColor: "#959cf0", borderRadius: '5px', 
+        way: { backColor: "#959cf0", borderRadius: '5px', 
             fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default },
-        location: { backColor: "#a795f0", borderRadius: '10px', 
+        spot: { backColor: "#a795f0", borderRadius: '10px', 
             fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default },
-        food: { backColor: "#c895f0", borderRadius: '15px', 
+        thing: { backColor: "#c895f0", borderRadius: '15px', 
             fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default },
 
         history: { backColor: "#f9f9f9", borderRadius: '15px', 

@@ -164,10 +164,33 @@ export const useDetailIconPath = defineStore("iconDetail", {
         location: function(): string {
             return iconDirPath + this.dir + "location.svg";
         }
-    },
-    // actions: {
-    //     link(iconName: string): string {
-    //         return iconDirPath + this.dir + iconName + ".svg";
-    //     }
-    // }
+    }
+});
+
+export const useAiIconPath = defineStore("iconAi", {
+    state: (): {
+        dir: string,
+    } => ({
+        dir: "AiTalk/",
+    }),
+    getters: {
+        add: function(): string {
+            return iconDirPath + this.dir + "add.svg";
+        },
+        AI: function(): string {
+            return iconDirPath + this.dir + "AI.svg";
+        },
+        emoji: function(): string {
+            return iconDirPath + this.dir + "emoji.svg";
+        },
+        information: function(): string {
+            return iconDirPath + this.dir + "information.svg";
+        },
+        phone: function(): string {
+            return iconDirPath + this.dir + "phone.svg";
+        },
+        voice: function(): string {
+            return iconDirPath + this.dir + "voice.svg";
+        },
+    }
 })

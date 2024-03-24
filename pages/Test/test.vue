@@ -1,100 +1,84 @@
 <template>
-<view class="flex-row justify-between items-center group_7">
-  <view class="flex-col items-center">
-    <image
-      class="image_11"
-      src="/static/icon/homeSelected.svg"
-    />
-    <text class="mt-6 font_6 text_10">主页</text>
-  </view>
-  <view class="flex-col items-center">
-    <image
-      class="image_12"
-      src="https://ide.code.fun/api/image?token=65ed6558ba406d00116099aa&name=2eda16d35de9bf1ed8dca6c2751c0384.png"
-    />
-    <text class="mt-6 font_6 text_11">打卡</text>
-  </view>
-  <image
-    class="image_10"
-    src="https://ide.code.fun/api/image?token=65ed6558ba406d00116099aa&name=fa8233aba3e2700bd9f89939a0a947a8.png"
-  />
-  <view class="flex-col items-center">
-    <image
-      class="image_13"
-      src="https://ide.code.fun/api/image?token=65ed6558ba406d00116099aa&name=c9fefe572718e66230e6bea8f55f26f9.png"
-    />
-    <text class="mt-6 font_6 text_12">消息</text>
-  </view>
-  <view class="flex-col items-center">
-    <image
-      class="image_14"
-      src="https://ide.code.fun/api/image?token=65ed6558ba406d00116099aa&name=6d2ea86bbf45a7fca3c9600dd83073b3.png"
-    />
-    <text class="mt-6 font_6">我的</text>
-  </view>
-</view>
+    <view class="flex-vertical">
+        <header-ai></header-ai>
+        <view class="flex-vertical container-dialogue gap-10">
+            <userBubble/>
+            <aiBubble/>
+            <template v-for="(item, index) in dialogTEST" :key="index">
+                <ai-bubble v-if="item.side" :content="item.content"/>
+                <user-bubble v-else :content="item.content"/>
+            </template>
+        </view>
+        <tabber-ai></tabber-ai>
+    </view>
 </template>
 
-<script>
-export default {
-  components: {},
-  props: {},
-  data() {
-    return {};
-  },
+<script setup>
+    import { ref } from "vue";
+    // com
+    import headerAi from "@/components/AiTalk/header.vue";
+    import tabberAi from "@/components/AiTalk/tabber.vue";
+    import userBubble from "@/components/AiTalk/userBubble.vue";
+    import aiBubble from "@/components/AiTalk/aiBubble.vue";
+    // store
+// DATA
+    const dialogTEST = ref([
+        {
+            side: false,    // 代表 user
+            content: "三月想出门旅行，推荐去哪儿？"
+            // todo time: "2023-12-10-XXX"
+        },
+        {
+            side: true,
+            content: [
+                { type: "text", text: "三月是" },
+                { type: "thing", text: "樱花" },
+                { type: "text", text: "盛开的季节，三月份去旅游一定是不错之选。" },
+                { type: "endl" },
+                { type: "spot", text: "东湖樱花园" },
+                { type: "text", text: "是武汉市规模最大、品种最多的樱花园之一。" },
+                { type: "endl" },
+                { type: "spot", text: "武汉大学" },
+                { type: "text", text: "是武汉市最有影响力的赏樱景区。" },
+                { type: "endl" },
+                { type: "spot", text: "黄鹤楼" },
+                { type: "text", text: "公园是武汉著名的历史文化风景区之一。" },
+            ]
+        },
+        {
+            sied: 0,
+            content: "武汉有什么景点推荐？"
+        },
+        {
+            side: true,
+            content: [
+                { type: "text", text: "三月是" },
+                { type: "thing", text: "樱花" },
+                { type: "text", text: "盛开的季节，三月份去旅游一定是不错之选。" },
+                { type: "endl" },
+                { type: "spot", text: "东湖樱花园" },
+                { type: "text", text: "是武汉市规模最大、品种最多的樱花园之一。" },
+                { type: "endl" },
+                { type: "spot", text: "武汉大学" },
+                { type: "text", text: "是武汉市最有影响力的赏樱景区。" },
+                { type: "endl" },
+                { type: "spot", text: "黄鹤楼" },
+                { type: "text", text: "公园是武汉著名的历史文化风景区之一。" },
+            ]
+        },
+    ])
 
-  methods: {},
-};
+// FUNC
+
 </script>
 
-<style scoped lang="css">
-.group_7 {
-    position: fixed;
-    top: 0;
-    /* bottom: 0; */
-    width: 100%;
-  padding: 5px 34px 12px;
-    background-color: #3333337a;
+<style scoped>
+
+.container-dialogue {
+   background-color: #f9f9f9;
+   min-height: calc(100vh - 100px);
+
+   padding: 5px 10px;
 }
-.image_11 {
-  width: 23px;
-  height: 23px;
-}
-.font_6 {
-  font-size: 10px;
-  font-family: SourceHanSansCN;
-  line-height: 9px;
-  font-weight: 300;
-  color: #333333;
-}
-.text_10 {
-  color: #000000;
-  line-height: 9px;
-  font-weight: unset;
-}
-.image_12 {
-  border-radius: 5px;
-  width: 23px;
-  height: 23px;
-}
-.text_11 {
-  line-height: 9px;
-}
-.image_10 {
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-}
-.image_13 {
-  border-radius: 11px 11px 11px 5px;
-  width: 23px;
-  height: 23px;
-}
-.text_12 {
-  line-height: 9px;
-}
-.image_14 {
-  width: 23px;
-  height: 23px;
-}
-</style>
+
+</style>        

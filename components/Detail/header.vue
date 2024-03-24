@@ -1,13 +1,13 @@
 <template>
     <view class="flex-center-horizontal container">
-        <view class="flex-horizontal">
-            <u-icon class="flex-center-both top-icon" :name="iconArrows.left"></u-icon>
-            <up-avatar :src="props.avatar" size="30"></up-avatar>
+        <view class="flex-horizontal ">
+            <u-icon class="flex-center-both icon-back" :name="iconArrows.left" size="20"></u-icon>
+            <up-avatar class=" ml-15" :src="props.avatar" size="30"></up-avatar>
             <text class="user-name">{{ props.usrName }}</text>
         </view>
-        <view class="flex-center-horizontal">
+        <view class="flex-center-horizontal gap-10">
             <text class="flex-center-both no-wrap attention-text">关注</text> <!--todo 函数实现-->
-            <u-icon class="flex-center-both top-icon" :name="iconPath.share"></u-icon>
+            <u-icon class="flex-center-both icon-share" :name="iconPath.share" size="20"></u-icon>
         </view>
     </view>
 </template>
@@ -46,13 +46,17 @@
     position: sticky;
     top: 0px;
     z-index: 10000;
+    height: 50px;
 
     background-color: #fff;
-
-    padding: 4px;
 }
 
-.top-icon {
+.icon-back {
+    height: 40px;
+    width: 20px;
+}
+
+.icon-share {
     width: 40px;
     height: 40px;
 }

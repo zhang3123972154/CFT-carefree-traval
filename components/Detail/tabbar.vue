@@ -54,6 +54,7 @@
 .container {
     position: sticky;
     bottom: 0;
+    height: 62px;
 
     background-color: #fff;
 }
