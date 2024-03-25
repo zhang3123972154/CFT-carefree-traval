@@ -49,32 +49,33 @@
   let touchStartX, touchStartY;
   // list
   const nameList = ref([
-    // 添加Array1中的中文词汇
-    { wordName: '打卡拍照', wordValue: 600 },
-    { wordName: '徒步出行', wordValue: 600 },
-    { wordName: '穷游', wordValue: 600 },
-    { wordName: '旅行搭子', wordValue: 600 },
-    { wordName: '人文风景', wordValue: 600 },
-    { wordName: '自然风景', wordValue: 600 },
-    { wordName: '娱乐商圈', wordValue: 600 },
-    { wordName: '甜品饮品', wordValue: 600 },
-    { wordName: '公园乐园', wordValue: 600 },
-    { wordName: '美食小吃', wordValue: 600 },
-    { wordName: '海景江景', wordValue: 600 },
-    { wordName: '爬山', wordValue: 600 },
-    // 添加Array2中的中文词汇
-    { wordName: '春天', wordValue: 600 },
-    { wordName: '夏天', wordValue: 600 },
-    { wordName: '秋天', wordValue: 600 },
-    { wordName: '冬天', wordValue: 600 },
-    // 添加Array3中的中文词汇
-    { wordName: '高铁火车', wordValue: 600 },
-    { wordName: '飞机', wordValue: 600 },
-    { wordName: '游轮', wordValue: 600 },
-    { wordName: '大巴', wordValue: 600 },
-    { wordName: '自驾游', wordValue: 600 },
+    // 添加地点名的中文词汇
+    { wordName: '黄鹤楼', wordValue: 600 },
+    { wordName: '武汉长江大桥', wordValue: 600 },
+    { wordName: '武汉大学', wordValue: 600 },
+    { wordName: '汉口江滩', wordValue: 600 },
+    { wordName: '东湖绿道', wordValue: 600 },
+    // 添加小吃的中文词汇
+    { wordName: '热干面', wordValue: 600 },
+    { wordName: '豆皮', wordValue: 600 },
+    { wordName: '武昌鱼', wordValue: 600 },
+    { wordName: '三鲜豆皮', wordValue: 600 },
+    { wordName: '汤包', wordValue: 600 },
+    // 添加玩点的中文词汇
+    { wordName: '武汉欢乐谷', wordValue: 600 },
+    { wordName: '汉口里', wordValue: 600 },
+    { wordName: '黄陂木兰草原', wordValue: 600 },
+    { wordName: '江汉关博物馆', wordValue: 600 },
+    { wordName: '武汉科技馆', wordValue: 600 },
+    // 添加风格的中文词汇
+    { wordName: '武汉话', wordValue: 600 },
+    { wordName: '江滩文化', wordValue: 600 },
+    { wordName: '学院风', wordValue: 600 },
+    { wordName: '摩登汉口', wordValue: 600 },
+    { wordName: '水乡梦幻', wordValue: 600 },
     // ... 可能有的其他标签
-  ]);
+]);
+
   let tags = [];
   const tagsStyles = ref(nameList.value.map(() => ({})));
   // flag
