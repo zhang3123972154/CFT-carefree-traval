@@ -84,6 +84,8 @@
     background-color: var(--back-color);
     font-weight: bold;
     border: solid 1px transparent;  /* 占位用，防止交互后错位 */
+
+    font-family: Alimama ShuHeiTi;
 }
 
 .history {

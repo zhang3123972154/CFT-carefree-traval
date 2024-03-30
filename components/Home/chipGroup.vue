@@ -1,6 +1,6 @@
 <template>
     <view>  <!--mark 用来档外部布局的控制-->
-        <view class="container" :class="{scroll: props.scroll}">
+        <view class="container" :class="{'scroll': props.scroll}">
             <view class="item" v-for="(item, index) in props.wayList" :key="index">
                 <t-chip kind="way" :text="item"></t-chip>
             </view>

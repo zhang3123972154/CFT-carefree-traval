@@ -13,23 +13,25 @@
         </view>
         <tabber-ai></tabber-ai>
     </view>
+    <pathFloatWin :spot="plan.spot" :day="plan.day" :path="plan.path"/>
     <!--top flod window-->
     <!--todo 需要自定义了。-->
-    <u-popup :show="topFlodFlag" mode="top" round="20" safeAreaInsetTop
+    <!-- <u-popup :show="topFlodFlag" mode="top" round="20" safeAreaInsetTop
         @click="topFlodFlag = false">
         <chipGroup class="top-flod-container"></chipGroup>
-        <!--test-->
-    </u-popup>
+    </u-popup> -->
 </template>
 
 <script setup>
     import { ref } from "vue";
+    import { pathPoint } from "@/js/struct";
     // com
     import headerAi from "@/components/AiTalk/header.vue";
     import tabberAi from "@/components/AiTalk/tabber.vue";
     import userBubble from "@/components/AiTalk/userBubble.vue";
     import aiBubble from "@/components/AiTalk/aiBubble.vue";
-
+    import pathFloatWin from "../../components/AiTalk/pathFloatWin.vue";
+    
     import chipGroup from "@/components/Home/chipGroup.vue";
     // store
 // DATA
@@ -80,6 +82,20 @@
     ])
     // flag
     const topFlodFlag = ref(true);
+    const plan = ref({
+        spot: "武汉",
+        day: 1,
+        path: [
+            pathPoint("民宿"),
+            pathPoint("地点", ["热干面", "三鲜豆皮"]),
+            pathPoint("黄鹤楼"),
+            pathPoint("楚河汉街", ["鄂菜"]),
+            pathPoint("武汉大学", ["樱花"]),
+            pathPoint("街道口"),
+            pathPoint("武汉长江大桥", ["江景"]),
+            pathPoint("民宿"),
+        ]
+    })
 
 // FUNC
 
