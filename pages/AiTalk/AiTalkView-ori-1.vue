@@ -14,11 +14,9 @@
         <tabber-ai></tabber-ai>
     </view>
     <!--top flod window-->
-    <!--todo 需要自定义了。-->
     <u-popup :show="topFlodFlag" mode="top" round="20" safeAreaInsetTop
         @click="topFlodFlag = false">
         <chipGroup class="top-flod-container"></chipGroup>
-        <!--test-->
     </u-popup>
 </template>
 

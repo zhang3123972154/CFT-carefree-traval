@@ -34,6 +34,9 @@
 	@import "./css/text.css";
 	@import "./css/position.css";
 	@import "./css/maggin.css";
+
+	/* font */
+	@import "./static/font/stylesheet.css";
 	
 	.top-container {
 		padding-top: var(--status-height);
