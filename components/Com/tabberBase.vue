@@ -1,5 +1,5 @@
 <template>
-    <view class="container flex-center-horizontal gap-10">
+    <view class="container flex-center-horizontal gap-10" @click.stop>
         <view class="flex-center-horizontal">
             <slot name="prefix"></slot>
         </view>

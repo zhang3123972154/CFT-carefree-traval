@@ -17,6 +17,8 @@
             <chipGroupPath class="chips-container" :path="props.path"/>
         </view>
     </floatBase>
+    <!--info 简易的遮罩。-->
+    <view v-show="openFlag" class="overlay" @click="openFlag = false"></view>
 </template>
 
 <script setup>
@@ -102,6 +104,14 @@
 
 .chips-container {
     padding: 15px 0px 0;
+}
+
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background-color: #00000030;
 }
 
 </style>        

@@ -1,5 +1,5 @@
 <template>
-    <view class="flex-vertical block-width  container">
+    <view class="flex-vertical block-width  container" @click.stop>
         <view class="placeholder" :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
         }"></view>

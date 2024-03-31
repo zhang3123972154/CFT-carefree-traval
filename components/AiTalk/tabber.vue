@@ -1,5 +1,5 @@
 <template>
-    <tabberBase @click.stop>
+    <tabberBase>
         <template #prefix>
             <t-btn-icon :icon="iconPath.voice"></t-btn-icon>
         </template>
