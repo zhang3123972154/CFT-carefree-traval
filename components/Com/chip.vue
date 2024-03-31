@@ -73,6 +73,10 @@
     font-size: 14px;
     line-height: 13px;
     font-family: SourceHanSansCN;
+
+    flex-shrink: 0;
+    flex-basis: auto;
+    white-space: nowrap;
 }
 
 .default {

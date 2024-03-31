@@ -46,6 +46,10 @@
     width: 100%;
 }
 
+.block {
+    width: 100%;
+}
+
 .no-shrink {
     flex: 0 0 auto;
 }

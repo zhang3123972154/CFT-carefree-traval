@@ -1,13 +1,19 @@
 <template>
-    <text>message</text>
-
-    <t-tabbar/>
+    <view>
+        
+    </view>
 </template>
 
 <script setup>
+    import { ref } from "vue";
+    // com
+    // store
+// DATA
+
+// FUNC
 
 </script>
 
 <style scoped>
 
-</style>
+</style>        

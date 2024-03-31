@@ -13,7 +13,6 @@
         </view>
         <tabber-ai></tabber-ai>
     </view>
-    <pathFloatWin :spot="plan.spot" :day="plan.day" :path="plan.path"/>
     <!--top flod window-->
     <!--todo 需要自定义了。-->
     <!-- <u-popup :show="topFlodFlag" mode="top" round="20" safeAreaInsetTop
@@ -24,13 +23,11 @@
 
 <script setup>
     import { ref } from "vue";
-    import { pathPoint } from "@/js/struct";
     // com
     import headerAi from "@/components/AiTalk/header.vue";
     import tabberAi from "@/components/AiTalk/tabber.vue";
     import userBubble from "@/components/AiTalk/userBubble.vue";
     import aiBubble from "@/components/AiTalk/aiBubble.vue";
-    import pathFloatWin from "../../components/AiTalk/pathFloatWin.vue";
     
     import chipGroup from "@/components/Home/chipGroup.vue";
     // store
@@ -46,16 +43,33 @@
             content: [
                 { type: "text", text: "三月是" },
                 { type: "thing", text: "樱花" },
-                { type: "text", text: "盛开的季节，三月份去旅游一定是不错之选。" },
+                { type: "text", text: "盛开的季节，三月份去" },
+                { type: "spot", text: "武汉"},
+                { type: "text", text: "旅游一定是不错之选。"},
                 { type: "endl" },
-                { type: "spot", text: "东湖樱花园" },
-                { type: "text", text: "是武汉市规模最大、品种最多的樱花园之一。" },
-                { type: "endl" },
-                { type: "spot", text: "武汉大学" },
-                { type: "text", text: "是武汉市最有影响力的赏樱景区。" },
-                { type: "endl" },
-                { type: "spot", text: "黄鹤楼" },
-                { type: "text", text: "公园是武汉著名的历史文化风景区之一。" },
+                {
+                    type: "PT-spot", text: "东湖樱花园",
+                    grade: 4.9, location: "武昌区鲁磨路665号", 
+                    price: 55, imgPath: "/static/example/background/spot-1.png"
+                },
+                {
+                    type: "PT-spot", text: "黄鹤楼",
+                    grade: 4.8, location: "武昌区蛇山西山坡特2号", 
+                    price: 70, imgPath: "/static/example/background/spot-2.png"
+                },
+                {
+                    type: "PT-spot", text: "武汉大学",
+                    grade: 4.9, location: "武昌区八一路299号", 
+                    price: 0, imgPath: "/static/example/background/spot-3.png"
+                }
+                // { type: "spot", text: "东湖樱花园" },
+                // { type: "text", text: "是武汉市规模最大、品种最多的樱花园之一。" },
+                // { type: "endl" },
+                // { type: "spot", text: "武汉大学" },
+                // { type: "text", text: "是武汉市最有影响力的赏樱景区。" },
+                // { type: "endl" },
+                // { type: "spot", text: "黄鹤楼" },
+                // { type: "text", text: "公园是武汉著名的历史文化风景区之一。" },
             ]
         },
         {
@@ -80,22 +94,7 @@
             ]
         },
     ])
-    // flag
-    const topFlodFlag = ref(true);
-    const plan = ref({
-        spot: "武汉",
-        day: 1,
-        path: [
-            pathPoint("民宿"),
-            pathPoint("地点", ["热干面", "三鲜豆皮"]),
-            pathPoint("黄鹤楼"),
-            pathPoint("楚河汉街", ["鄂菜"]),
-            pathPoint("武汉大学", ["樱花"]),
-            pathPoint("街道口"),
-            pathPoint("武汉长江大桥", ["江景"]),
-            pathPoint("民宿"),
-        ]
-    })
+
 
 // FUNC
 

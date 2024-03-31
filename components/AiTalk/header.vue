@@ -7,7 +7,7 @@
         <template #suffix>
             <t-btn-icon :icon="iconPath.phone"></t-btn-icon>
             <t-btn-icon :icon="iconPath.information"></t-btn-icon>
-        </template>            
+        </template>
     </headerBase>
 </template>
 
@@ -16,6 +16,9 @@
     // com
     import headerBase from "../Com/headerBase.vue";
     // store
+    import usePhoneInfor from "@/store/phoneInfor";
+    const phoneInforStore = usePhoneInfor();
+
     import { useAiIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();
 // DATA
