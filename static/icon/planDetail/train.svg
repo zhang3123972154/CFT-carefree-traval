@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16" fill="none">
+<path d="M3 2.94648C3 2.63579 3.1461 2.3443 3.42383 2.20505C4.08207 1.87499 5.53743 1.33337 8 1.33337C10.4626 1.33337 11.9179 1.87499 12.5762 2.20505C12.8539 2.34431 13 2.63579 13 2.94648L13 12C13 12.3682 12.7015 12.6667 12.3333 12.6667L3.66667 12.6667C3.29848 12.6667 3 12.3682 3 12L3 2.94648Z" stroke="rgba(255, 255, 255, 1)" stroke-width="1" stroke-linejoin="round"  >
+</path>
+<path    stroke="rgba(255, 255, 255, 1)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"  d="M11.3335 12.6666L11.3335 14">
+</path>
+<path    stroke="rgba(255, 255, 255, 1)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"  d="M4.6665 12.6666L4.6665 14">
+</path>
+<path d="M6.8335 10.6666C6.8335 10.9428 6.60963 11.1666 6.3335 11.1666C6.05736 11.1666 5.8335 10.9428 5.8335 10.6666C5.8335 10.3905 6.05736 10.1666 6.3335 10.1666C6.60963 10.1666 6.8335 10.3905 6.8335 10.6666Z"   fill="#FFFFFF" >
+</path>
+<path d="M10.1665 10.6666C10.1665 10.9428 9.94264 11.1666 9.6665 11.1666C9.39037 11.1666 9.1665 10.9428 9.1665 10.6666C9.1665 10.3905 9.39037 10.1666 9.6665 10.1666C9.94264 10.1666 10.1665 10.3905 10.1665 10.6666Z"   fill="#FFFFFF" >
+</path>
+<path    stroke="rgba(255, 255, 255, 1)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"  d="M6.6665 14.6666L9.33317 14.6666">
+</path>
+<rect x="3" y="4" width="10" height="4.666666666666666" stroke="rgba(255, 255, 255, 1)" stroke-width="1" stroke-linejoin="round"  >
+</rect>
+</svg>

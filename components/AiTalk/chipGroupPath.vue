@@ -3,7 +3,7 @@
         <template v-for="(point, index) in props.path" ::key="index">
             <u-icon v-if="index != 0" :name="iconPath.arrow" size="10"></u-icon>
 
-            <t-chip kind="spot" :text="point.spot"></t-chip>
+            <t-chip :kind="point.kind" :text="point.text"></t-chip>
 
             <t-chip 
                 v-for="(thing, index) in point.things" :key="index"
@@ -24,9 +24,10 @@
         path: {
             type: Array,
             default: () => [
-                pathPoint("地点", ["事物I", "事物II"]),
-                pathPoint("地点", ["事物I", "事物II"]),
-                pathPoint("地点", ["事物I", "事物II"]),
+                pathPoint("traffic", "高铁"),
+                pathPoint("spot", "地点", ["事物I", "事物II"]),
+                pathPoint("spot", "地点", ["事物I", "事物II"]),
+                pathPoint("spot", "地点", ["事物I", "事物II"]),
             ]
         }
     });

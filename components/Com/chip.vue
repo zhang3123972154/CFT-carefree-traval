@@ -42,11 +42,17 @@
 
     const style = {
         way: { backColor: "#959cf0", borderRadius: '5px', 
-            fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default },
+            fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default 
+        },
         spot: { backColor: "#a795f0", borderRadius: '10px', 
-            fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default },
+            fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default 
+        },
         thing: { backColor: "#c895f0", borderRadius: '15px', 
-            fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default },
+            fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default 
+        },
+        traffic: { backColor: "#FFC300", borderRadius: '10px', 
+            fontColor: FONTCOLOR.value.unselected, fontColorSelected: FONTCOLOR.value.default 
+        },
 
         history: { backColor: "#f9f9f9", borderRadius: '15px', 
             fontColor: FONTCOLOR.value.history, fontColorSelected: FONTCOLOR.value.history }

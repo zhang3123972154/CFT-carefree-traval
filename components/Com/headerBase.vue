@@ -1,5 +1,7 @@
 <template>
-    <view class="flex-vertical block-width  container" @click.stop>
+    <view class="flex-vertical block-width  container" 
+        :class="{'transparent': props.bgTransparent}"
+        @click.stop>
         <view class="placeholder" :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
         }"></view> <!--info 状态栏占位-->
@@ -9,7 +11,7 @@
                 <u-icon v-if="!props.backDelete" class="flex-center-both top-icon" size="18" :name="iconPath.left"></u-icon>
                 <slot name="prefix"></slot>
             </view>
-            <view class="flex-center-horizontal shrink">
+            <view class="flex-center-both"> <!--info delete shrink-->
                 <slot name="midfix"></slot>
             </view>
             <view class="flex-center-horizontal">
@@ -17,6 +19,7 @@
             </view>
         </view>
     </view>
+     <!--info 一个附加的窗口-->
     <view class="flod-container">
         <slot name="flodfix"></slot>
     </view>
@@ -36,6 +39,10 @@
             type: Boolean,
             default: false
         },
+        bgTransparent: {
+            type: Boolean,
+            default: false
+        }
     });
     const emits = defineEmits([]);
 
@@ -60,6 +67,10 @@
     padding: 4px;
 }
 
+.transparent {
+    background-color: transparent;
+}
+
 .top-icon {
     width: 40px;
     height: 40px;
@@ -68,7 +79,7 @@
 .flod-container {
     position: sticky;
     top: 50px;
-    z-index: 9000;
+    z-index: 2000;
 }
 
 </style>        

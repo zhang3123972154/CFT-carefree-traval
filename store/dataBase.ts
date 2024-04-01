@@ -207,6 +207,42 @@ export const useAiIconPath = defineStore("iconAi", {
         },
         detail: function(): string {
             return iconDirPath + this.dir + "detail.svg";
-        }
+        },
+        star: function(): string {
+            return iconDirPath + this.dir + "star.svg";
+        },
+        timedown: function(): string {
+            return iconDirPath + this.dir + "down.svg";
+        },
+        list: function(): string {
+            return iconDirPath + this.dir + "list.svg";
+        },
+    }
+})
+
+// tag plan-detail
+export const usePlanIconPath = defineStore("iconPlan", {
+    state: (): {
+        dir: string,
+    } => ({ dir: "planDetail/" }),
+    getters: {
+        back: function(): string {
+            return iconDirPath + this.dir + "back.svg";
+        },
+        LOGO: function(): string {
+            return iconDirPath + this.dir + "LOGO.svg";
+        },
+        next: function(): string {
+            return iconDirPath + this.dir + "next.svg";
+        },
+        plan: function(): string {
+            return iconDirPath + this.dir + "plan.svg";
+        },
+        share: function(): string {
+            return iconDirPath + this.dir + "share.svg";
+        },
+        train: function(): string {
+            return iconDirPath + this.dir + "train.svg";
+        },
     }
 })
