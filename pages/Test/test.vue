@@ -16,7 +16,9 @@
     <!--top flod window-->
     <!--todo 需要自定义了。-->
     <!-- <u-popup :show="topFlodFlag" mode="top" round="20" safeAreaInsetTop
-        @click="topFlodFlag = false">
+        @click="topFlodFlag = false" :custom-style="{
+            marggin: '20px'
+        }">
         <chipGroup class="top-flod-container"></chipGroup>
     </u-popup> -->
 </template>
@@ -94,7 +96,8 @@
             ]
         },
     ])
-
+    // flag
+    const topFlodFlag = ref(true);
 
 // FUNC
 

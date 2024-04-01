@@ -15,7 +15,10 @@
                                 <view class="img-grade">{{ item.grade }}</view>
                             </view>
                             <view class="shrink">
-                                <t-chip class="t-ship" :kind="getType(item.type)" :text="item.text"></t-chip>
+                                <view class="flex-horizontal">
+                                    <t-chip class="t-ship" :kind="getType(item.type)" :text="item.text"></t-chip>
+                                    <view class="shrink"></view>
+                                </view>
                                 <text class="location-text">{{ item.location }}</text>
                                 <!-- <view class="location-text">{{ item.location }}</view> -->
                             </view>

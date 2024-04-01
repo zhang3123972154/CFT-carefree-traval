@@ -111,7 +111,7 @@
     height: 100%;
     width: 100%;
     z-index: 1000;
-    background-color: #00000030;
+    /* background-color: #00000030; 但是依旧能起到一个遮罩的效果 */
 }
 
 </style>        

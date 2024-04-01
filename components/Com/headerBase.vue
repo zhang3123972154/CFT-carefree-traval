@@ -2,7 +2,7 @@
     <view class="flex-vertical block-width  container" @click.stop>
         <view class="placeholder" :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
-        }"></view>
+        }"></view> <!--info 状态栏占位-->
         <view class="flex-center-horizontal">
             <view class="flex-center-horizontal">
                 <u-icon v-if="!props.backDelete" class="flex-center-both top-icon" size="18" :name="iconPath.left"></u-icon>
@@ -14,6 +14,7 @@
             <view class="flex-center-horizontal">
                 <slot name="suffix"></slot>
             </view>
+            <slot></slot>
         </view>
     </view>
 </template>
