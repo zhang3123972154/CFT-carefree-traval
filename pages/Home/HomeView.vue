@@ -62,12 +62,6 @@
             </view>
             <!-- <Test/> -->
         </view>
-        <!-- todo 相似栏 放到合适的位置去-->
-        <!-- <u-overlay class="flex-center-both" :show="similarWinFlag" @click="similarWinFlag = false">
-            <view class="flex-center-both">
-                <similarWin />
-            </view>
-        </u-overlay> -->
         <!--end-->
         <t-tabbar />
     </view>
@@ -85,7 +79,7 @@
     import FunctionMenu from "./function.vue";
     import planStartVue from './planStart.vue';
     import starVue from './star.vue';
-    import similarWin from './similarWin.vue';
+    // import similarWin from './similarWin.vue';
 
     import questionFullView from '@/pages/AiPlan/questionFullView.vue';
 

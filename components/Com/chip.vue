@@ -3,15 +3,23 @@
         '--border-radius': style[props.kind].borderRadius,
         '--color': selectFlag ? style[props.kind].fontColorSelected : style[props.kind].fontColor,
         '--back-color': style[props.kind].backColor,   
-    }" @click="selectFlag = !selectFlag">
+    }" @click="click" @longpress="longpress" @touchend="touchend">
         <slot>
             {{ props.text }}
         </slot>
+        <!--info tag 的介绍框框-->
+        <u-overlay class="flex-center-both" :show="similarWinFlag" @click="similarWinFlag = false">
+            <view class="flex-center-both">
+                <similarWin />
+            </view>
+        </u-overlay>
     </view>
 </template>
 
 <script setup>
     import { ref, computed } from 'vue';
+    // com
+    import similarWin from "./similarWin.vue";
 
 // DATA
     const props = defineProps({
@@ -46,6 +54,7 @@
 
     // flag
     const selectFlag = ref(false);
+    const similarWinFlag = ref(false);
 
 // FUNC
     const checkHistory = computed(() => {
@@ -57,6 +66,27 @@
         return selectFlag.value ? "light" : "default";
     });
 
+// info 点击 && 长按
+    let islongPress = false;
+    const longpress = () => {
+        // console.info("长按事件-2");
+        islongPress = true;
+        similarWinFlag.value = true;
+    }
+    const click = () => {
+        if(!islongPress)
+            selectFlag.value = !selectFlag.value;
+        // if(islongPress)
+        //    console.info("长按事件-1");
+        // else {
+        //     console.info("点击事件");
+        // }
+    }
+    const touchend = () => {
+        setTimeout(() => {
+            islongPress = false;
+        }, 200);
+    }
     
 </script>
 
