@@ -5,6 +5,7 @@
         }"></view> <!--info 状态栏占位-->
         <view class="flex-center-horizontal">
             <view class="flex-center-horizontal">
+                <!--info 默认的返回键-->
                 <u-icon v-if="!props.backDelete" class="flex-center-both top-icon" size="18" :name="iconPath.left"></u-icon>
                 <slot name="prefix"></slot>
             </view>
@@ -14,8 +15,10 @@
             <view class="flex-center-horizontal">
                 <slot name="suffix"></slot>
             </view>
-            <slot></slot>
         </view>
+    </view>
+    <view class="flod-container">
+        <slot name="flodfix"></slot>
     </view>
 </template>
 
@@ -50,6 +53,7 @@
 .container {
     position: sticky;
     top: 0px;
+    height: 50px;
     z-index: 10000;
 
     background-color: #fff;
@@ -59,6 +63,12 @@
 .top-icon {
     width: 40px;
     height: 40px;
+}
+
+.flod-container {
+    position: sticky;
+    top: 50px;
+    z-index: 9000;
 }
 
 </style>        

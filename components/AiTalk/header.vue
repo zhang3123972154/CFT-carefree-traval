@@ -12,11 +12,13 @@
             <t-btn-icon :icon="iconPath.information"></t-btn-icon>
         </template>
         <!--info 本次的个性标签库-->
-        <view class="overlay-container" @click="toggleOverlay(false)" :animation="overlayAnimation">
-            <view class="chips-container" @click.stop :animation="chipsAnimation" v-if="openFlag">
-                <chipGroup/>
+        <template #flodfix>
+            <view class="overlay-container" @click="toggleOverlay(false)" :animation="overlayAnimation">
+                <view class="chips-container" @click.stop :animation="chipsAnimation" v-if="openFlag">
+                    <chipGroup/>
+                </view>
             </view>
-        </view>
+        </template>
     </headerBase>
 </template>
 
@@ -38,7 +40,7 @@
     const emits = defineEmits([]);
 
     // flag
-    const openFlag = ref(true);
+    const openFlag = ref(false);
     const overlayAnimation  = ref(null);
     const chipsAnimation = ref(null);
 
@@ -57,6 +59,7 @@
           timingFunction: 'ease-out'
         });
         chipsAnimation.value.translateY(0).opacity(1).step();
+
       } else {
         setTimeout(() => {
             openFlag.value = false;
@@ -69,14 +72,13 @@
         overlayAnimation.value.opacity(0).step();
         
         chipsAnimation.value = uni.createAnimation({
-          duration: 300,
+          duration: 500,
           timingFunction: 'ease-out'
         });
-        chipsAnimation.value.translateY('-100%').opacity(0).step();
+        // chipsAnimation.value.height(0).step();
+        chipsAnimation.value.translateY('-50%').opacity(0).step();
       }
-
     }
-
 
 </script>
 
@@ -96,7 +98,6 @@
 
 .overlay-container {
     position: absolute;
-    top: 45px;
     height: 90vh;
     background-color: #2e181822;
 }
