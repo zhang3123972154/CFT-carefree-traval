@@ -23,6 +23,15 @@
                 </view>
             </spotDetail>
             <trafficDetail/>
+            <spotDetail :things="props.path[0].things">
+                <view class="flex-center-both spot-time-container gap-5">
+                    <timeLine></timeLine>
+                    <view class="flex-vertical">
+                        <text>获取</text>
+                        <text>方案</text>
+                    </view>
+                </view>
+            </spotDetail>
         </view>
     </view>
 </template>
