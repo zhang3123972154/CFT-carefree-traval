@@ -246,3 +246,27 @@ export const usePlanIconPath = defineStore("iconPlan", {
         },
     }
 })
+
+// tag message
+export const useMessageIconPath = defineStore("iconMessage", {
+    state: (): {
+        dir: string,
+    } => ({ dir: "message/" }),
+    getters: {
+        like: function(): string {
+            return iconDirPath + this.dir + "like.svg";
+        },
+        user: function(): string {
+            return iconDirPath + this.dir + "user.svg";
+        },
+        message: function(): string {
+            return iconDirPath + this.dir + "message.svg";
+        },
+        more: function(): string {
+            return iconDirPath + "more.svg";
+        },
+        search: function(): string {
+            return iconDirPath + "search.svg";
+        },
+    }
+})
