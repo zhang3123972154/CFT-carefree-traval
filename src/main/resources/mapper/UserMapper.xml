@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaoyao.travel.common.dao.UserMapper">
+
+    <resultMap type="com.xiaoyao.travel.common.entity.User" id="userMap">
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="sex" column="sex"/>
+        <result property="identificationId" column="identification_id"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="mailingAddress" column="mailing_address"/>
+        <result property="avatar" column="avatar"/>
+        <result property="organization" column="organization"/>
+        <result property="isDeleted" column="is_deleted"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaoyao.travel.common.dao.TravelPlanMapper">
+
+    <resultMap type="com.xiaoyao.travel.common.entity.TravelPlan" id="travelPlanMap">
+        <result property="travelPlanId" column="travel_plan_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="planAttractionId" column="plan_attraction_id"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateUserId" column="update_user_id"/>
+        <result property="deletedTime" column="deleted_time"/>
+        <result property="isDeleted" column="is_deleted"/>
+    </resultMap>
+
+
+</mapper>

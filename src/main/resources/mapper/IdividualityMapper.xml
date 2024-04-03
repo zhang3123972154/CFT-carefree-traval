@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaoyao.travel.common.dao.IndividualityMapper">
+
+    <resultMap type="com.xiaoyao.travel.common.entity.Individuality" id="idividualityMap">
+        <result property="individualityId" column="individuality_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="selfSelectedKey" column="self_selected_key"/>
+        <result property="budget" column="budget"/>
+        <result property="keyAboutPost" column="key_about_post"/>
+        <result property="keyAboutAi" column="key_about_ai"/>
+        <result property="recommendationPrinciple" column="recommendation_principle"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaoyao.travel.common.dao.PostMapper">
+
+    <resultMap type="com.xiaoyao.travel.common.entity.Post" id="postMap">
+        <result property="postId" column="post_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="likedNum" column="liked_num"/>
+        <result property="imageDir" column="image_dir"/>
+        <result property="individualKey" column="individual_key"/>
+        <result property="prefer" column="prefer"/>
+        <result property="commentNum" column="comment_num"/>
+        <result property="collectNum" column="collect_num"/>
+        <result property="category" column="category"/>
+        <result property="isDeleted" column="is_deleted"/>
+    </resultMap>
+
+
+</mapper>

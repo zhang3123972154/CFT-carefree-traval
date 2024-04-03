@@ -1,0 +1,44 @@
+server:
+  port: 8009
+spring:
+  application:
+    name: xiaoyao
+  profiles:
+    active: ${ENV_PROFILE:local} # 默认开发环境，可选值dev(本地)和prod(生产环境)
+  mail:
+    host: smtp.163.com
+    port: 25
+    username: yangjiao97813@163.com
+    password: MRPJJQRCPXMHRHZS
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: common.entity.*
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #mp2.3+ 全局表前缀 mp_
+    #table-prefix: mp_
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #逻辑删除配置（下面3个配置）
+    #sql-Injector:   com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    logic-delete-value: 1
+    logic-not-delete-value: 0
+security:
+  oauth2:
+    client:
+      access-token-url: http://localhost:8009/oauth/token
+# 自定义配置
+app:
+  id-card:
+    appCode: de45b6f95c2445ff9b64da99e1d5d7f6
+    appSecret: 9r5J3xeYWYvIBFAaj1oyoBl7nZ9s6z1h

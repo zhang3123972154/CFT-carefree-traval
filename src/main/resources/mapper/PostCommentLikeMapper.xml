@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaoyao.travel.common.dao.PostCommentLikeMapper">
+
+    <resultMap type="com.xiaoyao.travel.common.entity.PostCommentLike" id="postCommentLikeMap">
+        <result property="postCommentLikeId" column="post_comment_like_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="postCommentId" column="post_comment_id"/>
+        <result property="likedTime" column="liked_time"/>
+    </resultMap>
+
+
+</mapper>

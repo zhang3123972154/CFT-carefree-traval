@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaoyao.travel.common.dao.IdentificationMapper">
+
+    <resultMap type="com.xiaoyao.travel.common.entity.Identification" id="identificationMap">
+        <result property="identificationId" column="identification_id"/>
+        <result property="realName" column="real_name"/>
+        <result property="identificationCard" column="identification_card"/>
+        <result property="birthday" column="birthday"/>
+        <result property="nativePlace" column="native_place"/>
+    </resultMap>
+
+
+</mapper>
