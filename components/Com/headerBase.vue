@@ -1,5 +1,5 @@
 <template>
-    <view class="flex-vertical block-width  container" 
+    <view class="flex-vertical block-width container" 
         :class="{'transparent': props.bgTransparent}"
         @click.stop>
         <view class="placeholder" :style="{
@@ -8,7 +8,8 @@
         <view class="flex-center-horizontal">
             <view class="flex-center-horizontal">
                 <!--info 默认的返回键-->
-                <u-icon v-if="!props.backDelete" class="flex-center-both top-icon" size="18" :name="iconPath.left"></u-icon>
+                <u-icon v-if="!props.backDelete" @click="back"
+                    class="flex-center-both top-icon" size="18" :name="iconPath.left"></u-icon>
                 <slot name="prefix"></slot>
             </view>
             <view class="flex-center-both"> <!--info delete shrink-->
@@ -19,7 +20,7 @@
             </view>
         </view>
     </view>
-     <!--info 一个附加的窗口-->
+     <!--info 一个附加的下部窗口-->
     <view class="flod-container">
         <slot name="flodfix"></slot>
     </view>
@@ -47,6 +48,9 @@
     const emits = defineEmits([]);
 
 // FUNC
+    const back = () => {
+        uni.navigateBack({ delta: 1 });
+    }
 
 </script>
 

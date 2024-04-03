@@ -1,7 +1,7 @@
 <template>
     <headerBase back-delete bg-transparent>
         <template #prefix>
-            <t-btn-icon :icon="iconPath.back"></t-btn-icon>
+            <t-btn-icon :icon="iconPath.back" @click="back"></t-btn-icon>
         </template>
         <template #midfix>
             <text class="title">规划表</text>
@@ -32,6 +32,9 @@
     const emits = defineEmits([]);
 
 // FUNC
+    const back = () => {
+        uni.navigateBack({ delta: 1 })
+    }
 
 </script>
 

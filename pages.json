@@ -22,6 +22,19 @@
     },
     {
       "path": "pages/Test/test"
+    },
+    // base 5
+    {
+      "path": "pages/PostDetail/postDetailView" // 帖子详细页
+    },
+    {
+      "path": "pages/Search/SearchView" // 搜索 - 完全版
+    },
+    {
+      "path": "pages/AiPlan/questionFullView"
+    },
+    {
+      "path": "pages/AiTalk/AiTalkView" // 规划对话
     }
   ],
   "globalStyle": {

@@ -31,23 +31,18 @@
             <t-btn variant="outlined" class="btn-base" :custom-style="{
                 color: '#666666',
                 borderColor: '#666666'
-            }">取消</t-btn>
+            }" @click="gotoBack">取消</t-btn>
             <t-btn variant="tonal" class="btn-base" :custom-style="{
                 color: '#FFFFFF',
                 backgroundColor: '#FFC300'
-            }">完成</t-btn>
+            }" @click="gotoAiTalk">完成</t-btn>
         </view>
     </view>
-    <!--todo test-->
-    <u-overlay class="flex-center-both" :show="true">
-        <questionWin/>
-    </u-overlay>
 </template>
 
 <script setup>
     import { ref, computed } from "vue";
     // com
-    import questionWin from "./questionWin.vue";
     // store
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
@@ -63,6 +58,14 @@
 
     const clearInput = () => {
         content.value = "";
+    }
+
+    const gotoBack = () => {
+        uni.navigateBack({ delta: 1 });
+    }
+
+    const gotoAiTalk = () => {
+        uni.navigateTo({ url: '/pages/AiTalk/AiTalkView' })
     }
 
 </script>

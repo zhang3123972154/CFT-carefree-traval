@@ -33,7 +33,7 @@
                     <t-btn variant="outlined" class="btn-base" :custom-style="{
                         color: '#666666',
                         borderColor: '#666666'
-                    }">取消</t-btn>
+                    }" @click="gotoBack">取消</t-btn>
                     <t-btn variant="tonal" class="btn-base" :custom-style="{
                         color: '#FFFFFF',
                         backgroundColor: '#FFC300'
@@ -63,6 +63,10 @@
 
     const clearInput = () => {
         content.value = "";
+    }
+
+    const gotoBack = () => {
+        uni.navigateBack({ delta: 1 });
     }
 
 </script>

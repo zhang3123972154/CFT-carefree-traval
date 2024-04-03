@@ -1,8 +1,8 @@
 <template>
     <view class="flex-center-both basic" :class="getClass" :style="{
-        '--border-radius': style[props.kind].borderRadius,
-        '--color': selectFlag ? style[props.kind].fontColorSelected : style[props.kind].fontColor,
-        '--back-color': style[props.kind].backColor,   
+        '--border-radius': checkKind.borderRadius,
+        '--color': selectFlag ? checkKind.fontColorSelected : checkKind.fontColor,
+        '--back-color': checkKind.backColor,   
     }" @click="click" @longpress="longpress" @touchend="touchend">
         <slot>
             {{ props.text }}
@@ -38,7 +38,9 @@
         unselected: "#cccccc",
         default: "#ffffff",
         history: "#999999",
-    })
+    });
+
+    // console.info(props.kind);
 
     const style = {
         way: { backColor: "#959cf0", borderRadius: '5px', 
@@ -63,6 +65,9 @@
     const similarWinFlag = ref(false);
 
 // FUNC
+    const checkKind = computed(() => {
+        return style[props.kind] || style.way;
+    })
     const checkHistory = computed(() => {
         return props.kind == "history" ? true : false;
     })

@@ -10,6 +10,11 @@ export default defineStore("phoneStore", {
             phoneWidth: 420,
         }
     },
+    getters: {
+        cardWidth_2: function() {
+            return Math.floor((this.phoneWidth - 20) / 2);
+        }
+    },  
     actions: {
         setStatusBarHeight(height: number) {
             this.statusBarHeight = height;

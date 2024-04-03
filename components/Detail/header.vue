@@ -1,7 +1,9 @@
 <template>
     <view class="flex-center-horizontal container">
         <view class="flex-horizontal ">
-            <u-icon class="flex-center-both icon-back" :name="iconArrows.left" size="20"></u-icon>
+            <u-icon class="flex-center-both icon-back" :name="iconArrows.left" size="20"
+                @click="back">
+            </u-icon>
             <up-avatar class=" ml-15" :src="props.avatar" size="30"></up-avatar>
             <text class="user-name">{{ props.usrName }}</text>
         </view>
@@ -37,6 +39,9 @@
     const emits = defineEmits([]);
 
 // FUNC
+    const back = () => {
+        uni.navigateBack();
+    }
 
 </script>
 

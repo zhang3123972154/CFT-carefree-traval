@@ -1,9 +1,9 @@
 <template>
     <view class="container-base">
-        <template v-for="(point, index) in props.path" ::key="index">
+        <template v-for="(point, index) in props.path" :key="index">
             <u-icon v-if="index != 0" :name="iconPath.arrow" size="10"></u-icon>
 
-            <t-chip :kind="point.kind" :text="point.text"></t-chip>
+            <t-chip :kind="point.type" :text="point.text"></t-chip>
 
             <t-chip 
                 v-for="(thing, index) in point.things" :key="index"
