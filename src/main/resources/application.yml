@@ -4,7 +4,7 @@ spring:
   application:
     name: xiaoyao
   profiles:
-    active: ${ENV_PROFILE:local} # 默认开发环境，可选值dev(本地)和prod(生产环境)
+    active: local # 默认开发环境，可选值dev(本地)和prod(生产环境)
   mail:
     host: smtp.163.com
     port: 25
@@ -15,6 +15,26 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://43.139.8.195:3306/xiaoyao?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: abcswhu2021
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: 43.139.8.195
+    port: 6379
+    password: abcswhu2021
+    lettuce:
+      cluster:
+        refresh:
+          adaptive: true
+          period: 20
+      pool:
+        max-idle: 30
+        min-idle: 10
+        max-active: 30
+        max-wait: 10000
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: common.entity.*
