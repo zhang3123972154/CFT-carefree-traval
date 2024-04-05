@@ -8,11 +8,13 @@
             {{ props.text }}
         </slot>
         <!--info tag 的介绍框框-->
-        <u-overlay class="flex-center-both" :show="similarWinFlag" @click="similarWinFlag = false">
-            <view class="flex-center-both">
-                <similarWin />
-            </view>
-        </u-overlay>
+        <view @click.stop="similarWinFlag = false"> <!--info 套上这层来阻断click的传递，导致chip被点击-->
+            <u-overlay class="flex-center-both" :show="similarWinFlag">
+                <view class="flex-center-both">
+                    <similarWin @close="similarWinFlag = false"/>
+                </view>
+            </u-overlay>
+        </view>
     </view>
 </template>
 
@@ -39,8 +41,6 @@
         default: "#ffffff",
         history: "#999999",
     });
-
-    // console.info(props.kind);
 
     const style = {
         way: { backColor: "#959cf0", borderRadius: '5px', 
@@ -87,11 +87,6 @@
     const click = () => {
         if(!islongPress)
             selectFlag.value = !selectFlag.value;
-        // if(islongPress)
-        //    console.info("长按事件-1");
-        // else {
-        //     console.info("点击事件");
-        // }
     }
     const touchend = () => {
         setTimeout(() => {

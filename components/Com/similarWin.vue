@@ -5,7 +5,7 @@
                 <t-btn-icon :icon="iconPath.reloadWin"></t-btn-icon>
                 <t-btn-icon :icon="iconPath.shrink"></t-btn-icon>
             </view>
-            <t-btn-icon :icon="iconPath.close"></t-btn-icon>
+            <t-btn-icon :icon="iconPath.close" @click="emits('close')"></t-btn-icon>
         </view>
         <!--wataerfall-->
         <view class="waterfall">
@@ -32,7 +32,7 @@
     const props = defineProps({
 
     });
-    const emits = defineEmits([]);
+    const emits = defineEmits(["close"]);
 
 // FUNC
 
