@@ -41,5 +41,9 @@
 	.top-container {
 		padding-top: var(--status-height);
 	}
+
+	.of-x-hidden {
+		overflow-x: hidden;
+	}
 	
 </style>

@@ -28,6 +28,7 @@
         </transition>
     </view>
     <!--other function-->
+    <!--bug 手机端偶尔动画bug-->
     <u-popup :show="settingFlag" mode="right" overlayOpacity="0.3" safeAreaInsetTop :customStyle="{
         borderBottomLeftRadius: '20px'
     }" @close="settingFlag = false">

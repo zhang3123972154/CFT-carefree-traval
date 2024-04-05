@@ -1,7 +1,7 @@
 <template>
     <!-- <t-tabbar/> -->
-    <view class="flex-vertical">
-        <detail-header />
+    <detail-header />
+    <view class="flex-vertical of-x-hidden">
         <album />
         <!--content-->
         <view class="flex-vertical container gap-10">
@@ -26,8 +26,8 @@
             <commentBox/>
         </view>
         <!--end-->
-        <tabbar/>
     </view>
+    <tabbar/>
 </template>
 
 <script setup>

@@ -8,11 +8,13 @@
         <!--下层瀑布流信息-->
         <view class="m-5">
             <!--Search-->
-            <view class="search-container">
+            <view class="search-container top-container" :style="{
+                '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
+            }">
                 <Search/>
             </view>
             <!--waterfall-->
-            <view class="waterfall gap-5">
+            <view class="waterfall gap-5 of-x-hidden">
                 <template v-for="(item, index) in cardList" :key="index">
                     <Card 
                     :img-path="item.imgPath" 
@@ -55,10 +57,13 @@
         uni.$emit("baseClick");
     }
 
+    const detail = (index) => {
+        uni.navigateTo({ url: '/pages/PostDetail/postDetailView' })
+    }
+
 </script>
 
 <style scoped>
-
 /* star */
 .star-container {
     position: relative;
@@ -70,14 +75,12 @@
     grid-template-columns: 1fr 1fr;
     gap: 2px;
     /* height: calc(100% - 50px); */
-    width: 100vw;
 }
 
 .search-container {
     position: sticky;   /* todo 如何检测到sticky的触发。 */
     top: 0px;
     z-index: 3000;
-    padding: 5px 0;
 
     background-color: #fff;
 }

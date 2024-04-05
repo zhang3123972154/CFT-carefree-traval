@@ -4,7 +4,7 @@
             <text class="title">消息</text>
         </template>
         <template #suffix>
-            <t-btn-icon :icon="iconPath.more"></t-btn-icon>
+            <t-btn-icon :icon="iconPath.search"></t-btn-icon>
             <t-btn-icon :icon="iconPath.more"></t-btn-icon>
         </template>
     </headerBase>

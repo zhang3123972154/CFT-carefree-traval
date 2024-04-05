@@ -1,10 +1,10 @@
 <template>
-    <view class="flex-vertical block-width container" 
-        :class="{'transparent': props.bgTransparent}"
-        @click.stop>
-        <view class="placeholder" :style="{
+    <view class="flex-vertical block container pd-5 top-container" 
+        :class="{'transparent': props.bgTransparent}" 
+        :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
-        }"></view> <!--info 状态栏占位-->
+        }">
+        <!--bug 感觉 pd-5 没有生效-->
         <view class="flex-center-horizontal">
             <view class="flex-center-horizontal">
                 <!--info 默认的返回键-->
@@ -31,7 +31,6 @@
     // store
     import usePhoneInfor from "@/store/phoneInfor";
     const phoneInforStore = usePhoneInfor();
-
     import { useArrowsIconPath } from "@/store/dataBase";
     const iconPath = useArrowsIconPath();
 // DATA
@@ -56,19 +55,12 @@
 
 <style scoped>
 
-.placeholder {
-    height: var(--status-height);
-    background-color: #fff;
-}
-
 .container {
     position: sticky;
     top: 0px;
-    height: 50px;
     z-index: 10000;
 
     background-color: #fff;
-    padding: 4px;
 }
 
 .transparent {

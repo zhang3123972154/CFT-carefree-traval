@@ -9,12 +9,12 @@
         </view>
         <!--wataerfall-->
         <view class="waterfall">
-            <Card src-width="150" src-height="180" />
-            <Card src-width="150" src-height="180" />
-            <Card src-width="150" src-height="180" />
-            <Card src-width="150" src-height="180" />
-            <Card src-width="150" src-height="180" />
-            <Card src-width="150" src-height="180" />
+            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
+            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
+            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
+            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
+            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
+            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
         </view>
     </view>
 </template>
@@ -24,6 +24,8 @@
     // com
     import Card from "@/components/Home/card.vue";
     // store
+    import usePhoneInfor from "@/store/phoneInfor";
+    const phoneInforStore = usePhoneInfor();
     import { useWindowIconPath } from "@/store/dataBase";
     const iconPath = useWindowIconPath();
 // DATA
@@ -39,7 +41,7 @@
 <style scoped>
 
 .main-container {
-    width: 320px;
+    width: 90%;
     height: 75%;
     padding: 10px;
 

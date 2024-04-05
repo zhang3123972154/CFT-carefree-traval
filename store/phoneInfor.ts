@@ -13,6 +13,9 @@ export default defineStore("phoneStore", {
     getters: {
         cardWidth_2: function() {
             return Math.floor((this.phoneWidth - 20) / 2);
+        },
+        cardWidth_similarWin_2: function() {
+            return Math.floor((this.phoneWidth * .8) / 2);  // info 两个设备的效果都不错
         }
     },  
     actions: {
