@@ -27,6 +27,10 @@ public class ServiceException extends RuntimeException {
         this.message = message;
         this.resultCode = ResultCode.ERROR;
     }
+    public ServiceException(ResultCode resultCode,String message) {
+        this.resultCode = resultCode;
+        this.message = message;
+    }
 
     public ResultCode getResultCode() {
         return resultCode;

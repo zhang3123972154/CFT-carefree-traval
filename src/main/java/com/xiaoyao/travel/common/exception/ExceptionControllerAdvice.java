@@ -21,4 +21,8 @@ public class ExceptionControllerAdvice {
   public ResponseBean handleException(Exception e){
     return ResponseBean.fail(e.getMessage());
   }
+  @ExceptionHandler(ServiceException.class)
+  public ResponseBean handleServiceException(ServiceException e) {
+    return ResponseBean.fail(e.getResultCode(),e.getMessage());
+  }
 }

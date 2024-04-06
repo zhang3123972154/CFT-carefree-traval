@@ -41,4 +41,9 @@ public class PlanAttraction implements Serializable {
 	 */
 	private String detail;
 
+	private Date endTime;
+	private Integer nextNode;
+
+	private Integer nextDay;
+
 }

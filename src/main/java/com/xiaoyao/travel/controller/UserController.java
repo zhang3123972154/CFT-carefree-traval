@@ -87,6 +87,11 @@ public class UserController {
     }
     return ResponseBean.success(loginResponseVo);
   }
+//  @PostMapping("/update")
+//  @ApiOperation(value = "修改用户基本信息",httpMethod = "POST")
+//  public ResponseBean updateUserInfo() {
+//    userService.updateUserInfo()
+//  }
 //  @GetMapping("/loginByTel")
 //  @Description("通过手机号和密码登录，其中密码使用rsa加密，格式为:<br/> +" +
 //    "phone: 176xxxx0984 <br/> +" +

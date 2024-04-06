@@ -2,7 +2,11 @@ package com.xiaoyao.travel.common.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaoyao.travel.common.entity.AiDialogue;
+import com.xiaoyao.travel.common.vo.response.DialogueHistoryVo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * 和ai对话记录列表
@@ -13,5 +17,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface AiDialogueMapper extends BaseMapper<AiDialogue> {
-	
+
+  List<DialogueHistoryVo> getMsgHistory(Date startTime, Date endTime);
 }

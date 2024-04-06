@@ -2,13 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.xiaoyao.travel.common.dao.AiDialogueMapper">
-
-    <resultMap type="com.xiaoyao.travel.common.entity.AiDialogue" id="aiDialogueMap">
-        <result property="dialogueId" column="dialogue_id"/>
-        <result property="userId" column="user_id"/>
-        <result property="message" column="message"/>
-        <result property="sendTime" column="send_time"/>
-    </resultMap>
+    <select id="getMsgHistory" resultType="com.xiaoyao.travel.common.vo.response.DialogueHistoryVo">
+        SELECT ad.message as userSend,
+               ar.content as aiResponse,
+               ad.send_time as sendTime,
+               ar.response_time as responseTime
+        from ai_dialogue ad,ai_response ar
+        WHERE ad.user_id = 1
+        and ar.ai_response_id = ad.dialogue_id
+        and ad.send_time between #{startTime} and #{endTime}
+    </select>
 
 
 </mapper>

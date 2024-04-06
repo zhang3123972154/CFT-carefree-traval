@@ -1,6 +1,7 @@
 package com.xiaoyao.travel.common.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
@@ -60,6 +61,7 @@ public class User implements Serializable {
 	/**
 	 * 是否被删除，0表示未被删除，1表示被删除
 	 */
+	@TableLogic
 	private Integer isDeleted;
 
 	private String password;
