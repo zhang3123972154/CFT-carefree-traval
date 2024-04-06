@@ -1,0 +1,14 @@
+.no-wrap {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.over-ell {
+    text-overflow: ellipsis;
+    /* 可选，添加这个会在文本溢出的末尾显示省略号 */
+}
+
+.wrap {
+    white-space: pre-wrap; /* 保持空白符序列，但文本会换行到下一行 */
+    word-wrap: break-word; /* 在长单词或 URL 地址内部进行换行 */
+}

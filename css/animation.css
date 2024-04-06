@@ -1,0 +1,50 @@
+/* 左右滑动 */
+/* 入场动画 */
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        /* 开始时元素在视图的右侧外面 */
+        opacity: 0;
+        /* 开始时元素完全透明 */
+    }
+
+    to {
+        transform: translateX(0);
+        /* 结束时元素回到原位 */
+        opacity: 1;
+        /* 结束时元素完全不透明 */
+    }
+}
+
+/* 退场动画 */
+@keyframes slideOutToLeft {
+    from {
+        transform: translateX(0);
+        /* 开始时元素在原位 */
+        opacity: 1;
+        /* 开始时元素完全不透明 */
+    }
+
+    to {
+        transform: translateX(-100%);
+        /* 结束时元素移动到视图左侧外面 */
+        opacity: 0;
+        /* 结束时元素完全透明 */
+    }
+}
+
+/* 为fade定义进入和离开的CSS类 */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
+}
