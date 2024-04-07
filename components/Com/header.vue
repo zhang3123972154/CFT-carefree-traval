@@ -1,5 +1,5 @@
 <template>
-    <view class="flex-center-horizontal top-container" :style="{
+    <view class="flex-center-horizontal container top-container" :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
         }">
         <!--update 滑块有一些错位-->
@@ -22,10 +22,10 @@
             <t-btn-icon icon="/static/icon/LOGO.svg" @click.stop="gotoAiPlan"></t-btn-icon>
         </view>
         <!--菜单功能-->
-        <!--bug 移动端无效-->
-        <transition name="fade">
-            <FunctionMenu v-show="functionFlag" class="function-menu" />
-        </transition>
+        <FunctionMenu :animation="functionAnimation"
+        class="function-menu top-float-win" :style="{
+            '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
+        }"/>
     </view>
     <!--other function-->
     <!--bug 手机端偶尔动画bug-->
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, nextTick } from "vue";
     import FunctionMenu from "./function.vue";
     import Setting from "./setting.vue";
     // store
@@ -57,7 +57,6 @@
 
     });
     const emits = defineEmits([]);
-
     //todo 第一个词条需要和定位绑定，以及处理“定位失效”时的容错。
     const TabList = ref([{name: "武汉"}, {name: "关注"}, {name: "规划"}, {name: "推荐"}]);
     const tabIndex = ref(0);   // bug 好像无效
@@ -65,10 +64,38 @@
     const settingFlag = ref(false);
     const functionFlag = ref(false);
     const planFlag = ref(false);
+    // style
+    const functionAnimation = ref(null);
 // FUNC
+    // animation
+    const TIME_ANIMATION = 300;
+    const toggleFloatWin = (show) => {
+        if(show) {
+            functionFlag.value = true;
+
+            nextTick(() => {
+                functionAnimation.value = uni.createAnimation({
+                    duration: TIME_ANIMATION,
+                    timingFunction: 'ease'
+                });
+                functionAnimation.value.opacity(1).step();
+            });
+        } else {
+            setTimeout(() => {
+                functionFlag.value = false;
+            }, TIME_ANIMATION);
+
+            functionAnimation.value = uni.createAnimation({
+                duration: TIME_ANIMATION,
+                timingFunction: "ease"
+            });
+            functionAnimation.value.opacity(0).step();
+        }
+    }
+    // router
     const openFunction = () => {
-        functionFlag.value = !functionFlag.value;
-        uni.$once("baseClick", () => functionFlag.value = false);
+        toggleFloatWin(!functionFlag.value);
+        // uni.$once("baseClick", toggleFloatWin(false));
     }
     const gotoAiPlan = () => {
         uni.navigateTo({ url: '/pages/AiPlan/questionFullView'})
@@ -83,7 +110,7 @@
 
 <style scoped>
 /* TOP */
-.top-container {
+.container {
     position: sticky;
     top: 0px;
 
@@ -101,6 +128,8 @@
     position: absolute;
     top: 40px; 
     right: 20px;
+    opacity: 0; /* 一开始进入dom，但是不显示 */
+
     z-index: 3000;
 }
 </style>        

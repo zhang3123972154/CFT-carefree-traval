@@ -56,7 +56,8 @@
     indexStore.changeCurtabIndex(index);
 
     const pagePath = "../" + pages[index];
-    uni.navigateTo({ url: pagePath });
+    uni.navigateTo({ url: pagePath, animationType: "fade-in"});
+    // info fade-in 视觉效果会好很多。
   }
 
 </script>

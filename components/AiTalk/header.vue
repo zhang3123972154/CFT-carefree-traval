@@ -2,7 +2,7 @@
     <headerBase>
         <template #prefix>
             <u-icon class="flex-center-both top-icon" size="30" :name="iconPath.AI"></u-icon>
-            <text class="ai-name ml-5">旅行助手</text>
+            <text @click="toggleOverlay(true)" class="ai-name ml-5">旅行助手</text>
         </template>
         <template #midfix>
             <view @click="toggleOverlay(true)" class="block-width" style="color: #fff;">-</view>
@@ -13,8 +13,9 @@
         </template>
         <!--info 本次的个性标签库-->
         <template #flodfix>
-            <view class="overlay-container" @click="toggleOverlay(false)" :animation="overlayAnimation">
-                <view class="chips-container" @click.stop :animation="chipsAnimation" v-if="openFlag">
+          <!--info v-show放在外层效果最佳。-->
+            <view class="overlay-container" @click="toggleOverlay(false)" :animation="overlayAnimation" v-show="openFlag">
+                <view class="chips-container" @click.stop :animation="chipsAnimation">
                     <chipGroup/>
                 </view>
             </view>
@@ -23,7 +24,7 @@
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, nextTick } from "vue";
     // com
     import headerBase from "../Com/headerBase.vue";
     import chipGroup from "@/components/Home/chipGroup.vue";
@@ -41,25 +42,26 @@
 
     // flag
     const openFlag = ref(false);
-    const overlayAnimation  = ref(null);
-    const chipsAnimation = ref(null);
+    const overlayAnimation  = ref(uni.createAnimation());
+    const chipsAnimation = ref(uni.createAnimation());
 
 // FUNC
     const toggleOverlay = (show) => {   // 退场动画
       if (show) {
         openFlag.value = true;
-        overlayAnimation.value = uni.createAnimation({
-          duration: 500,
-          timingFunction: 'ease'
-        });
-        overlayAnimation.value.opacity(1).step();
-        
-        chipsAnimation.value = uni.createAnimation({
-          duration: 300,
-          timingFunction: 'ease-out'
-        });
-        chipsAnimation.value.translateY(0).opacity(1).step();
-
+        nextTick(() => {  // info App端的渲染效率 < 面对过程的代码运行。
+          overlayAnimation.value = uni.createAnimation({
+            duration: 500,
+            timingFunction: 'ease'
+          });
+          overlayAnimation.value.opacity(1).step();
+          
+          chipsAnimation.value = uni.createAnimation({
+            duration: 300,
+            timingFunction: 'ease-in'
+          });
+          chipsAnimation.value.translateY(0).opacity(1).step();
+          });
       } else {
         setTimeout(() => {
             openFlag.value = false;
@@ -75,7 +77,6 @@
           duration: 500,
           timingFunction: 'ease-out'
         });
-        // chipsAnimation.value.height(0).step();
         chipsAnimation.value.translateY('-50%').opacity(0).step();
       }
     }
@@ -97,17 +98,17 @@
 }
 
 .overlay-container {
-    position: absolute;
-    height: 90vh;
-    background-color: #2e181822;
+  position: absolute;
+  height: 90vh;
+  background-color: #2e181822;
 }
 
 .chips-container {
     padding: 15px;
     border-radius: 0 0 20px 20px;
     background-color: #fff;
+
+    transform: translateY(-70%);
 }
-
-
 
 </style>        

@@ -7,7 +7,7 @@
         <starVue />
         <!--下层瀑布流信息-->
         <view class="m-5">
-            <!--Search-->
+            <!--bug 需要条件判断。Search-->
             <view class="search-container top-container" :style="{
                 '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
             }">

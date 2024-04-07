@@ -42,8 +42,16 @@
 		padding-top: var(--status-height);
 	}
 
+	.top-float-win {
+		margin-top: var(--status-height);
+	}
+
 	.of-x-hidden {
 		overflow-x: hidden;
+	}
+
+	.of-y-hidden {
+		overflow-y: hidden;
 	}
 	
 </style>

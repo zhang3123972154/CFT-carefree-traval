@@ -12,7 +12,7 @@
                     class="flex-center-both top-icon" size="18" :name="iconPath.left"></u-icon>
                 <slot name="prefix"></slot>
             </view>
-            <view class="flex-center-both"> <!--info delete shrink-->
+            <view class="flex-center-both shrink"> <!--info delete shrink-->
                 <slot name="midfix"></slot>
             </view>
             <view class="flex-center-horizontal">
@@ -74,7 +74,7 @@
 
 .flod-container {
     position: sticky;
-    top: 50px;
+    top: 45px;
     z-index: 2000;
 }
 
