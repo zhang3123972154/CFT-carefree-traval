@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp">
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/text_view_item"
@@ -11,5 +11,6 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:textSize="25sp" />
+
 
 </LinearLayout>

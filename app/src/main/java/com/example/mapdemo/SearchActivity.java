@@ -99,8 +99,9 @@ public class SearchActivity extends AppCompatActivity implements Inputtips.Input
         recyclerView.setFocusableInTouchMode(true);
         //recycleview设置适配器
         poiList=new ArrayList<>();
-        myListAdapter=new MyListAdapter(poiList);
+        myListAdapter=new MyListAdapter(poiList,this);
         recyclerView.setAdapter(myListAdapter);
+        //recyclerView.setItemViewCacheSize(1000);
 
 
 
@@ -162,6 +163,10 @@ public class SearchActivity extends AppCompatActivity implements Inputtips.Input
 
     @Override
     public void afterTextChanged(Editable s) {
+        if (s.length() == 0) {
+            poiList.clear();
+            myListAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -241,8 +246,6 @@ public class SearchActivity extends AppCompatActivity implements Inputtips.Input
 ////            Toast.makeText(SearchActivity.this,"错误码"+rCode,Toast.LENGTH_SHORT).show();
 //        }
 //
-
-
     }
 
     @Override
