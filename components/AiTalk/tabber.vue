@@ -4,8 +4,8 @@
             <t-btn-icon :icon="iconPath.voice"></t-btn-icon>
         </template>
         <template #midfix>
-            <up-input shape="circle" border="none"
-                fontSize="14"
+            <up-input v-model="inputContent"
+                shape="circle" border="none" fontSize="14"
                 :customStyle="{
                     padding: '4px',
                     margin: '4px',
@@ -16,7 +16,10 @@
         </template>
         <template #suffix>
             <t-btn-icon :icon="iconPath.emoji"></t-btn-icon>
-            <t-btn-icon :icon="iconPath.add" @click="questionFlag = true"></t-btn-icon>
+            <t-btn-icon v-if="inputContent === ''" :icon="iconPath.add" @click="questionFlag = true"></t-btn-icon>
+            <view v-else class="send-container" @click="sendUserMessage">
+                <text>发送</text>
+            </view>
         </template>
     </tabberBase>
     <pathFloatWin :spot="plan.spot" :day="plan.day" :path="plan.path"/>
@@ -37,13 +40,15 @@
     // store
     import { useAiIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();
+
 // DATA
     const props = defineProps({
 
     });
-    const emits = defineEmits([]);
+    const emits = defineEmits(["sendMessage"]);
 
-        // flag
+    const inputContent = ref('');
+    // flag
     const topFlodFlag = ref(true);
     const questionFlag = ref(false);
     const plan = ref({
@@ -63,9 +68,23 @@
     })
 
 // FUNC
+    const sendUserMessage = () => {
+        emits('sendMessage', inputContent.value);
+        inputContent.value = "";
+    }
 
 </script>
 
 <style scoped>
+
+.send-container {
+    border-radius: 5px;
+    background-color: #ffc300;
+    padding: 4px;
+
+    color: #fff;
+    font-size: 14px;
+    font-family: Alimama ShuHeiTi;
+}
 
 </style>        
