@@ -1,17 +1,24 @@
 <template>
-    <view @click="closeFunctionWin" @touchstart="closeFunctionWin">
+    <!--info 强行捕获 touchmove-->
+    <view @click="closeFunctionWin" @touchstart="closeFunctionWin" 
+        @touchmove.capture="scrollHandle" @touchend.capture="scrollEnd">
         <!--top function-->
         <t-header/>
         <!--star-->
         <!--todo star的调整-->
         <starVue @touchstart="closeFunctionWin"/>
         <!--下层瀑布流信息-->
-        <view class="m-5">
+        <view class="m-5 watch-container">
             <!--bug 需要条件判断。Search-->
-            <view class="search-container top-container" :style="{
-                '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
+            <view
+            class="search-container" 
+            :class="{
+                'search-container-top': searchZIndex
+            }"
+            :style="{
+                '--status-bar-height': phoneInforStore.statusBarHeight.toString() + 'px'
             }">
-                <Search/>
+                <Search @click="gotoSearch"/>
             </view>
             <!--waterfall-->
             <view class="waterfall gap-5 of-x-hidden">
@@ -30,7 +37,7 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
+    import { ref, onMounted, onUnmounted } from 'vue';
     // store
     import usePhoneInfor from "@/store/phoneInfor";
     const phoneInforStore = usePhoneInfor();
@@ -50,6 +57,12 @@
         {imgPath: "/static/example/avatar.png" },
         {imgPath: "/static/example/avatar.png" },
     ])
+    //flag
+    const searchTouchTop = ref(false);
+    const searchTouchHeader = ref(false);
+    const searchZIndex = ref(false);
+    let scrollFlag = true;
+    const scrollTime = 50;
 
 // FUNC
     // click
@@ -59,6 +72,53 @@
 
     const detail = (index) => {
         uni.navigateTo({ url: '/pages/PostDetail/postDetailView' })
+    }
+
+    const gotoSearch = () => {
+        if(searchTouchTop.value)
+            uni.navigateTo({
+                url: "/pages/Search/SearchView",
+                animationType: 'fade-in',
+            })
+    }
+
+    const query = uni.createSelectorQuery().in(this).select(".watch-container");
+    const checkSearch = () => {
+        query.boundingClientRect((data) => {
+            // console.log("得到布局位置信息" + JSON.stringify(data));
+            console.log("节点离页面顶部的距离为" + data.top);
+            if(data.top <= phoneInforStore.statusBarHeight + 60)
+                searchTouchHeader.value = true;
+            else {
+                searchTouchHeader.value = false;
+                // searchZIndex.value = false;
+            }
+
+            if(data.top <= phoneInforStore.statusBarHeight)
+                searchTouchTop.value = true;
+            else
+                searchTouchTop.value = false;
+        }).exec();
+    }
+
+    const scrollHandle = (event) => {
+        if(scrollFlag) {
+            // info 触发过于频繁
+            scrollFlag = false;
+            setTimeout(() => {
+                scrollFlag = true;
+            }, scrollTime);
+
+            checkSearch();
+        }
+
+        if(!searchZIndex.value)
+            searchZIndex.value = true;
+    }
+
+    const scrollEnd = () => {
+        if(!searchTouchHeader.value)
+            searchZIndex.value = false;
     }
 
 </script>
@@ -79,10 +139,24 @@
 
 .search-container {
     position: sticky;   /* todo 如何检测到sticky的触发。 */
-    top: 0px;
-    z-index: 3000;
+    top: var(--status-bar-height);
 
     background-color: #fff;
+    padding: 1px 0;
+}
+
+.search-container-top {
+    z-index: 3000;
+}
+
+.search-blank {
+    position: absolute;
+    top: var(--height-top);
+
+    width: 100%;
+    background-color: #fff;
+
+    height: var(--height);
 }
 
 </style>
