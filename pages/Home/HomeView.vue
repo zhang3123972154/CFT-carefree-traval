@@ -1,10 +1,10 @@
 <template>
-    <view @click="baseClick">
+    <view @click="closeFunctionWin" @touchstart="closeFunctionWin">
         <!--top function-->
         <t-header/>
         <!--star-->
         <!--todo star的调整-->
-        <starVue />
+        <starVue @touchstart="closeFunctionWin"/>
         <!--下层瀑布流信息-->
         <view class="m-5">
             <!--bug 需要条件判断。Search-->
@@ -53,7 +53,7 @@
 
 // FUNC
     // click
-    const baseClick = () => {   // mark 最基本的全局监听点击事件，
+    const closeFunctionWin = () => {   // mark 最基本的全局监听点击事件，
         uni.$emit("baseClick");
     }
 

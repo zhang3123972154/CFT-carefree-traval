@@ -1,9 +1,9 @@
 <template>
     <view class="flex-center-horizontal container top-container" :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
-        }">
+        }" @click.stop>
         <!--update 滑块有一些错位-->
-        <u-tabs :list="TabList" :current="tabIndex" @click="test" line-color="#ffc300" line-height="2"
+        <u-tabs :list="TabList" :current="tabIndex" @scroll="test" line-color="#ffc300" line-height="2"
             line-width="36" :activeStyle="{
                 color: '#000000',
                 fontSize: '18px',
@@ -23,7 +23,8 @@
         </view>
         <!--菜单功能-->
         <FunctionMenu :animation="functionAnimation"
-        class="function-menu top-float-win" :style="{
+        class="function-menu top-float-win" 
+        :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
         }"/>
     </view>
@@ -95,7 +96,7 @@
     // router
     const openFunction = () => {
         toggleFloatWin(!functionFlag.value);
-        // uni.$once("baseClick", toggleFloatWin(false));
+        uni.$once("baseClick", () => toggleFloatWin(false));
     }
     const gotoAiPlan = () => {
         uni.navigateTo({ url: '/pages/AiPlan/questionFullView'})

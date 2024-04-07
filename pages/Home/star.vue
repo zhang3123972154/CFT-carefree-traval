@@ -31,6 +31,7 @@
       default: false
     }
   })
+  const emits = defineEmits(['touchstart']);
   // const
   const RADIUS = 130;
   const RADIUS_BIGGER = 210;
@@ -74,7 +75,7 @@
     { wordName: '摩登汉口', wordValue: 600 },
     { wordName: '水乡梦幻', wordValue: 600 },
     // ... 可能有的其他标签
-]);
+  ]);
 
   let tags = [];
   const tagsStyles = ref(nameList.value.map(() => ({})));
@@ -82,7 +83,7 @@
   let touchedFlag = false;  // 当触发按动后，一段时间内不会自动转（eg.3s?）。
   const animationFlag = ref(true);
   // store
-  const pathHistory = ref([1   ]);
+  const pathHistory = ref([1, ]);
 
 // FUNC
   onMounted(() => {
@@ -200,6 +201,8 @@
     touchStartY = event.changedTouches[0].pageY;
     event.stopPropagation();
     console.info("touch-start!", touchStartX, touchStartY);
+
+    emits('touchstart');
   }
 
   const handleTouchMove = (event) => {
