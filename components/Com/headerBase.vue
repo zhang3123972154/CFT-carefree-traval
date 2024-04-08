@@ -76,7 +76,9 @@
 }
 
 .flod-container {
-    position: sticky;
+    position: fixed;
+    left: 0;
+    right: 0;
     top: 45px;
 }
 

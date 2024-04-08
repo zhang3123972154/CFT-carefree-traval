@@ -20,7 +20,7 @@
                 '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
             }"
             :animation="overlayAnimation" 
-            @touchmove.prevent @click="toggleOverlay(false)">
+             @click="toggleOverlay(false)">
                 <view class="chips-container" @click.stop :animation="chipsAnimation">
                     <chipGroup/>
                 </view>
