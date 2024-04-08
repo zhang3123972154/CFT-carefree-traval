@@ -5,18 +5,22 @@
         </template>
         <template #midfix>
             <!--update delete focus-->
-            <u--textarea v-model="inputContent"
+            <u--textarea 
+                v-model="inputContent"
+                :confirmType="null"
                 confirm-hold :height="inputHeight" :cursorSpacing="20"
-                shape="circle" border="none" fontSize="14" :holdKeyboard="true"
+                border="none" fontSize="14"
                 :style="{
                     padding: '7px',
                     margin: '3px',
                     backgroundColor: '#f9f9f9',
                     border: 'solid 1px #eeeeee80',
-                    borderRadius: '20px'
+                    borderRadius: '20px',
+                    // info 限制最大高度
+                    maxHeight: '65px',
+                    overflowY: 'scroll'
                 }"
                 @linechange="changeInputHeight"
-                @confirm="sendUserMessage"
                 @keyboardheightchange="keyboardChange"/>
         </template>
         <template #suffix>
@@ -91,8 +95,6 @@
     const changeInputHeight = (infor) => {
         inputHeight.value = inputLineHeight * infor.detail.lineCount;
     }
-
-    
 
 </script>
 
