@@ -8,7 +8,7 @@
             {{ props.text }}
         </slot>
         <!--info tag 的介绍框框-->
-        <view @click.stop="similarWinFlag = false"> <!--info 套上这层来阻断click的传递，导致chip被点击-->
+        <view class="z-9" @click.stop="similarWinFlag = false"> <!--info 套上这层来阻断click的传递，导致chip被点击-->
             <u-overlay class="flex-center-both" :show="similarWinFlag">
                 <view class="flex-center-both">
                     <similarWin @close="similarWinFlag = false"/>
@@ -123,7 +123,7 @@
     border: none;
     background-color: var(--back-color);
     font-weight: bold;
-    border: solid 1px transparent;  /* 占位用，防止交互后错位 */
+    border: solid 1px transparent;  /* 占位用，防止交互后错位, 但还是有一些bug */
 
     font-family: Alimama ShuHeiTi;
 }

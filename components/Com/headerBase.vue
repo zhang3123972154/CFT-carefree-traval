@@ -1,5 +1,6 @@
 <template>
-    <view class="flex-vertical block container pd-5 top-container" 
+    <view class="sticky z-8">
+        <view class="flex-vertical block container pd-5 top-container" 
         :class="{'transparent': props.bgTransparent}" 
         :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
@@ -9,7 +10,8 @@
             <view class="flex-center-horizontal">
                 <!--info 默认的返回键-->
                 <u-icon v-if="!props.backDelete" @click="back"
-                    class="flex-center-both top-icon" size="18" :name="iconPath.left"></u-icon>
+                    class="flex-center-both top-icon" size="18" :name="iconPath.left">
+                </u-icon>
                 <slot name="prefix"></slot>
             </view>
             <view class="flex-center-both shrink"> <!--info delete shrink-->
@@ -21,8 +23,9 @@
         </view>
     </view>
      <!--info 一个附加的下部窗口-->
-    <view class="flod-container">
+    <view class="flod-container top-container">
         <slot name="flodfix"></slot>
+    </view>
     </view>
 </template>
 
@@ -58,7 +61,6 @@
 .container {
     position: sticky;
     top: 0px;
-    z-index: 10000;
 
     background-color: #fff;
 }
@@ -75,7 +77,6 @@
 .flod-container {
     position: sticky;
     top: 45px;
-    z-index: 2000;
 }
 
 </style>        

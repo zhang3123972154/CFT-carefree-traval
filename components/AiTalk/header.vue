@@ -14,7 +14,13 @@
         <!--info 本次的个性标签库-->
         <template #flodfix>
           <!--info v-show放在外层效果最佳。-->
-            <view class="overlay-container" @click="toggleOverlay(false)" :animation="overlayAnimation" v-show="openFlag">
+            <view v-show="openFlag"
+            class="overlay-container top-container"
+            :style="{
+                '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
+            }"
+            :animation="overlayAnimation" 
+            @touchmove.prevent @click="toggleOverlay(false)">
                 <view class="chips-container" @click.stop :animation="chipsAnimation">
                     <chipGroup/>
                 </view>

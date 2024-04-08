@@ -1,11 +1,14 @@
 {
+  "app-plus": {
+    "softinputMode": "adjustResize" // bug 好像无效
+  },
   "easycom": {
-	"autoscan": true,
-    "custom": {
-      "^u--(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
-      "^up-(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
-      "^u-([^-].*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue"
-    }
+    "autoscan": true,
+      "custom": {
+        "^u--(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+        "^up-(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+        "^u-([^-].*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue"
+      }
   },
   "pages": [
     {
