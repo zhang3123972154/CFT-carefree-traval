@@ -1,5 +1,5 @@
 <template>
-    <headerBase>
+    <headerBase :flodZIndexTop="longPressFlag">
         <template #prefix>
             <u-icon class="flex-center-both top-icon" size="30" :name="iconPath.AI"></u-icon>
             <text @click="toggleOverlay(true)" class="ai-name ml-5">旅行助手</text>
@@ -17,12 +17,13 @@
             <view v-show="openFlag"
             class="overlay-container top-float-win"
             :style="{
+                '--color': setColor,
                 '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
             }"
             :animation="overlayAnimation" 
              @click="toggleOverlay(false)">
                 <view class="chips-container" @click.stop :animation="chipsAnimation">
-                    <chipGroup/>
+                    <chipGroup belong-ai-header @long-press="open" @close-similar-win="close"/>
                 </view>
             </view>
         </template>
@@ -30,7 +31,7 @@
 </template>
 
 <script setup>
-    import { ref, nextTick } from "vue";
+    import { ref, nextTick, computed } from "vue";
     // com
     import headerBase from "../Com/headerBase.vue";
     import chipGroup from "@/components/Home/chipGroup.vue";
@@ -48,10 +49,23 @@
 
     // flag
     const openFlag = ref(false);
+    const longPressFlag = ref(false);
+
+    // animation
     const overlayAnimation  = ref(uni.createAnimation());
     const chipsAnimation = ref(uni.createAnimation());
 
+    // style
+    const OVERLAY_COLOR = "#2e181822";
+    const overlayColor = ref();
+
 // FUNC
+    // style
+    const setColor = computed(() => {
+      return longPressFlag.value ? "transparent" : OVERLAY_COLOR;
+    })
+
+    // animation
     const toggleOverlay = (show) => {   // 退场动画
       if (show) {
         openFlag.value = true;
@@ -87,6 +101,15 @@
       }
     }
 
+    // similar Win
+    const open = () => {
+      longPressFlag.value = true;
+    }
+
+    const close = () => {
+      longPressFlag.value = false;
+    }
+
 </script>
 
 <style scoped>
@@ -105,8 +128,8 @@
 
 .overlay-container {
   position: absolute;
-  height: 90vh;
-  background-color: #2e181822;
+  height: 100vh;
+  background-color: var(--color);
 }
 
 .chips-container {
@@ -114,7 +137,7 @@
     border-radius: 0 0 20px 20px;
     background-color: #fff;
 
-    transform: translateY(-70%);
+    transform: translateY(-70%);  /* 有效触发动画 ？ */
 }
 
 </style>        

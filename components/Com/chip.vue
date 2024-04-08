@@ -8,12 +8,18 @@
             {{ props.text }}
         </slot>
         <!--info tag 的介绍框框-->
-        <view class="z-9" @click.stop="similarWinFlag = false"> <!--info 套上这层来阻断click的传递，导致chip被点击-->
-            <u-overlay class="flex-center-both" :show="similarWinFlag">
-                <view class="flex-center-both">
-                    <similarWin @close="similarWinFlag = false"/>
+        <view v-show="similarWinFlag" class="z-9 detail-container"
+            :style="{
+                '--top': getTop
+            }"
+            @click.stop="close"
+            @touchmove.prevent>
+            <!--info 套上这层来阻断click的传递，导致chip被点击-->
+            <!-- <u-overlay class="flex-center-both" :show="similarWinFlag"> -->
+                <view class="flex-center-both detail-inside-container">
+                    <similarWin @close="close"/>
                 </view>
-            </u-overlay>
+            <!-- </u-overlay> -->
         </view>
     </view>
 </template>
@@ -32,9 +38,13 @@
         text: {
             type: String,
             default: "风格"
+        },
+        belongAiHeader: { // info 为了 aitalk-header 特化
+            type: Boolean,
+            default: false
         }
     });
-    const emits = defineEmits(["choose"]);  // todo 用于历史记录的消息传递
+    const emits = defineEmits(["longPress", "closeSimilarWin"]);  // todo 用于历史记录的消息传递
 
     const FONTCOLOR = ref({
         unselected: "#cccccc",
@@ -64,6 +74,9 @@
     const selectFlag = ref(false);
     const similarWinFlag = ref(false);
 
+    // const
+    const TOP = -45;
+
 // FUNC
     const checkKind = computed(() => {
         return style[props.kind] || style.way;
@@ -77,12 +90,17 @@
         return selectFlag.value ? "light" : "default";
     });
 
+    const getTop = computed(() => {
+        return props.belongAiHeader ? TOP.toString() + 'px' : '0';
+    })
+
 // info 点击 && 长按
     let islongPress = false;
     const longpress = () => {
         // console.info("长按事件-2");
         islongPress = true;
         similarWinFlag.value = true;
+        emits('longPress'); // info 
     }
     const click = () => {
         if(!islongPress)
@@ -93,6 +111,12 @@
             islongPress = false;
         }, 200);
     }
+
+    const close = () => {
+        similarWinFlag.value = false;
+        emits("closeSimilarWin"); // info
+    }
+
     
 </script>
 
@@ -130,6 +154,21 @@
 
 .history {
     background-color: #f9f9f9;;
+}
+
+.detail-container {
+    position: fixed;
+    top: var(--top);
+    left: 0;
+    right: 0;
+
+    /* height: 110%; */
+
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.detail-inside-container {
+    height: 100vh;
 }
 
 </style>

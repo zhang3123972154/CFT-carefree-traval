@@ -1,27 +1,27 @@
 <template>
-    <tabberBase>
+    <tabberBase z-index="6">
         <template #prefix>
             <t-btn-icon :icon="iconPath.voice"></t-btn-icon>
         </template>
         <template #midfix>
             <!--update delete focus-->
-            <u--textarea 
-                v-model="inputContent"
-                :confirmType="null"
-                confirm-hold :height="inputHeight" :cursorSpacing="20"
-                border="none" fontSize="14"
-                :style="{
-                    padding: '7px',
-                    margin: '3px',
-                    backgroundColor: '#f9f9f9',
-                    border: 'solid 1px #eeeeee80',
-                    borderRadius: '20px',
-                    // info 限制最大高度
-                    maxHeight: '65px',
-                    overflowY: 'scroll'
-                }"
-                @linechange="changeInputHeight"
-                @keyboardheightchange="keyboardChange"/>
+            <view class="input-container">
+                <u--textarea 
+                    v-model="inputContent"
+                    :confirmType="null" :adjustPosition="false"
+                    :height="inputHeight" :cursorSpacing="20"
+                    border="none" fontSize="14"
+                    :style="{
+                        padding: '3px 7px',
+                        backgroundColor: 'transparent',
+                        // info 限制最大高度
+                        maxHeight: '65px',
+                        overflowY: 'scroll'
+                    }"
+                    @linechange="changeInputHeight"
+                    @keyboardheightchange="keyboardChange"
+                />
+            </view>
         </template>
         <template #suffix>
             <t-btn-icon :icon="iconPath.emoji"></t-btn-icon>
@@ -54,7 +54,7 @@
     const props = defineProps({
 
     });
-    const emits = defineEmits(["sendMessage"]);
+    const emits = defineEmits(["sendMessage", "keyBoardChange"]);
 
     const inputContent = ref('');
     const inputLineHeight = 20;
@@ -84,12 +84,9 @@
         inputContent.value = "";
     }
 
-    const keyboardChange = (height, deration) => {
-        console.info("键盘变化", height, deration);
-
-        // uni.onKeyboardheightchange(res => {
-        //     console.info(res.height, "keyBoard-height");
-        // })
+    const keyboardChange = (infor) => {
+        console.info("键盘变化", infor);
+        emits("keyBoardChange", infor.detail);
     }
     
     const changeInputHeight = (infor) => {
@@ -101,13 +98,26 @@
 <style scoped>
 
 .send-container {
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #ffc300;
-    padding: 4px;
+    padding:  5px 7px;
 
     color: #fff;
-    font-size: 14px;
+    font-size: 15px;
     font-family: Alimama ShuHeiTi;
+}
+
+.input-container {
+    width: 100%;
+    margin: 3px;
+
+    border-radius: 15px;
+    background-color: #f9f9f9;
+
+    max-height: 65px;
+    overflow-y: hidden;
+    border-top: 5px solid #f9f9f9;
+    border-bottom: 5px solid #f9f9f9;
 }
 
 </style>        

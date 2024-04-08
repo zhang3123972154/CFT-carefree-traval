@@ -1,9 +1,7 @@
 <!--mark AITALK 的内容-->
 <!--info 第二版-->
 <template>
-    <view class="flex-vertical" :style="{
-        'minHeight': setPageMinHeight
-    }">
+    <view class="flex-vertical">
         <header-ai></header-ai>
         <view class="flex-vertical container-dialogue gap-10">
             <userBubble/>
@@ -13,7 +11,7 @@
                 <user-bubble v-else :content="item.content"/>
             </template>
         </view>
-        <tabber-ai @send-message="sendUserMessage"></tabber-ai>
+        <tabber-ai @send-message="sendUserMessage" @key-board-change="handleKeyBoard"/>
     </view>
 </template>
 
@@ -35,6 +33,9 @@
         console.info("min-height", uni.getSystemInfoSync().windowHeight);
         return uni.getSystemInfoSync().windowHeight + 'px';
     })
+    const handleKeyBoard = (infor) => {
+        console.info("test-keyboard-outside", infor);
+    }
     // 
     const sendUserMessage = (content) => {
         talkStore.sendUserMessage(content);
@@ -54,9 +55,8 @@
 
 .container-dialogue {
     background-color: #f9f9f9;
-    min-height: calc(100vh - 100px);
 
-    overflow-y: hidden;
+    overflow-y: scroll;
     padding: 5px 10px;
 }
 

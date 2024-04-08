@@ -24,14 +24,16 @@
             </view>
         </view>
         <!--info 一个附加的下部窗口-->
-        <view class="flod-container top-container z-7">
+        <view class="flod-container block"
+            :class="{
+                [setFlodWinZIndex]: true
+            }">
             <slot name="flodfix"></slot>
         </view>
-    <!-- </view> -->
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed } from "vue";
     // store
     import usePhoneInfor from "@/store/phoneInfor";
     const phoneInforStore = usePhoneInfor();
@@ -46,11 +48,20 @@
         bgTransparent: {
             type: Boolean,
             default: false
+        },
+        flodZIndexTop: {
+            type: Boolean,
+            default: false
         }
     });
     const emits = defineEmits([]);
 
 // FUNC
+    // style
+    const setFlodWinZIndex = computed(() => {
+        return props.flodZIndexTop ? "z-9" : "z-7";
+    })
+
     const back = () => {
         uni.navigateBack({ delta: 1 });
     }
@@ -77,8 +88,6 @@
 
 .flod-container {
     position: fixed;
-    left: 0;
-    right: 0;
     top: 45px;
 }
 

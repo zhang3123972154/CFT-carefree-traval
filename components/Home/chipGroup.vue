@@ -2,13 +2,13 @@
     <view>  <!--mark 用来档外部布局的控制-->
         <view class="container" :class="{'scroll': props.scroll}">
             <view class="item" v-for="(item, index) in props.wayList" :key="index">
-                <t-chip kind="way" :text="item"></t-chip>
+                <t-chip kind="way" :text="item" :belongAiHeader="props.belongAiHeader" @long-press="open" @close-similar-win="close"></t-chip>
             </view>
             <view class="item" v-for="(item, index) in props.spotList" :key="index">
-                <t-chip kind="spot" :text="item"></t-chip>
+                <t-chip kind="spot" :text="item" :belongAiHeader="props.belongAiHeader" @long-press="open" @close-similar-win="close"></t-chip>
             </view>
             <view class="item" v-for="(item, index) in props.thingList" :key="index">
-                <t-chip kind="thing" :text="item"></t-chip>
+                <t-chip kind="thing" :text="item" :belongAiHeader="props.belongAiHeader" @long-press="open" @close-similar-win="close"></t-chip>
             </view>
         </view> 
     </view>
@@ -34,8 +34,21 @@
         scroll: {   // 是否启用长轴滚动。
             type: Boolean,
             default: false
+        },
+        belongAiHeader: {
+            type: Boolean,
+            default: false
         }
     });
+    const emits = defineEmits(['longPress', 'closeSimilarWin']);
+
+    const open = () => {
+        emits("longPress");
+    }
+
+    const close = () => {
+        emits("closeSimilarWin");
+    }
 
 
 </script>
