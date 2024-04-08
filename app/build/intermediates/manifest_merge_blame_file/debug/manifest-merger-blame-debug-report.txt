@@ -1,0 +1,162 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.mapdemo"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="28"
+9        android:targetSdkVersion="34" />
+10    <!-- 地图相关 -->
+11    <uses-permission android:name="android.permission.INTERNET" /> <!-- 访问网络 -->
+11-->D:\MapDemo\app\src\main\AndroidManifest.xml:5:5-67
+11-->D:\MapDemo\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->D:\MapDemo\app\src\main\AndroidManifest.xml:6:5-81
+12-->D:\MapDemo\app\src\main\AndroidManifest.xml:6:22-78
+13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- GPS定位 -->
+13-->D:\MapDemo\app\src\main\AndroidManifest.xml:7:5-79
+13-->D:\MapDemo\app\src\main\AndroidManifest.xml:7:22-76
+14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 访问WiFi网络定位 -->
+14-->D:\MapDemo\app\src\main\AndroidManifest.xml:8:5-76
+14-->D:\MapDemo\app\src\main\AndroidManifest.xml:8:22-73
+15    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 获取wifi权限，进行网络定位 -->
+15-->D:\MapDemo\app\src\main\AndroidManifest.xml:9:5-76
+15-->D:\MapDemo\app\src\main\AndroidManifest.xml:9:22-73
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 用于读数据 -->
+16-->D:\MapDemo\app\src\main\AndroidManifest.xml:10:5-80
+16-->D:\MapDemo\app\src\main\AndroidManifest.xml:10:22-77
+17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 用于写入缓存数据到扩展存储卡 -->
+17-->D:\MapDemo\app\src\main\AndroidManifest.xml:11:5-81
+17-->D:\MapDemo\app\src\main\AndroidManifest.xml:11:22-78
+18    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请调用A-GPS模块 -->
+18-->D:\MapDemo\app\src\main\AndroidManifest.xml:12:5-89
+18-->D:\MapDemo\app\src\main\AndroidManifest.xml:12:22-86
+19    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 如果设置了target >= 28 如果需要启动后台定位则必须声明这个权限 -->
+19-->D:\MapDemo\app\src\main\AndroidManifest.xml:13:5-77
+19-->D:\MapDemo\app\src\main\AndroidManifest.xml:13:22-74
+20    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序获取网络状态 -->
+20-->D:\MapDemo\app\src\main\AndroidManifest.xml:14:5-79
+20-->D:\MapDemo\app\src\main\AndroidManifest.xml:14:22-76
+21    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许获取网络状态，用于网络定位，若无gps但仍需实现定位小蓝点功能则此权限必选 -->
+21-->D:\MapDemo\app\src\main\AndroidManifest.xml:15:5-75
+21-->D:\MapDemo\app\src\main\AndroidManifest.xml:15:22-72
+22    <uses-permission android:name="android.permission.WRITE_SETTINGSS" /> <!-- 允许读设备等信息，用于问题排查 -->
+22-->D:\MapDemo\app\src\main\AndroidManifest.xml:16:5-74
+22-->D:\MapDemo\app\src\main\AndroidManifest.xml:16:22-71
+23    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+23-->D:\MapDemo\app\src\main\AndroidManifest.xml:17:5-85
+23-->D:\MapDemo\app\src\main\AndroidManifest.xml:17:22-82
+24
+25    <permission
+25-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+26        android:name="com.example.mapdemo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+26-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+27        android:protectionLevel="signature" />
+27-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+28
+29    <uses-permission android:name="com.example.mapdemo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+29-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+29-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+30
+31    <application
+31-->D:\MapDemo\app\src\main\AndroidManifest.xml:19:5-58:19
+32        android:allowBackup="true"
+32-->D:\MapDemo\app\src\main\AndroidManifest.xml:20:9-35
+33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+33-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+34        android:dataExtractionRules="@xml/data_extraction_rules"
+34-->D:\MapDemo\app\src\main\AndroidManifest.xml:21:9-65
+35        android:debuggable="true"
+36        android:extractNativeLibs="false"
+37        android:fullBackupContent="@xml/backup_rules"
+37-->D:\MapDemo\app\src\main\AndroidManifest.xml:22:9-54
+38        android:icon="@mipmap/ic_launcher"
+38-->D:\MapDemo\app\src\main\AndroidManifest.xml:23:9-43
+39        android:label="@string/app_name"
+39-->D:\MapDemo\app\src\main\AndroidManifest.xml:24:9-41
+40        android:roundIcon="@mipmap/ic_launcher_round"
+40-->D:\MapDemo\app\src\main\AndroidManifest.xml:25:9-54
+41        android:supportsRtl="true"
+41-->D:\MapDemo\app\src\main\AndroidManifest.xml:26:9-35
+42        android:testOnly="true"
+43        android:theme="@style/Theme.MapDemo" >
+43-->D:\MapDemo\app\src\main\AndroidManifest.xml:27:9-45
+44        <activity
+44-->D:\MapDemo\app\src\main\AndroidManifest.xml:29:9-31:40
+45            android:name="com.example.mapdemo.testactivity"
+45-->D:\MapDemo\app\src\main\AndroidManifest.xml:30:13-41
+46            android:exported="false" />
+46-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:13-37
+47        <activity
+47-->D:\MapDemo\app\src\main\AndroidManifest.xml:32:9-35:88
+48            android:name="com.amap.api.navi.AmapRouteActivity"
+48-->D:\MapDemo\app\src\main\AndroidManifest.xml:33:13-63
+49            android:configChanges="orientation|keyboardHidden|screenSize|navigation"
+49-->D:\MapDemo\app\src\main\AndroidManifest.xml:35:13-85
+50            android:theme="@android:style/Theme.NoTitleBar" />
+50-->D:\MapDemo\app\src\main\AndroidManifest.xml:34:13-60
+51        <activity
+51-->D:\MapDemo\app\src\main\AndroidManifest.xml:36:9-39:71
+52            android:name="com.example.mapdemo.SearchActivity"
+52-->D:\MapDemo\app\src\main\AndroidManifest.xml:37:13-43
+53            android:exported="false"
+53-->D:\MapDemo\app\src\main\AndroidManifest.xml:38:13-37
+54            android:windowSoftInputMode="stateVisible|adjustResize" />
+54-->D:\MapDemo\app\src\main\AndroidManifest.xml:39:13-68
+55
+56        <service android:name="com.amap.api.location.APSService" />
+56-->D:\MapDemo\app\src\main\AndroidManifest.xml:41:9-68
+56-->D:\MapDemo\app\src\main\AndroidManifest.xml:41:18-65
+57
+58        <activity
+58-->D:\MapDemo\app\src\main\AndroidManifest.xml:43:9-53:20
+59            android:name="com.example.mapdemo.MainActivity"
+59-->D:\MapDemo\app\src\main\AndroidManifest.xml:44:13-41
+60            android:exported="true"
+60-->D:\MapDemo\app\src\main\AndroidManifest.xml:45:13-36
+61            android:launchMode="singleTask" >
+61-->D:\MapDemo\app\src\main\AndroidManifest.xml:46:13-44
+62            <intent-filter>
+62-->D:\MapDemo\app\src\main\AndroidManifest.xml:48:13-52:29
+63                <action android:name="android.intent.action.MAIN" />
+63-->D:\MapDemo\app\src\main\AndroidManifest.xml:49:17-69
+63-->D:\MapDemo\app\src\main\AndroidManifest.xml:49:25-66
+64
+65                <category android:name="android.intent.category.LAUNCHER" />
+65-->D:\MapDemo\app\src\main\AndroidManifest.xml:51:17-77
+65-->D:\MapDemo\app\src\main\AndroidManifest.xml:51:27-74
+66            </intent-filter>
+67        </activity>
+68
+69        <meta-data
+69-->D:\MapDemo\app\src\main\AndroidManifest.xml:55:9-57:64
+70            android:name="com.amap.api.v2.apikey"
+70-->D:\MapDemo\app\src\main\AndroidManifest.xml:56:13-50
+71            android:value="81990fc5c362693b879c165f97963919" />
+71-->D:\MapDemo\app\src\main\AndroidManifest.xml:57:13-61
+72
+73        <provider
+73-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+74            android:name="androidx.startup.InitializationProvider"
+74-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+75            android:authorities="com.example.mapdemo.androidx-startup"
+75-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+76            android:exported="false" >
+76-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+77            <meta-data
+77-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+78                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+78-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+79                android:value="androidx.startup" />
+79-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+80            <meta-data
+80-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+81                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+81-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+82                android:value="androidx.startup" />
+82-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+83        </provider>
+84    </application>
+85
+86</manifest>

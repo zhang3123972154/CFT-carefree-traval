@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请调用A-GPS模块 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 如果设置了target >= 28 如果需要启动后台定位则必须声明这个权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序获取网络状态 -->
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许获取网络状态，用于网络定位，若无gps但仍需实现定位小蓝点功能则此权限必选 -->
     <uses-permission android:name="android.permission.WRITE_SETTINGSS" /> <!-- 允许读设备等信息，用于问题排查 -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
@@ -30,6 +29,10 @@
         <activity
             android:name=".testactivity"
             android:exported="false" />
+        <activity
+            android:name="com.amap.api.navi.AmapRouteActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize|navigation" />
         <activity
             android:name=".SearchActivity"
             android:exported="false"

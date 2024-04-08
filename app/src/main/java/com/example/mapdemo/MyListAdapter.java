@@ -64,6 +64,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
                 intent.putExtra("Latitude",selectedItem.getPoint().getLatitude());
                 intent.putExtra("Longitude",selectedItem.getPoint().getLongitude());
                 intent.putExtra("Name",selectedItem.getName());
+                intent.putExtra("PoiID",selectedItem.getPoiID());
                 mContext.startActivity(intent);
                 // ((Activity) mContext).finish();
 

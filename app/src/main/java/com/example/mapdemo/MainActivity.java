@@ -31,22 +31,30 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.Poi;
+import com.amap.api.navi.AmapNaviPage;
+import com.amap.api.navi.AmapNaviParams;
+import com.amap.api.navi.AmapNaviType;
+import com.amap.api.navi.AmapPageType;
 
 public class MainActivity extends AppCompatActivity {
 
     MapView mMapView = null;
-    private Button naviButton;
+    private Button searchButton;
     private Button locateButton;
+    private Button naviButton;
     private boolean followMove=true;
     AMap aMap;
     public AMapLocationListener mLocationListener;
 
     private Marker previousMarker;
+    private Poi previousPoi;
 
     private ActivityResultLauncher<Intent> register;
     private double userlatitude;
     private  double userlongtitude;
     public static final int INITIAL_ZOOM_SIZE=20;
+
 
 
     @Override
@@ -59,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
         mMapView = (MapView) findViewById(R.id.map);
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
         mMapView.onCreate(savedInstanceState);
-
-
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
@@ -83,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
 //                      textViewtest.setText(las+","+los);
 //                        final Marker marker = aMap.addMarker(new MarkerOptions().position(new LatLng(la,lo)).title("新地点").snippet("DefaultMarker"));
 //                        aMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(la,lo)));
-//
-//
 //                    }
 //                }
 //            }
@@ -108,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
 //        mLocationOption.setNeedAddress(true);
 //
 
-
         //新显示小蓝点方法精度太差
         MyLocationStyle myLocationStyle;
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类
@@ -122,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
         aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         aMap.moveCamera(CameraUpdateFactory.zoomTo(INITIAL_ZOOM_SIZE));
         aMap.showIndoorMap(true);
-//防止拖动地图时自动回到中心
 
+        //防止拖动地图时自动回到中心
         aMap.setOnMapTouchListener(new AMap.OnMapTouchListener() {
             @Override
             public void onTouch(MotionEvent motionEvent) {
@@ -131,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
                 aMap.setMyLocationStyle(myLocationStyle);
             }
         });
-        naviButton=findViewById(R.id.navi_button);
-        naviButton.setOnClickListener(new View.OnClickListener() {
+        searchButton=findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER);
@@ -144,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
         locateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (previousMarker != null) {
+                    previousMarker.remove();
+                }
                 if(myLocationStyle.getMyLocationType()!=MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE)
                 {
                     Location location = aMap.getMyLocation();
@@ -159,15 +165,42 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        //导航按钮跳转导航界面
+        naviButton=findViewById(R.id.navi_button);
+        naviButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (previousMarker != null) {
+                    previousMarker.remove();
+                }
+                Intent intent=new Intent(MainActivity.this,testactivity.class);
+                // Bundle bundle =new Bundle();
+                intent.putExtra("Poi",previousPoi);
+                startActivity(intent);
+//                //构建导航组件配置类，没有传入起点，所以起点默认为 “我的位置”
+//                AmapNaviParams params = new AmapNaviParams(null, null, null, AmapNaviType.DRIVER, AmapPageType.ROUTE);
+//
+//                //启动导航组件
+//                AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, null);
+
+            }
+        });
+
+        //构建导航组件配置类，没有传入起点，所以起点默认为 “我的位置”
+        //AmapNaviParams params = new AmapNaviParams(null, null, null, AmapNaviType.DRIVER, AmapPageType.ROUTE);
+
+        //启动导航组件
+        //AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, null);
 
     }
 
     @Override
     protected void  onNewIntent(Intent intent) {
-
         super.onNewIntent(intent);
         Double Latitude=intent.getDoubleExtra("Latitude",0);
         Double Longitude=intent.getDoubleExtra("Longitude",0);
+        String PoiID=intent.getStringExtra("PoiID");
+        String Name =intent.getStringExtra("Name");
         LatLng latLng = new LatLng(Latitude,Longitude);
         Marker marker = aMap.addMarker(new MarkerOptions().position(latLng).title("新地点").snippet("DefaultMarker"));
         aMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -175,11 +208,13 @@ public class MainActivity extends AppCompatActivity {
         if (previousMarker != null) {
             previousMarker.remove();
         }
-
         // 保存新marker的引用
         previousMarker = marker;
 
-
+        if (previousPoi != null) {
+            previousPoi=null;
+        }
+        previousPoi=new Poi(Name,new LatLng(Latitude,Longitude),PoiID);
 
     }
     @Override
@@ -200,8 +235,6 @@ public class MainActivity extends AppCompatActivity {
         //在activity执行onPause时执行mMapView.onPause ()，暂停地图的绘制
         mMapView.onPause();
     }
-
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
