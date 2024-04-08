@@ -4,8 +4,9 @@
             <t-btn-icon :icon="iconPath.voice"></t-btn-icon>
         </template>
         <template #midfix>
+            <!--update delete focus-->
             <u--textarea v-model="inputContent"
-                focus confirm-hold :height="inputHeight" :cursorSpacing="20"
+                confirm-hold :height="inputHeight" :cursorSpacing="20"
                 shape="circle" border="none" fontSize="14" :holdKeyboard="true"
                 :style="{
                     padding: '7px',

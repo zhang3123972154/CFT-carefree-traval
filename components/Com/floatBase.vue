@@ -1,33 +1,41 @@
 <template>
-    <view class="container" :class="{
+    <view 
+    class="container" 
+    :class="{
         'shadow': props.shadow,
-        
+        [getZindex]: true,
     }">
         <slot></slot>
     </view>
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed } from "vue";
     // store
 // DATA
     const props = defineProps({
         shadow: {
             type: Boolean,
             default: false
+        },
+        zIndex: {
+            type: String,
+            default: "1"
         }
     });
     const emits = defineEmits([]);
 
 // FUNC
+    // style 
+    const getZindex = computed(() => {
+        return "z-" + props.zIndex;
+    })
 
 </script>
 
 <style scoped>
 
 .container {
-    z-index: 2000;
-
     position: fixed;
     left: 0;
     right: 0;
@@ -40,6 +48,10 @@
 
 .shadow {
     box-shadow: 0px 0px 10px 3px #0000001a;
+}
+
+.z-9 {
+    z-index: 9000;
 }
 
 </style>        

@@ -53,10 +53,11 @@
 <style scoped>
 
 .container-dialogue {
-   background-color: #f9f9f9;
-   min-height: calc(100vh - 100px);
+    background-color: #f9f9f9;
+    min-height: calc(100vh - 100px);
 
-   padding: 5px 10px;
+    overflow-y: hidden;
+    padding: 5px 10px;
 }
 
 .top-flod-container {

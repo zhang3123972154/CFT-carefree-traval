@@ -2,7 +2,7 @@
     <view v-if="!openFlag" class="open-beside" @click="openFlag = true">
         <view class="line"></view>
     </view>
-    <floatBase v-else shadow>
+    <floatBase v-else shadow z-index="9">
         <view class="float-container">
             <view class="flex-center-horizontal">
                 <view class="time-container flex-horizontal gap-10">
@@ -110,7 +110,6 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    z-index: 1000;
     /* background-color: #00000030; 但是依旧能起到一个遮罩的效果 */
 }
 

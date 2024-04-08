@@ -15,7 +15,7 @@
         <template #flodfix>
           <!--info v-show放在外层效果最佳。-->
             <view v-show="openFlag"
-            class="overlay-container top-container"
+            class="overlay-container top-float-win"
             :style="{
                 '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
             }"

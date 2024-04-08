@@ -1,32 +1,33 @@
 <template>
-    <view class="sticky z-8">
-        <view class="flex-vertical block container pd-5 top-container" 
+    <!--因为需要不同的zIndex-->
+    <!-- <view class="sticky"> -->
+        <view class="flex-vertical block container pd-5 top-container z-8" 
         :class="{'transparent': props.bgTransparent}" 
         :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
         }">
         <!--bug 感觉 pd-5 没有生效-->
-        <view class="flex-center-horizontal">
             <view class="flex-center-horizontal">
-                <!--info 默认的返回键-->
-                <u-icon v-if="!props.backDelete" @click="back"
-                    class="flex-center-both top-icon" size="18" :name="iconPath.left">
-                </u-icon>
-                <slot name="prefix"></slot>
-            </view>
-            <view class="flex-center-both shrink"> <!--info delete shrink-->
-                <slot name="midfix"></slot>
-            </view>
-            <view class="flex-center-horizontal">
-                <slot name="suffix"></slot>
+                <view class="flex-center-horizontal">
+                    <!--info 默认的返回键-->
+                    <u-icon v-if="!props.backDelete" @click="back"
+                        class="flex-center-both top-icon" size="18" :name="iconPath.left">
+                    </u-icon>
+                    <slot name="prefix"></slot>
+                </view>
+                <view class="flex-center-both shrink"> <!--info delete shrink-->
+                    <slot name="midfix"></slot>
+                </view>
+                <view class="flex-center-horizontal">
+                    <slot name="suffix"></slot>
+                </view>
             </view>
         </view>
-    </view>
-     <!--info 一个附加的下部窗口-->
-    <view class="flod-container top-container">
-        <slot name="flodfix"></slot>
-    </view>
-    </view>
+        <!--info 一个附加的下部窗口-->
+        <view class="flod-container top-container z-7">
+            <slot name="flodfix"></slot>
+        </view>
+    <!-- </view> -->
 </template>
 
 <script setup>
