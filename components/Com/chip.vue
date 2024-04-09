@@ -130,10 +130,11 @@
     }
 
     const close = () => {
+        emits("closeSimilarWin"); // info 提前返回信号，让 aitalk-header 的背景色恢复，同时similarWin自带fade-out，所以效果挺好。
         setTimeout(() => {
             similarWinFlag.value = false;
-            // emits("closeSimilarWin"); // info
         }, TIME_ANIMATION);
+
         similarWinAnimation.value = uni.createAnimation({
             duration: TIME_ANIMATION,
             timingFunction: 'ease'

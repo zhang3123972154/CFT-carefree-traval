@@ -54,15 +54,12 @@
     // animation
     const overlayAnimation  = ref(uni.createAnimation());
     const chipsAnimation = ref(uni.createAnimation());
-
     // style
-    const OVERLAY_COLOR = "#2e181822";
-    const overlayColor = ref();
-
+    const OVERLAY_COLOR = "rgba(0, 0, 0, .1)";
 // FUNC
     // style
     const setColor = computed(() => {
-      return longPressFlag.value ? "transparent" : OVERLAY_COLOR;
+      return longPressFlag.value ? "rgba(0, 0, 0, 0)" : OVERLAY_COLOR;
     })
 
     // animation
