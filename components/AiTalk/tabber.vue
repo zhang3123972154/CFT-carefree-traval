@@ -85,7 +85,7 @@
     }
 
     const keyboardChange = (infor) => {
-        console.info("键盘变化", infor);
+        console.info("键盘变化", infor); // info
         emits("keyBoardChange", infor.detail);
     }
     

@@ -3,7 +3,8 @@
 <template>
     <view class="flex-vertical">
         <header-ai></header-ai>
-        <view class="flex-vertical container-dialogue gap-10">
+        <view :animation="keyBoardContainerAnimation">
+            <view class="flex-vertical container-dialogue gap-10">
             <userBubble/>
             <aiBubble/>
             <template v-for="(item, index) in talkStore.history" :key="index">
@@ -12,6 +13,7 @@
             </template>
         </view>
         <tabber-ai @send-message="sendUserMessage" @key-board-change="handleKeyBoard"/>
+        </view>
     </view>
 </template>
 
@@ -26,8 +28,19 @@
     import useTalkStore from "@/store/aiTalk";
     const talkStore = useTalkStore();
 // DATA
+    // animation
+    const keyBoardContainerAnimation = ref(null);
 
 // FUNC
+    onMounted(() => {
+        uni.pageScrollTo({ scrollTop: 99999, duration: 0 });
+
+    //     keyBoardContainerAnimation.value = uni.createAnimation({
+    //         duration: 200,
+    //         type: "ease"
+    //     });
+    //    keyBoardContainerAnimation.value.translateY('-20px').step();
+    })
     // style
     const setPageMinHeight = computed(() => {
         console.info("min-height", uni.getSystemInfoSync().windowHeight);
@@ -35,6 +48,12 @@
     })
     const handleKeyBoard = (infor) => {
         console.info("test-keyboard-outside", infor);
+
+        keyBoardContainerAnimation.value = uni.createAnimation({
+            duration: infor.duration * 500,
+            type: "ease"
+        });
+        keyBoardContainerAnimation.value.translateY(-infor.height + 'px').step();
     }
     // 
     const sendUserMessage = (content) => {
@@ -45,9 +64,6 @@
         });
     }
 
-    onMounted(() => {
-        uni.pageScrollTo({ scrollTop: 99999, duration: 0 });
-    })
 
 </script>
 
