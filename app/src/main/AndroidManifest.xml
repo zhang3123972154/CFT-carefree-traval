@@ -25,9 +25,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MapDemo"
+        android:allowNativeHeapPointerTagging="false"
+
         tools:targetApi="31">
+        <service android:name="com.amap.api.location.APSService"/>
         <activity
-            android:name=".testactivity"
+            android:name=".NaviActivity"
             android:exported="false" />
         <activity
             android:name="com.amap.api.navi.AmapRouteActivity"

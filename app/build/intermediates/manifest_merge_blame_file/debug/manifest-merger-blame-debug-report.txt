@@ -60,103 +60,109 @@
 29-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
 30
 31    <application
-31-->D:\MapDemo\app\src\main\AndroidManifest.xml:19:5-58:19
+31-->D:\MapDemo\app\src\main\AndroidManifest.xml:19:5-61:19
 32        android:allowBackup="true"
 32-->D:\MapDemo\app\src\main\AndroidManifest.xml:20:9-35
-33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-33-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
-34        android:dataExtractionRules="@xml/data_extraction_rules"
-34-->D:\MapDemo\app\src\main\AndroidManifest.xml:21:9-65
-35        android:debuggable="true"
-36        android:extractNativeLibs="false"
-37        android:fullBackupContent="@xml/backup_rules"
-37-->D:\MapDemo\app\src\main\AndroidManifest.xml:22:9-54
-38        android:icon="@mipmap/ic_launcher"
-38-->D:\MapDemo\app\src\main\AndroidManifest.xml:23:9-43
-39        android:label="@string/app_name"
-39-->D:\MapDemo\app\src\main\AndroidManifest.xml:24:9-41
-40        android:roundIcon="@mipmap/ic_launcher_round"
-40-->D:\MapDemo\app\src\main\AndroidManifest.xml:25:9-54
-41        android:supportsRtl="true"
-41-->D:\MapDemo\app\src\main\AndroidManifest.xml:26:9-35
-42        android:testOnly="true"
-43        android:theme="@style/Theme.MapDemo" >
-43-->D:\MapDemo\app\src\main\AndroidManifest.xml:27:9-45
-44        <activity
-44-->D:\MapDemo\app\src\main\AndroidManifest.xml:29:9-31:40
-45            android:name="com.example.mapdemo.testactivity"
-45-->D:\MapDemo\app\src\main\AndroidManifest.xml:30:13-41
-46            android:exported="false" />
-46-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:13-37
+33        android:allowNativeHeapPointerTagging="false"
+33-->D:\MapDemo\app\src\main\AndroidManifest.xml:28:9-54
+34        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+34-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+35        android:dataExtractionRules="@xml/data_extraction_rules"
+35-->D:\MapDemo\app\src\main\AndroidManifest.xml:21:9-65
+36        android:debuggable="true"
+37        android:extractNativeLibs="false"
+38        android:fullBackupContent="@xml/backup_rules"
+38-->D:\MapDemo\app\src\main\AndroidManifest.xml:22:9-54
+39        android:icon="@mipmap/ic_launcher"
+39-->D:\MapDemo\app\src\main\AndroidManifest.xml:23:9-43
+40        android:label="@string/app_name"
+40-->D:\MapDemo\app\src\main\AndroidManifest.xml:24:9-41
+41        android:roundIcon="@mipmap/ic_launcher_round"
+41-->D:\MapDemo\app\src\main\AndroidManifest.xml:25:9-54
+42        android:supportsRtl="true"
+42-->D:\MapDemo\app\src\main\AndroidManifest.xml:26:9-35
+43        android:testOnly="true"
+44        android:theme="@style/Theme.MapDemo" >
+44-->D:\MapDemo\app\src\main\AndroidManifest.xml:27:9-45
+45        <service android:name="com.amap.api.location.APSService" />
+45-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:9-67
+45-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:18-65
+46
 47        <activity
-47-->D:\MapDemo\app\src\main\AndroidManifest.xml:32:9-35:88
-48            android:name="com.amap.api.navi.AmapRouteActivity"
-48-->D:\MapDemo\app\src\main\AndroidManifest.xml:33:13-63
-49            android:configChanges="orientation|keyboardHidden|screenSize|navigation"
-49-->D:\MapDemo\app\src\main\AndroidManifest.xml:35:13-85
-50            android:theme="@android:style/Theme.NoTitleBar" />
-50-->D:\MapDemo\app\src\main\AndroidManifest.xml:34:13-60
-51        <activity
-51-->D:\MapDemo\app\src\main\AndroidManifest.xml:36:9-39:71
-52            android:name="com.example.mapdemo.SearchActivity"
-52-->D:\MapDemo\app\src\main\AndroidManifest.xml:37:13-43
-53            android:exported="false"
-53-->D:\MapDemo\app\src\main\AndroidManifest.xml:38:13-37
-54            android:windowSoftInputMode="stateVisible|adjustResize" />
-54-->D:\MapDemo\app\src\main\AndroidManifest.xml:39:13-68
-55
-56        <service android:name="com.amap.api.location.APSService" />
-56-->D:\MapDemo\app\src\main\AndroidManifest.xml:41:9-68
-56-->D:\MapDemo\app\src\main\AndroidManifest.xml:41:18-65
-57
-58        <activity
-58-->D:\MapDemo\app\src\main\AndroidManifest.xml:43:9-53:20
-59            android:name="com.example.mapdemo.MainActivity"
-59-->D:\MapDemo\app\src\main\AndroidManifest.xml:44:13-41
-60            android:exported="true"
-60-->D:\MapDemo\app\src\main\AndroidManifest.xml:45:13-36
-61            android:launchMode="singleTask" >
-61-->D:\MapDemo\app\src\main\AndroidManifest.xml:46:13-44
-62            <intent-filter>
-62-->D:\MapDemo\app\src\main\AndroidManifest.xml:48:13-52:29
-63                <action android:name="android.intent.action.MAIN" />
-63-->D:\MapDemo\app\src\main\AndroidManifest.xml:49:17-69
-63-->D:\MapDemo\app\src\main\AndroidManifest.xml:49:25-66
-64
-65                <category android:name="android.intent.category.LAUNCHER" />
-65-->D:\MapDemo\app\src\main\AndroidManifest.xml:51:17-77
-65-->D:\MapDemo\app\src\main\AndroidManifest.xml:51:27-74
-66            </intent-filter>
-67        </activity>
-68
-69        <meta-data
-69-->D:\MapDemo\app\src\main\AndroidManifest.xml:55:9-57:64
-70            android:name="com.amap.api.v2.apikey"
-70-->D:\MapDemo\app\src\main\AndroidManifest.xml:56:13-50
-71            android:value="81990fc5c362693b879c165f97963919" />
-71-->D:\MapDemo\app\src\main\AndroidManifest.xml:57:13-61
-72
-73        <provider
-73-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-74            android:name="androidx.startup.InitializationProvider"
-74-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-75            android:authorities="com.example.mapdemo.androidx-startup"
-75-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
-76            android:exported="false" >
-76-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
-77            <meta-data
-77-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-78                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-78-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
-79                android:value="androidx.startup" />
-79-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+47-->D:\MapDemo\app\src\main\AndroidManifest.xml:32:9-34:40
+48            android:name="com.example.mapdemo.NaviActivity"
+48-->D:\MapDemo\app\src\main\AndroidManifest.xml:33:13-41
+49            android:exported="false" />
+49-->D:\MapDemo\app\src\main\AndroidManifest.xml:34:13-37
+50        <activity
+50-->D:\MapDemo\app\src\main\AndroidManifest.xml:35:9-38:88
+51            android:name="com.amap.api.navi.AmapRouteActivity"
+51-->D:\MapDemo\app\src\main\AndroidManifest.xml:36:13-63
+52            android:configChanges="orientation|keyboardHidden|screenSize|navigation"
+52-->D:\MapDemo\app\src\main\AndroidManifest.xml:38:13-85
+53            android:theme="@android:style/Theme.NoTitleBar" />
+53-->D:\MapDemo\app\src\main\AndroidManifest.xml:37:13-60
+54        <activity
+54-->D:\MapDemo\app\src\main\AndroidManifest.xml:39:9-42:71
+55            android:name="com.example.mapdemo.SearchActivity"
+55-->D:\MapDemo\app\src\main\AndroidManifest.xml:40:13-43
+56            android:exported="false"
+56-->D:\MapDemo\app\src\main\AndroidManifest.xml:41:13-37
+57            android:windowSoftInputMode="stateVisible|adjustResize" />
+57-->D:\MapDemo\app\src\main\AndroidManifest.xml:42:13-68
+58
+59        <service android:name="com.amap.api.location.APSService" />
+59-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:9-67
+59-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:18-65
+60
+61        <activity
+61-->D:\MapDemo\app\src\main\AndroidManifest.xml:46:9-56:20
+62            android:name="com.example.mapdemo.MainActivity"
+62-->D:\MapDemo\app\src\main\AndroidManifest.xml:47:13-41
+63            android:exported="true"
+63-->D:\MapDemo\app\src\main\AndroidManifest.xml:48:13-36
+64            android:launchMode="singleTask" >
+64-->D:\MapDemo\app\src\main\AndroidManifest.xml:49:13-44
+65            <intent-filter>
+65-->D:\MapDemo\app\src\main\AndroidManifest.xml:51:13-55:29
+66                <action android:name="android.intent.action.MAIN" />
+66-->D:\MapDemo\app\src\main\AndroidManifest.xml:52:17-69
+66-->D:\MapDemo\app\src\main\AndroidManifest.xml:52:25-66
+67
+68                <category android:name="android.intent.category.LAUNCHER" />
+68-->D:\MapDemo\app\src\main\AndroidManifest.xml:54:17-77
+68-->D:\MapDemo\app\src\main\AndroidManifest.xml:54:27-74
+69            </intent-filter>
+70        </activity>
+71
+72        <meta-data
+72-->D:\MapDemo\app\src\main\AndroidManifest.xml:58:9-60:64
+73            android:name="com.amap.api.v2.apikey"
+73-->D:\MapDemo\app\src\main\AndroidManifest.xml:59:13-50
+74            android:value="81990fc5c362693b879c165f97963919" />
+74-->D:\MapDemo\app\src\main\AndroidManifest.xml:60:13-61
+75
+76        <provider
+76-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+77            android:name="androidx.startup.InitializationProvider"
+77-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+78            android:authorities="com.example.mapdemo.androidx-startup"
+78-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+79            android:exported="false" >
+79-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
 80            <meta-data
-80-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
-81                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-81-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+80-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+81                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+81-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
 82                android:value="androidx.startup" />
-82-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
-83        </provider>
-84    </application>
-85
-86</manifest>
+82-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+83            <meta-data
+83-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+84                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+84-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+85                android:value="androidx.startup" />
+85-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+86        </provider>
+87    </application>
+88
+89</manifest>

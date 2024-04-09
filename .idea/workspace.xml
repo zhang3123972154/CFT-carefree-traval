@@ -10,12 +10,12 @@
           <theme>@style/Theme.MapDemo</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_naviactivity.xml">
         <config>
           <theme>@style/Theme.MapDemo</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_testactivity.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
         <config>
           <theme>@style/Theme.MapDemo</theme>
         </config>

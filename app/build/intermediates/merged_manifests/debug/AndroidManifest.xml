@@ -30,6 +30,7 @@
 
     <application
         android:allowBackup="true"
+        android:allowNativeHeapPointerTagging="false"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:debuggable="true"
@@ -41,8 +42,10 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.MapDemo" >
+        <service android:name="com.amap.api.location.APSService" />
+
         <activity
-            android:name="com.example.mapdemo.testactivity"
+            android:name="com.example.mapdemo.NaviActivity"
             android:exported="false" />
         <activity
             android:name="com.amap.api.navi.AmapRouteActivity"

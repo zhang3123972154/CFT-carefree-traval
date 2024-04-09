@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.amap.api.maps.CameraUpdate;
@@ -13,10 +14,13 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.Poi;
+import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AmapNaviPage;
 import com.amap.api.navi.AmapNaviParams;
 import com.amap.api.navi.AmapNaviType;
 import com.amap.api.navi.AmapPageType;
+import com.amap.api.navi.INaviInfoCallback;
+import com.amap.api.navi.model.AMapNaviLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +44,112 @@ public class testactivity extends AppCompatActivity {
 // 组件参数配置
         AmapNaviParams params = new AmapNaviParams(null,null, end, AmapNaviType.DRIVER, AmapPageType.ROUTE);
         //启动导航组件
-        AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, null);
+        AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, new INaviInfoCallback() {
+            @Override
+            public void onInitNaviFailure() {
+
+            }
+
+            @Override
+            public void onGetNavigationText(String s) {
+
+            }
+
+            @Override
+            public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
+
+            }
+
+            @Override
+            public void onArriveDestination(boolean b) {
+
+            }
+
+            @Override
+            public void onStartNavi(int i) {
+
+            }
+
+            @Override
+            public void onCalculateRouteSuccess(int[] ints) {
+
+            }
+
+            @Override
+            public void onCalculateRouteFailure(int i) {
+
+            }
+
+            @Override
+            public void onStopSpeaking() {
+
+            }
+
+            @Override
+            public void onReCalculateRoute(int i) {
+
+            }
+
+            @Override
+            public void onExitPage(int i) {
+
+            }
+
+            @Override
+            public void onStrategyChanged(int i) {
+
+            }
+
+            @Override
+            public void onArrivedWayPoint(int i) {
+
+            }
+
+            @Override
+            public void onMapTypeChanged(int i) {
+
+            }
+
+            @Override
+            public void onNaviDirectionChanged(int i) {
+
+            }
+
+            @Override
+            public void onDayAndNightModeChanged(int i) {
+
+            }
+
+            @Override
+            public void onBroadcastModeChanged(int i) {
+
+            }
+
+            @Override
+            public void onScaleAutoChanged(boolean b) {
+
+            }
+
+            @Override
+            public View getCustomMiddleView() {
+                return null;
+            }
+
+            @Override
+            public View getCustomNaviView() {
+                return null;
+            }
+
+            @Override
+            public View getCustomNaviBottomView() {
+                return null;
+            }
+        });
+       //AMapNavi
+
+
+
+
 
     }
 }

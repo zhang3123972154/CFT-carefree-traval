@@ -4,10 +4,6 @@
         "source": "C:\\Users\\Vinci\\.gradle\\daemon\\8.2\\com.example.mapdemo.app-main-30:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.mapdemo.app-merged_res-28:/layout_activity_testactivity.xml.flat",
-        "source": "com.example.mapdemo.app-main-30:/layout/activity_testactivity.xml"
-    },
-    {
         "merged": "C:\\Users\\Vinci\\.gradle\\daemon\\8.2\\com.example.mapdemo.app-merged_res-28:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Vinci\\.gradle\\daemon\\8.2\\com.example.mapdemo.app-main-30:\\mipmap-mdpi\\ic_launcher.webp"
     },
@@ -54,6 +50,10 @@
     {
         "merged": "C:\\Users\\Vinci\\.gradle\\daemon\\8.2\\com.example.mapdemo.app-merged_res-28:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\Vinci\\.gradle\\daemon\\8.2\\com.example.mapdemo.app-main-30:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.mapdemo.app-merged_res-28:/layout_activity_naviactivity.xml.flat",
+        "source": "com.example.mapdemo.app-main-30:/layout/activity_naviactivity.xml"
     },
     {
         "merged": "C:\\Users\\Vinci\\.gradle\\daemon\\8.2\\com.example.mapdemo.app-merged_res-28:\\xml_backup_rules.xml.flat",
