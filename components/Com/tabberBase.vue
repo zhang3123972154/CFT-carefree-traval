@@ -2,7 +2,10 @@
     <view class="container flex-bottom-horizontal gap-10"
     :class="{
         [setZIndex]: true
-    }"    
+    }"
+    :style="{
+        '--bottom': setBottom
+    }"
     @click.stop>
         <view class="flex-center-horizontal">
             <slot name="prefix"></slot>
@@ -23,6 +26,10 @@
         zIndex: {
             type: String,
             default: "8"
+        },
+        bottom: {
+            type: Number,
+            default: 0
         }
     });
     const emits = defineEmits([]);
@@ -32,6 +39,9 @@
     const setZIndex = computed(() => {
         return "z-" + props.zIndex;
     })
+    const setBottom = computed(() => {
+        return props.bottom.toString() + 'px';
+    })
 
 </script>
 
@@ -39,10 +49,12 @@
 
 .container {
     position: sticky;
-    bottom: 0px;
+    bottom: var(--bottom);
     
     background-color: #fff;
     padding: 4px;
+
+    transition: bottom .1s;
 }
 
 </style>        

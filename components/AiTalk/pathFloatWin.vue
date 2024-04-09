@@ -1,8 +1,13 @@
 <template>
-    <view v-if="!openFlag" class="open-beside" @click="openFlag = true">
+    <view v-if="!openFlag" class="open-beside"     
+    :style="{
+        '--bottom': setBottom_swtich
+    }"
+    @click.stop="openFlag = true"
+    @touchend.prevent="openFlag = true">    <!--info 允许弹出keyboard后打开【规划表】-->
         <view class="line"></view>
     </view>
-    <floatBase v-else shadow z-index="9">
+    <floatBase v-else shadow z-index="9" :bottom="setBottom_floatwin">
         <view class="float-container">
             <view class="flex-center-horizontal">
                 <view class="time-container flex-horizontal gap-10">
@@ -22,7 +27,7 @@
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed } from "vue";
     // com
     import floatBase from "../Com/floatBase.vue";
     import chipGroupPath from "./chipGroupPath.vue";
@@ -44,13 +49,28 @@
             default: [{
                 spot: "暂无规划"
             }]
+        },
+        moveHeight: {
+            type: Number,
+            default: 0
         }
     });
     const emits = defineEmits([]);
 
     // flag
     const openFlag = ref(false);
+
+    // const
+    const BOTTOM_SWITCH = 72;
+    const BOTTOM_FLOATWIN = 60;
 // FUNC
+    // animation
+    const setBottom_swtich = computed(() => {
+        return (BOTTOM_SWITCH + props.moveHeight).toString() + 'px';
+    });
+    const setBottom_floatwin = computed(() => {
+        return BOTTOM_FLOATWIN + props.moveHeight;  // info Number 属性
+    })
 
 </script>
 
@@ -59,7 +79,7 @@
 .open-beside {
     position: fixed;
     right: 0;
-    bottom: 72px;   /* 可以写成可拖动 */
+    bottom: var(--bottom);   /* 可以写成可拖动 */
 
     width: 20px;
     height: 60px;
@@ -70,6 +90,8 @@
     background-color: #00000066; /* todo */
 
     box-sizing: border-box;
+
+    transition: bottom .1s;
 }
 
 .line {
@@ -108,6 +130,7 @@
 
 .overlay {
     position: fixed;
+    bottom: 0;
     height: 100%;
     width: 100%;
     /* background-color: #00000030; 但是依旧能起到一个遮罩的效果 */

@@ -1,5 +1,5 @@
 <template>
-    <tabberBase z-index="6">
+    <tabberBase z-index="6" :bottom="moveHeight">
         <template #prefix>
             <t-btn-icon :icon="iconPath.voice"></t-btn-icon>
         </template>
@@ -31,7 +31,7 @@
             </view>
         </template>
     </tabberBase>
-    <pathFloatWin :spot="plan.spot" :day="plan.day" :path="plan.path"/>
+    <pathFloatWin :move-height="moveHeight" :spot="plan.spot" :day="plan.day" :path="plan.path"/>
     <!--悬浮窗户-->
     <u-overlay class="flex-center-both" :show="questionFlag" @click="questionFlag = false">
         <questionWin/>
@@ -52,13 +52,14 @@
 
 // DATA
     const props = defineProps({
-
+        animation: null
     });
     const emits = defineEmits(["sendMessage", "keyBoardChange"]);
 
     const inputContent = ref('');
     const inputLineHeight = 20;
     const inputHeight = ref(inputLineHeight);
+    const moveHeight = ref(0);  // info 监听键盘事件！！！
     // flag
     const topFlodFlag = ref(true);
     const questionFlag = ref(false);
@@ -87,6 +88,7 @@
     const keyboardChange = (infor) => {
         console.info("键盘变化", infor); // info
         emits("keyBoardChange", infor.detail);
+        moveHeight.value = infor.detail.height;
     }
     
     const changeInputHeight = (infor) => {

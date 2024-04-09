@@ -3,17 +3,19 @@
 <template>
     <view class="flex-vertical">
         <header-ai></header-ai>
-        <view :animation="keyBoardContainerAnimation">
-            <view class="flex-vertical container-dialogue gap-10">
+        <!--bug 和 chip-similarWin 冲突 -->
+        <view class="flex-vertical container-dialogue gap-10">
             <userBubble/>
             <aiBubble/>
             <template v-for="(item, index) in talkStore.history" :key="index">
                 <ai-bubble v-if="item.side" :content="item.content"/>
                 <user-bubble v-else :content="item.content"/>
             </template>
+            <view :style="{
+                height: keyboardHeight.toString() + 'px'
+            }"/>
         </view>
         <tabber-ai @send-message="sendUserMessage" @key-board-change="handleKeyBoard"/>
-        </view>
     </view>
 </template>
 
@@ -29,39 +31,26 @@
     const talkStore = useTalkStore();
 // DATA
     // animation
-    const keyBoardContainerAnimation = ref(null);
+    const keyboardHeight = ref(0);
 
 // FUNC
-    onMounted(() => {
-        uni.pageScrollTo({ scrollTop: 99999, duration: 0 });
-
-    //     keyBoardContainerAnimation.value = uni.createAnimation({
-    //         duration: 200,
-    //         type: "ease"
-    //     });
-    //    keyBoardContainerAnimation.value.translateY('-20px').step();
-    })
-    // style
-    const setPageMinHeight = computed(() => {
-        console.info("min-height", uni.getSystemInfoSync().windowHeight);
-        return uni.getSystemInfoSync().windowHeight + 'px';
-    })
-    const handleKeyBoard = (infor) => {
-        console.info("test-keyboard-outside", infor);
-
-        keyBoardContainerAnimation.value = uni.createAnimation({
-            duration: infor.duration * 500,
-            type: "ease"
+    const gotoPageEnd = (time) => {
+        nextTick(() => {
+            uni.pageScrollTo({ scrollTop: 99999, duration: time });
         });
-        keyBoardContainerAnimation.value.translateY(-infor.height + 'px').step();
+    }
+    onMounted(() => {
+        gotoPageEnd(0);
+    })
+    // animation
+    const handleKeyBoard = (infor) => {
+        keyboardHeight.value = infor.height;
+        gotoPageEnd(100);
     }
     // 
     const sendUserMessage = (content) => {
         talkStore.sendUserMessage(content);
-
-        nextTick(() => {
-            uni.pageScrollTo({ scrollTop: 99999, duration: 200 });
-        });
+        gotoPageEnd(200);
     }
 
 
@@ -79,5 +68,6 @@
 .top-flod-container {
     padding: 20px;
 }
+
 
 </style>        

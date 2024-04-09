@@ -4,6 +4,9 @@
     :class="{
         'shadow': props.shadow,
         [getZindex]: true,
+    }"
+    :style="{
+        '--bottom': setBottom
     }">
         <slot></slot>
     </view>
@@ -21,6 +24,10 @@
         zIndex: {
             type: String,
             default: "1"
+        },
+        bottom: {
+            type: Number,
+            default: 60
         }
     });
     const emits = defineEmits([]);
@@ -29,6 +36,9 @@
     // style 
     const getZindex = computed(() => {
         return "z-" + props.zIndex;
+    })
+    const setBottom = computed(() => {
+        return props.bottom.toString() + 'px';
     })
 
 </script>
@@ -39,11 +49,13 @@
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 60px;
+    bottom: var(--bottom);
     margin: 0 5px;
 
     background-color: #ffffff;
     border-radius: 20px;
+
+    transition: bottom .1s;
 }
 
 .shadow {
