@@ -48,3 +48,7 @@
 .fade-leave-from {
     opacity: 1;
 }
+
+.none {
+    display: none;
+}

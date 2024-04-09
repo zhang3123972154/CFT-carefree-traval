@@ -42,7 +42,7 @@
 
 .main-container {
     width: 90%;
-    height: 90%;
+    height: 80%;
     padding: 10px;
 
     background-color: #fff;

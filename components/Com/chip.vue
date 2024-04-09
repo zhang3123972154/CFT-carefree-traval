@@ -8,7 +8,9 @@
             {{ props.text }}
         </slot>
         <!--info tag 的介绍框框-->
-        <view v-show="similarWinFlag" class="z-9 detail-container"
+        <view v-show="similarWinFlag"
+            :animation="similarWinAnimation"
+            class="z-9 detail-container"
             :style="{
                 '--top': getTop
             }"
@@ -25,7 +27,7 @@
 </template>
 
 <script setup>
-    import { ref, computed } from 'vue';
+    import { ref, computed, nextTick, onMounted } from 'vue';
     // com
     import similarWin from "./similarWin.vue";
 
@@ -72,7 +74,14 @@
 
     // flag
     const selectFlag = ref(false);
-    const similarWinFlag = ref(false);
+    const similarWinFlag = ref(true);
+    // test
+    onMounted(() => {
+        similarWinFlag.value = false;
+    })
+    // animation
+    const TIME_ANIMATION = 200;
+    const similarWinAnimation = ref(null);
 
     // const
     const TOP = -45;
@@ -89,7 +98,6 @@
             return "history";
         return selectFlag.value ? "light" : "default";
     });
-
     const getTop = computed(() => {
         return props.belongAiHeader ? TOP.toString() + 'px' : '0';
     })
@@ -97,10 +105,19 @@
 // info 点击 && 长按
     let islongPress = false;
     const longpress = () => {
-        // console.info("长按事件-2");
+        console.info("长按事件-2");
         islongPress = true;
         similarWinFlag.value = true;
         emits('longPress'); // info 
+
+        nextTick(() => {
+            similarWinAnimation.value = uni.createAnimation({
+                duration: TIME_ANIMATION,
+                timingFunction: 'ease'
+            })
+
+            similarWinAnimation.value.opacity(1).step();
+        });
     }
     const click = () => {
         if(!islongPress)
@@ -113,10 +130,16 @@
     }
 
     const close = () => {
-        similarWinFlag.value = false;
-        emits("closeSimilarWin"); // info
+        setTimeout(() => {
+            similarWinFlag.value = false;
+            // emits("closeSimilarWin"); // info
+        }, TIME_ANIMATION);
+        similarWinAnimation.value = uni.createAnimation({
+            duration: TIME_ANIMATION,
+            timingFunction: 'ease'
+        })
+        similarWinAnimation.value.opacity(0).step();
     }
-
     
 </script>
 
@@ -162,9 +185,9 @@
     left: 0;
     right: 0;
 
-    /* height: 110%; */
-
     background-color: rgba(0, 0, 0, 0.1);
+
+    opacity: 0;
 }
 
 .detail-inside-container {

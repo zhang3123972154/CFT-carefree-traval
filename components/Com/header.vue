@@ -22,8 +22,12 @@
             <t-btn-icon icon="/static/icon/LOGO.svg" @click.stop="gotoAiPlan"></t-btn-icon>
         </view>
         <!--菜单功能-->
-        <FunctionMenu :animation="functionAnimation"
-        class="function-menu top-float-win" 
+        <FunctionMenu v-show="functionFlag"
+        :animation="functionAnimation"
+        class="function-menu top-float-win"
+        :class="{
+            // 'none': !functionFlag
+        }"
         :style="{
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
         }"/>
@@ -63,13 +67,13 @@
     const tabIndex = ref(0);   // bug 好像无效
     // flag
     const settingFlag = ref(false);
-    const functionFlag = ref(false);
     const planFlag = ref(false);
+    const functionFlag = ref(false);
     // style
     const functionAnimation = ref(null);
 // FUNC
     // animation
-    const TIME_ANIMATION = 300;
+    const TIME_ANIMATION = 200;
     const toggleFloatWin = (show) => {
         if(show) {
             functionFlag.value = true;
@@ -95,8 +99,20 @@
     }
     // router
     const openFunction = () => {
+        if(functionFlag.value)
+        // info 在动画生效期间，如果点击过快，就会bug，flag反转，无法正常工作；所以直接打断。
+            return;
+        // console.info("openFunction");
+        if(!functionFlag.value)
+            uni.$once("baseClick", () => {
+                toggleFloatWin(false);
+                // console.info("baseClick-open");
+            });
+        else {
+            uni.$off("baseClick");
+            // console.info("baseClick-close");
+        }
         toggleFloatWin(!functionFlag.value);
-        uni.$once("baseClick", () => toggleFloatWin(false));
     }
     const gotoAiPlan = () => {
         uni.navigateTo({ url: '/pages/AiPlan/questionFullView'})
@@ -129,7 +145,7 @@
     position: absolute;
     top: 40px; 
     right: 20px;
-    opacity: 0; /* 一开始进入dom，但是不显示 */
+    opacity: 0; /* info 设定初值，然后入场动画才能够正常使用 */
 
     z-index: 3000;
 }
