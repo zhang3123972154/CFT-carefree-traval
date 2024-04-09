@@ -36,5 +36,10 @@ public class AIController {
   public ResponseBean<List<DialogueHistoryVo>> getMsgHistory(@RequestParam Date startTime, @RequestParam Date endTime) {
     return ResponseBean.success(aiService.getMsgHistory(startTime,endTime));
   }
+  @PostMapping("/orc/general")
+  @ApiOperation(value = "调用百度api识别图片文字",httpMethod = "POST")
+  public String getOrcGeneral(@RequestBody String image) {
+    return aiService.getOrcGeneral(image);
+  }
 
 }

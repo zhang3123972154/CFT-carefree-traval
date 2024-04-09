@@ -4,6 +4,7 @@ import com.xiaoyao.travel.common.vo.request.SendToAiMsgVo;
 import com.xiaoyao.travel.common.vo.response.DialogueHistoryVo;
 import com.xiaoyao.travel.common.vo.response.ResponseBean;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface IAiService {
 
 
   List<DialogueHistoryVo> getMsgHistory(Date startTime, Date endTime);
+
+  String getOrcGeneral(String image);
 }

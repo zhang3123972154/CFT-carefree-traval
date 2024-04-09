@@ -62,3 +62,6 @@ app:
   id-card:
     appCode: de45b6f95c2445ff9b64da99e1d5d7f6
     appSecret: 9r5J3xeYWYvIBFAaj1oyoBl7nZ9s6z1h
+  orc:
+    apiKey: 5EIq318vhsoDliVpN2Igje4B
+    secretKey: nfSt0UtnzCN0Ahp76JVXVCxZhRBze7uo
