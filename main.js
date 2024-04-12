@@ -24,6 +24,9 @@ import btn from "./components/Com/Button.vue";
   // tag mid
 import tabber from "./components/Com/tabbar.vue";
 
+// tag js引入
+// import test from "./request/test.js";
+
 // 引入uView对小程序分享的mixin封装
 import mpShare from '@/uni_modules/uview-plus/libs/mixin/mpShare.js'
 import mixin from './common/mixin'
@@ -36,8 +39,8 @@ import { createPinia } from 'pinia'
 import {initRequest} from './util/request/index'
 
 export function createApp() {
-const app = createSSRApp(App)
-const pinia = createPinia()
+  const app = createSSRApp(App)
+  const pinia = createPinia()
   
   // 引入请求封装
   initRequest(app)
@@ -56,6 +59,9 @@ const pinia = createPinia()
   app.component("t-tabbar", tabber);
   app.component("t-chip", chip);
   app.component("t-btn", btn);
+
+  // tag JS
+  // app.config.globalProperties.$test = test; // info setup中调用好麻烦。。
 
   return {
     app,
