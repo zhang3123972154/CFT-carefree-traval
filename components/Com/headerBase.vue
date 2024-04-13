@@ -50,8 +50,8 @@
             default: false
         },
         flodZIndexTop: {
-            type: Boolean,
-            default: false
+            type: String,
+            default: "0"
         }
     });
     const emits = defineEmits([]);
@@ -59,7 +59,7 @@
 // FUNC
     // style
     const setFlodWinZIndex = computed(() => {
-        return props.flodZIndexTop ? "z-9" : "z-7";
+        return  "z-" + props.flodZIndexTop;
     })
 
     const back = () => {

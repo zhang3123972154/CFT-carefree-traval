@@ -1,6 +1,7 @@
+<!--info 目前是规划页面-->
 <template>
     <view class="flex-vertical">
-        <header-plan></header-plan>
+        <header-plan/>
         <view class="container">
             <!--main - informatino-->
             <view class="flex-vertical main-container">

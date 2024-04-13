@@ -1,5 +1,5 @@
 <template>
-    <headerBase :flodZIndexTop="longPressFlag">
+    <headerBase :flodZIndexTop="flodZIndexTop">
         <template #prefix>
             <u-icon class="flex-center-both top-icon" size="30" :name="iconPath.AI"></u-icon>
             <text @click="toggleOverlay(true)" class="ai-name ml-5">旅行助手</text>
@@ -60,6 +60,9 @@
     // style
     const setColor = computed(() => {
       return longPressFlag.value ? "rgba(0, 0, 0, 0)" : OVERLAY_COLOR;
+    })
+    const flodZIndexTop  = computed(() => {
+      return longPressFlag.value ? "9" : "7";
     })
 
     // animation
