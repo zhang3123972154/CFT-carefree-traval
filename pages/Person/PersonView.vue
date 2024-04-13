@@ -14,9 +14,23 @@
     // store
     // js
     import api from "@/request/api";
-    const api = api();
 // DATA
+    const emailFrom = ref({
+        email: "2993167370@qq.com", // test
+        purposeIdentify: 0
+    });
 
+    const loginByUsername = ref({
+        username: "2993167370@qq.com",
+        password: "123456"
+    })
+
+    // const res = api.sendEmailCode(emailFrom.value);
+    const res = api.loginByUsername(loginByUsername.value).then(res => {
+        console.info("success", res);
+    }).catch(err => {
+        console.info("fail", err);
+    });
 
 // FUNC
 

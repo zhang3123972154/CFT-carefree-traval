@@ -1,4 +1,4 @@
-const requestUrl = "http://43.139.8.195:8009/";
+const requestUrl = "http://43.139.8.195:8009";
 
 export default class Request {
     http(param) {
@@ -23,7 +23,6 @@ export default class Request {
         //         title: '加载中',
         //         mask: true
         //     });
-
         return new Promise((resolve, reject) => {
             uni.request({
                 url: url,
@@ -31,18 +30,17 @@ export default class Request {
                 hedaer: header,
                 data: data,
                 success: (res) => {
-                    if(res.data.code === 200) { // mark 一般默认会用200吧，不过也看实际了，
+                    if(res.data.success == 1) { // mark 一般默认会用200吧，不过也看实际了，
                         resolve(res.data);
-                        return true;
                     } else {
                         // todo 错误处理
-                        console.info("request bug:", res);
-                        return false;
+                        console.info("request bug - success:", res);
+                        reject(new Error('Request succeeded but with a non-success status'));
                     }
                 },
                 fail: (err) => {
-                    console.info("request bug:", res);
-                    return false;
+                    console.info("request bug - fail:", err);
+                    reject(err);
                 }
             })
         })
