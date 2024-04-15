@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted, computed } from 'vue';
     // store
     import usePhoneInfor from "@/store/phoneInfor";
     const phoneInforStore = usePhoneInfor();
@@ -62,7 +62,9 @@
     const searchTouchHeader = ref(false);
     const searchZIndex = ref(false);
     let scrollFlag = true;
-    const scrollTime = 50;
+    const scrollTime = computed(() => {  // Info 不同情况的两种触发频率
+        return searchTouchHeader.value ? 50 : 100;
+    })
 
 // FUNC
     // click
@@ -107,7 +109,7 @@
             scrollFlag = false;
             setTimeout(() => {
                 scrollFlag = true;
-            }, scrollTime);
+            }, scrollTime.value);
 
             checkSearch();
         }

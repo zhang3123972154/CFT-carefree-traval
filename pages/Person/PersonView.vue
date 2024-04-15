@@ -5,6 +5,7 @@
             <h2>注册</h2>
             <h2>登录</h2>
         </view>
+        <t-tabbar />
     </view>
 </template>
 
