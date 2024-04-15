@@ -35,24 +35,50 @@ export const useIconTabbarPath = defineStore("iconTabbar", {
     }
 });
 
-// 伸展菜单栏
+// tag 伸展菜单栏
+
+interface iconName {
+    text :string;
+    path: string;
+}
+
 export const useIconExtendBoxPath = defineStore("iconExtendBox", {
     state: (): {
-        QRcode: string,
-        addFriend: string,
-        post: string,
-        searchGroup: string
+        QRcode: iconName,
+        addFriend: iconName,
+        post: iconName,
+        searchGroup: iconName,
+        // 
+
     } => {
         return {
-            QRcode: "/static/icon/QRcode.svg",
-            addFriend: "/static/icon/addFriend.svg",
-            post: "/static/icon/post.svg",
-            searchGroup: "/static/icon/searchGroup.svg",
+            // tag Home
+            QRcode: {
+                text: "扫一扫",
+                path: "/static/icon/QRcode.svg"
+            },
+            addFriend: {
+                text: "添加好友",
+                path: "/static/icon/addFriend.svg"
+            },
+            post: {
+                text: "查找群聊",
+                path: "/static/icon/post.svg"
+            },
+            searchGroup: {
+                text: "发表笔记",
+                path: "/static/icon/searchGroup.svg"
+            },
+            // tag AiTalk
+            
         }
     },
     actions: {
-        getHomeFunctionsIconPath(): string[] {
+        getHomeFunctionsIconName(): iconName[] {
             return [this.QRcode, this.addFriend, this.searchGroup, this.post];
+        },
+        getAiTalkFunctionsIconName(): iconName[] {
+            return [];
         }
     }
 });

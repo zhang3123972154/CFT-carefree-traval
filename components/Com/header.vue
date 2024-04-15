@@ -23,6 +23,7 @@
         </view>
         <!--菜单功能-->
         <FunctionMenu v-show="functionFlag"
+        kind="home"
         :animation="functionAnimation"
         class="function-menu top-float-win"
         :class="{
@@ -40,19 +41,19 @@
         <Setting />
     </u-popup>
     <!--规划功能-->
-    <!-- <u-overlay class="flex-center-both" :show="planFlag" @click="planFlag = false"> -->
-        <!--未有规划之时-->
-        <!-- <questionFullView/> -->
-        <!--已有规划之时-->
-        <!-- <view class="flex-center-both">
+    <!-- <u-overlay class="flex-center-both" :show="planFlag" @click="planFlag = false">
+        未有规划之时
+        <questionFullView/>
+        已有规划之时
+        <view class="flex-center-both">
             <planStartVue />
-        </view> -->
-    <!-- </u-overlay> -->
+        </view>
+    </u-overlay> -->
 </template>
 
 <script setup>
     import { ref, nextTick } from "vue";
-    import FunctionMenu from "./function.vue";
+    import FunctionMenu from "./functionFloat.vue";
     import Setting from "./setting.vue";
     // store
     import usePhoneInfor from "@/store/phoneInfor";
@@ -65,16 +66,18 @@
     //todo 第一个词条需要和定位绑定，以及处理“定位失效”时的容错。
     const TabList = ref([{name: "武汉"}, {name: "关注"}, {name: "规划"}, {name: "推荐"}]);
     const tabIndex = ref(0);   // bug 好像无效
+    const MenuList = ref({})
     // flag
     const settingFlag = ref(false);
     const planFlag = ref(false);
     const functionFlag = ref(false);
+    const clickOnceFlag = ref(false);
     // style
     const functionAnimation = ref(null);
 // FUNC
-    // animation
+    // tag menu animation
     const TIME_ANIMATION = 200;
-    const toggleFloatWin = (show) => {
+    const toggleFloatWin = (show) => { // update 之后最好封装好一下。
         if(show) {
             functionFlag.value = true;
 
@@ -97,23 +100,29 @@
             functionAnimation.value.opacity(0).step();
         }
     }
-    // router
     const openFunction = () => {
-        if(functionFlag.value)
-        // info 在动画生效期间，如果点击过快，就会bug，flag反转，无法正常工作；所以直接打断。
+        if(functionFlag.value) // info 在动画生效期间，如果点击过快，就会bug，flag反转，无法正常工作；所以直接打断。
             return;
-        // console.info("openFunction");
-        if(!functionFlag.value)
+        console.info("openFunction", functionFlag.value);
+        if(!clickOnceFlag.value) {
+            toggleFloatWin(!functionFlag.value);
+        } else {
+            clickOnceFlag.value = false;
+        }
+        if(functionFlag.value) {
+            clickOnceFlag.value = false;
             uni.$once("baseClick", () => {
+                clickOnceFlag.value = true;
+                console.info("baseClick-open", functionFlag.value); // info stop 好像成功阻止
                 toggleFloatWin(false);
-                // console.info("baseClick-open");
             });
+        }
         else {
             uni.$off("baseClick");
-            // console.info("baseClick-close");
+            console.info("baseClick-close");
         }
-        toggleFloatWin(!functionFlag.value);
     }
+    // tag router
     const gotoAiPlan = () => {
         uni.navigateTo({ url: '/pages/AiPlan/questionFullView'})
     }
