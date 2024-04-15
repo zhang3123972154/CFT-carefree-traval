@@ -70,6 +70,7 @@
     // flag
     const settingFlag = ref(false);
     const planFlag = ref(false);
+        // mark 两个flaggoon共同维护
     const functionFlag = ref(false);
     const clickOnceFlag = ref(false);
     // style
@@ -107,7 +108,7 @@
         if(!clickOnceFlag.value) {
             toggleFloatWin(!functionFlag.value);
         } else {
-            clickOnceFlag.value = false;
+            clickOnceFlag.value = true;
         }
         if(functionFlag.value) {
             clickOnceFlag.value = false;
