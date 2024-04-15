@@ -3,7 +3,7 @@
         <timeLine/>
         <view class="flex-horizontal gap-10">
             <u-icon :name="iconPath.star" size="14"></u-icon>
-            <text class="detail">点击获取具体路线</text>
+            <text class="detail" @click="gotoGaode">点击获取具体路线</text>
         </view>
     </view>
 </template>
@@ -22,6 +22,10 @@
     const emits = defineEmits([]);
 
 // FUNC
+    // tag router
+    const gotoGaode = () => {
+        uni.navigateTo({ url: '/pages/NavigationGaode/navigationView' });
+    }
 
 </script>
 

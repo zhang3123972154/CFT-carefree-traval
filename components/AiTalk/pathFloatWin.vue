@@ -16,7 +16,7 @@
                 </view>
                 <view class="flex-horizontal gap-20">
                     <u-icon :name="iconPath.detail" size="24"></u-icon>
-                    <u-icon :name="iconPath.LOGO" size="20"></u-icon>
+                    <u-icon :name="iconPath.LOGO" size="20" @click="gotoPlanDetail"></u-icon>
                 </view>
             </view>
             <chipGroupPath class="chips-container" :path="props.path"/>
@@ -71,6 +71,11 @@
     const setBottom_floatwin = computed(() => {
         return BOTTOM_FLOATWIN + props.moveHeight;  // info Number 属性
     })
+
+    // tag router
+    const gotoPlanDetail = () => {
+        uni.navigateTo({ url: '/pages/AiPlan/planDetailView' })
+    }
 
 </script>
 

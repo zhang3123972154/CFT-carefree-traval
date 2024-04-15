@@ -38,6 +38,12 @@
     },
     {
       "path": "pages/AiTalk/AiTalkView" // 规划对话
+    },
+    {
+      "path": "pages/AiPlan/planDetailView"
+    },
+    {
+      "path": "pages/NavigationGaode/navigationView"  
     }
   ],
   "globalStyle": {

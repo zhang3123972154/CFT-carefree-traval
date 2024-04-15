@@ -1,0 +1,19 @@
+<template>
+    <div>
+        <text>导航原生页面</text>
+    </div>
+</template>
+
+<script setup>
+    import { ref } from "vue";
+    // com
+    // store
+// DATA
+
+// FUNC
+
+</script>
+
+<style scoped>
+
+</style>

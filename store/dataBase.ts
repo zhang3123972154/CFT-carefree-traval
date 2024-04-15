@@ -49,7 +49,8 @@ export const useIconExtendBoxPath = defineStore("iconExtendBox", {
         post: iconName,
         searchGroup: iconName,
         // 
-
+        preTalk: iconName,
+        planDetail: iconName,
     } => {
         return {
             // tag Home
@@ -70,7 +71,14 @@ export const useIconExtendBoxPath = defineStore("iconExtendBox", {
                 path: "/static/icon/searchGroup.svg"
             },
             // tag AiTalk
-            
+            preTalk: {
+                text: "常规设定",
+                path: ""
+            },
+            planDetail: {
+                text: "进入规划",
+                path: ""
+            },
         }
     },
     actions: {
@@ -78,7 +86,7 @@ export const useIconExtendBoxPath = defineStore("iconExtendBox", {
             return [this.QRcode, this.addFriend, this.searchGroup, this.post];
         },
         getAiTalkFunctionsIconName(): iconName[] {
-            return [];
+            return [this.preTalk, this.planDetail];
         }
     }
 });
