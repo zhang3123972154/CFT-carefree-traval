@@ -125,9 +125,6 @@ public class SearchActivity extends AppCompatActivity implements Inputtips.Input
             throw new RuntimeException(e);
         }
         aMapNavi.setUseInnerVoice(true,false);
-
-
-
     }
 
     @Override
@@ -139,7 +136,6 @@ public class SearchActivity extends AppCompatActivity implements Inputtips.Input
     {
 
         if (s.length() > 0) {
-        //String citycode=districtItem.getCitycode();
         InputtipsQuery inputtipsQuery =new InputtipsQuery(String.valueOf(s),"");
         inputtipsQuery.setCityLimit(true);
         inputtips.setQuery(inputtipsQuery);

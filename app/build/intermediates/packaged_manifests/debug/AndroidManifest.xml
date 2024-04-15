@@ -45,9 +45,6 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity
-            android:name="com.example.mapdemo.NaviActivity"
-            android:exported="false" />
-        <activity
             android:name="com.amap.api.navi.AmapRouteActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|navigation"
             android:theme="@android:style/Theme.NoTitleBar" />

@@ -13,7 +13,6 @@ id search_button
 id testtv2
 id text_view_item
 layout activity_main
-layout activity_naviactivity
 layout activity_search
 layout item_layout
 mipmap ic_launcher

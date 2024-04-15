@@ -20,6 +20,10 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.Poi;
+import com.amap.api.navi.AmapNaviPage;
+import com.amap.api.navi.AmapNaviParams;
+import com.amap.api.navi.AmapNaviType;
+import com.amap.api.navi.AmapPageType;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -157,15 +161,10 @@ public class MainActivity extends AppCompatActivity {
                 if (previousMarker != null) {
                     previousMarker.remove();
                 }
-                Intent intent=new Intent(MainActivity.this, NaviActivity.class);
-                // Bundle bundle =new Bundle();
-                intent.putExtra("Poi",previousPoi);
-                startActivity(intent);
-//                //构建导航组件配置类，没有传入起点，所以起点默认为 “我的位置”
-//                AmapNaviParams params = new AmapNaviParams(null, null, null, AmapNaviType.DRIVER, AmapPageType.ROUTE);
-//
-//                //启动导航组件
-//                AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, null);
+                Poi end=previousPoi;
+                AmapNaviParams params = new AmapNaviParams(null, null, end, AmapNaviType.DRIVER, AmapPageType.ROUTE);
+                //启动导航组件
+                AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, null);
 
             }
         });
@@ -174,8 +173,7 @@ public class MainActivity extends AppCompatActivity {
         //AmapNaviParams params = new AmapNaviParams(null, null, null, AmapNaviType.DRIVER, AmapPageType.ROUTE);
 
         //启动导航组件
-        //AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, null);
-
+        //AmapNaviPage.getInstance().show1RouteActivity(getApplicationContext(), params, null);
     }
 
     @Override
