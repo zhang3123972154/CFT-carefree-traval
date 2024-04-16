@@ -1,162 +1,544 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.mapdemo"
+3    package="com.android.UniPlugin.hav"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="28"
-9        android:targetSdkVersion="34" />
-10    <!-- 地图相关 -->
-11    <uses-permission android:name="android.permission.INTERNET" /> <!-- 访问网络 -->
-11-->D:\MapDemo\app\src\main\AndroidManifest.xml:5:5-67
-11-->D:\MapDemo\app\src\main\AndroidManifest.xml:5:22-64
-12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-12-->D:\MapDemo\app\src\main\AndroidManifest.xml:6:5-81
-12-->D:\MapDemo\app\src\main\AndroidManifest.xml:6:22-78
-13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- GPS定位 -->
-13-->D:\MapDemo\app\src\main\AndroidManifest.xml:7:5-79
-13-->D:\MapDemo\app\src\main\AndroidManifest.xml:7:22-76
-14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 访问WiFi网络定位 -->
-14-->D:\MapDemo\app\src\main\AndroidManifest.xml:8:5-76
-14-->D:\MapDemo\app\src\main\AndroidManifest.xml:8:22-73
-15    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 获取wifi权限，进行网络定位 -->
-15-->D:\MapDemo\app\src\main\AndroidManifest.xml:9:5-76
-15-->D:\MapDemo\app\src\main\AndroidManifest.xml:9:22-73
-16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 用于读数据 -->
-16-->D:\MapDemo\app\src\main\AndroidManifest.xml:10:5-80
-16-->D:\MapDemo\app\src\main\AndroidManifest.xml:10:22-77
-17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 用于写入缓存数据到扩展存储卡 -->
-17-->D:\MapDemo\app\src\main\AndroidManifest.xml:11:5-81
-17-->D:\MapDemo\app\src\main\AndroidManifest.xml:11:22-78
-18    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请调用A-GPS模块 -->
-18-->D:\MapDemo\app\src\main\AndroidManifest.xml:12:5-89
-18-->D:\MapDemo\app\src\main\AndroidManifest.xml:12:22-86
-19    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 如果设置了target >= 28 如果需要启动后台定位则必须声明这个权限 -->
-19-->D:\MapDemo\app\src\main\AndroidManifest.xml:13:5-77
-19-->D:\MapDemo\app\src\main\AndroidManifest.xml:13:22-74
-20    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序获取网络状态 -->
-20-->D:\MapDemo\app\src\main\AndroidManifest.xml:14:5-79
-20-->D:\MapDemo\app\src\main\AndroidManifest.xml:14:22-76
-21    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许获取网络状态，用于网络定位，若无gps但仍需实现定位小蓝点功能则此权限必选 -->
-21-->D:\MapDemo\app\src\main\AndroidManifest.xml:15:5-75
-21-->D:\MapDemo\app\src\main\AndroidManifest.xml:15:22-72
-22    <uses-permission android:name="android.permission.WRITE_SETTINGSS" /> <!-- 允许读设备等信息，用于问题排查 -->
-22-->D:\MapDemo\app\src\main\AndroidManifest.xml:16:5-74
-22-->D:\MapDemo\app\src\main\AndroidManifest.xml:16:22-71
-23    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-23-->D:\MapDemo\app\src\main\AndroidManifest.xml:17:5-85
-23-->D:\MapDemo\app\src\main\AndroidManifest.xml:17:22-82
+9        android:targetSdkVersion="28" />
+10
+11    <supports-screens
+11-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:6:5-11:39
+12        android:anyDensity="true"
+12-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:7:9-34
+13        android:largeScreens="true"
+13-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:8:9-36
+14        android:normalScreens="true"
+14-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:9:9-37
+15        android:resizeable="true"
+15-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:10:9-34
+16        android:smallScreens="true" />
+16-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:11:9-36
+17
+18    <!-- Barcode(二维码)  begin -->
+19    <uses-permission android:name="android.permission.CAMERA" />
+19-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:14:5-65
+19-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:14:22-62
+20    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+20-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:15:5-81
+20-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:15:22-78
+21
+22    <uses-feature android:name="android.hardware.camera" />
+22-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:17:5-60
+22-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:17:19-57
+23    <uses-feature android:name="android.hardware.camera.autofocus" />
+23-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:18:5-70
+23-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:18:19-67
 24
-25    <permission
-25-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
-26        android:name="com.example.mapdemo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-26-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
-27        android:protectionLevel="signature" />
-27-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
-28
-29    <uses-permission android:name="com.example.mapdemo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-29-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
-29-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
-30
-31    <application
-31-->D:\MapDemo\app\src\main\AndroidManifest.xml:19:5-59:19
-32        android:allowBackup="true"
-32-->D:\MapDemo\app\src\main\AndroidManifest.xml:20:9-35
-33        android:allowNativeHeapPointerTagging="false"
-33-->D:\MapDemo\app\src\main\AndroidManifest.xml:28:9-54
-34        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-34-->[androidx.core:core:1.9.0] C:\Users\Vinci\.gradle\caches\transforms-3\16088aea6844a21f0ae8707202a192eb\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
-35        android:dataExtractionRules="@xml/data_extraction_rules"
-35-->D:\MapDemo\app\src\main\AndroidManifest.xml:21:9-65
-36        android:debuggable="true"
-37        android:extractNativeLibs="false"
-38        android:fullBackupContent="@xml/backup_rules"
-38-->D:\MapDemo\app\src\main\AndroidManifest.xml:22:9-54
-39        android:icon="@mipmap/ic_launcher"
-39-->D:\MapDemo\app\src\main\AndroidManifest.xml:23:9-43
-40        android:label="@string/app_name"
-40-->D:\MapDemo\app\src\main\AndroidManifest.xml:24:9-41
-41        android:roundIcon="@mipmap/ic_launcher_round"
-41-->D:\MapDemo\app\src\main\AndroidManifest.xml:25:9-54
-42        android:supportsRtl="true"
-42-->D:\MapDemo\app\src\main\AndroidManifest.xml:26:9-35
-43        android:testOnly="true"
-44        android:theme="@style/Theme.MapDemo" >
-44-->D:\MapDemo\app\src\main\AndroidManifest.xml:27:9-45
-45        <service android:name="com.amap.api.location.APSService" />
-45-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:9-67
-45-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:18-65
-46
-47        <activity
-47-->D:\MapDemo\app\src\main\AndroidManifest.xml:33:9-36:88
-48            android:name="com.amap.api.navi.AmapRouteActivity"
-48-->D:\MapDemo\app\src\main\AndroidManifest.xml:34:13-63
-49            android:configChanges="orientation|keyboardHidden|screenSize|navigation"
-49-->D:\MapDemo\app\src\main\AndroidManifest.xml:36:13-85
-50            android:theme="@android:style/Theme.NoTitleBar" />
-50-->D:\MapDemo\app\src\main\AndroidManifest.xml:35:13-60
-51        <activity
-51-->D:\MapDemo\app\src\main\AndroidManifest.xml:37:9-40:71
-52            android:name="com.example.mapdemo.SearchActivity"
-52-->D:\MapDemo\app\src\main\AndroidManifest.xml:38:13-43
-53            android:exported="false"
-53-->D:\MapDemo\app\src\main\AndroidManifest.xml:39:13-37
-54            android:windowSoftInputMode="stateVisible|adjustResize" />
-54-->D:\MapDemo\app\src\main\AndroidManifest.xml:40:13-68
-55
-56        <service android:name="com.amap.api.location.APSService" />
-56-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:9-67
-56-->D:\MapDemo\app\src\main\AndroidManifest.xml:31:18-65
-57
-58        <activity
-58-->D:\MapDemo\app\src\main\AndroidManifest.xml:44:9-54:20
-59            android:name="com.example.mapdemo.MainActivity"
-59-->D:\MapDemo\app\src\main\AndroidManifest.xml:45:13-41
-60            android:exported="true"
-60-->D:\MapDemo\app\src\main\AndroidManifest.xml:46:13-36
-61            android:launchMode="singleTask" >
-61-->D:\MapDemo\app\src\main\AndroidManifest.xml:47:13-44
-62            <intent-filter>
-62-->D:\MapDemo\app\src\main\AndroidManifest.xml:49:13-53:29
-63                <action android:name="android.intent.action.MAIN" />
-63-->D:\MapDemo\app\src\main\AndroidManifest.xml:50:17-69
-63-->D:\MapDemo\app\src\main\AndroidManifest.xml:50:25-66
-64
-65                <category android:name="android.intent.category.LAUNCHER" />
-65-->D:\MapDemo\app\src\main\AndroidManifest.xml:52:17-77
-65-->D:\MapDemo\app\src\main\AndroidManifest.xml:52:27-74
-66            </intent-filter>
-67        </activity>
-68
-69        <meta-data
-69-->D:\MapDemo\app\src\main\AndroidManifest.xml:56:9-58:64
-70            android:name="com.amap.api.v2.apikey"
-70-->D:\MapDemo\app\src\main\AndroidManifest.xml:57:13-50
-71            android:value="81990fc5c362693b879c165f97963919" />
-71-->D:\MapDemo\app\src\main\AndroidManifest.xml:58:13-61
-72
-73        <provider
-73-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-74            android:name="androidx.startup.InitializationProvider"
-74-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-75            android:authorities="com.example.mapdemo.androidx-startup"
-75-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
-76            android:exported="false" >
-76-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
-77            <meta-data
-77-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-78                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-78-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
-79                android:value="androidx.startup" />
-79-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vinci\.gradle\caches\transforms-3\ea260942d8acadff20549e4d8b1553b4\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
-80            <meta-data
-80-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
-81                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-81-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
-82                android:value="androidx.startup" />
-82-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vinci\.gradle\caches\transforms-3\3000b6b92cffbf8c85b306e5e4cc0661\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
-83        </provider>
-84    </application>
-85
-86</manifest>
+25    <uses-permission android:name="android.permission.VIBRATE" />
+25-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:20:5-66
+25-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:20:22-63
+26    <uses-permission android:name="android.permission.FLASHLIGHT" />
+26-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:21:5-69
+26-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:21:22-66
+27
+28    <!-- 适配android 13 图片选择权限 -->
+29    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+29-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:17:5-76
+29-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:17:22-73
+30    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+30-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:18:5-75
+30-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:18:22-72
+31    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+31-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:19:5-90
+31-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:19:22-87
+32    <uses-permission android:name="android.permission.INTERNET" />
+32-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:20:5-67
+32-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:20:22-64
+33    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+33-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:21:5-79
+33-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:21:22-76
+34    <!--
+35    <uses-permission
+36        android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+37    -->
+38    <!-- 华为修改角标需要设置权限 -->
+39    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" /> <!-- vivo 修改角标需要设置权限 -->
+39-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:27:5-91
+39-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:27:22-88
+40    <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON" />
+40-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:29:5-83
+40-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:29:22-80
+41
+42    <queries>
+42-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:31:5-40:15
+43        <intent>
+43-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:32:9-34:18
+44            <action android:name="android.intent.action.MAIN" />
+44-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:52:17-68
+44-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:52:25-66
+45        </intent>
+46        <intent>
+46-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:35:9-39:18
+47            <action android:name="android.intent.action.VIEW" />
+47-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:41:17-68
+47-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:41:25-66
+48
+49            <category android:name="android.intent.category.DEFAULT" />
+49-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:43:17-75
+49-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:43:27-73
+50        </intent>
+51    </queries>
+52
+53    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+54    <uses-permission android:name="com.asus.msa.SupplementaryDID.ACCESS" />
+54-->[oaid_sdk_1.0.25.aar] C:\Users\Havoc\.gradle\caches\transforms-3\27b211df650776dd949fe8be97dd0ac6\transformed\jetified-oaid_sdk_1.0.25\AndroidManifest.xml:13:5-76
+54-->[oaid_sdk_1.0.25.aar] C:\Users\Havoc\.gradle\caches\transforms-3\27b211df650776dd949fe8be97dd0ac6\transformed\jetified-oaid_sdk_1.0.25\AndroidManifest.xml:13:22-73
+55    <uses-permission android:name="freemme.permission.msa" /> <!-- 访问网络 -->
+55-->[oaid_sdk_1.0.25.aar] C:\Users\Havoc\.gradle\caches\transforms-3\27b211df650776dd949fe8be97dd0ac6\transformed\jetified-oaid_sdk_1.0.25\AndroidManifest.xml:15:5-62
+55-->[oaid_sdk_1.0.25.aar] C:\Users\Havoc\.gradle\caches\transforms-3\27b211df650776dd949fe8be97dd0ac6\transformed\jetified-oaid_sdk_1.0.25\AndroidManifest.xml:15:22-59
+56    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+56-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-81
+56-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-78
+57    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- GPS定位 -->
+57-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-79
+57-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-76
+58    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 访问WiFi网络定位 -->
+58-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-76
+58-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-73
+59    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 用于写入缓存数据到扩展存储卡 -->
+59-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-76
+59-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:22-73
+60    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请调用A-GPS模块 -->
+60-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-89
+60-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:22-86
+61    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 允许程序获取网络状态 -->
+61-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:5-77
+61-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:22-74
+62    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许获取网络状态，用于网络定位，若无gps但仍需实现定位小蓝点功能则此权限必选 -->
+62-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:5-75
+62-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:22-72
+63    <uses-permission android:name="android.permission.WRITE_SETTINGSS" /> <!-- 允许读设备等信息，用于问题排查 -->
+63-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:19:5-74
+63-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:19:22-71
+64    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+64-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:5-85
+64-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:22-82
+65
+66    <permission
+66-->[androidx.core:core:1.9.0] C:\Users\Havoc\.gradle\caches\transforms-3\761d68ccdd62ecb8703967694e2fec50\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+67        android:name="com.android.UniPlugin.hav.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+67-->[androidx.core:core:1.9.0] C:\Users\Havoc\.gradle\caches\transforms-3\761d68ccdd62ecb8703967694e2fec50\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+68        android:protectionLevel="signature" />
+68-->[androidx.core:core:1.9.0] C:\Users\Havoc\.gradle\caches\transforms-3\761d68ccdd62ecb8703967694e2fec50\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+69
+70    <uses-permission android:name="com.android.UniPlugin.hav.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Barcode(二维码)  end -->
+70-->[androidx.core:core:1.9.0] C:\Users\Havoc\.gradle\caches\transforms-3\761d68ccdd62ecb8703967694e2fec50\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+70-->[androidx.core:core:1.9.0] C:\Users\Havoc\.gradle\caches\transforms-3\761d68ccdd62ecb8703967694e2fec50\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+71    <application
+71-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:24:5-88:19
+72        android:name="io.dcloud.application.DCloudApplication"
+72-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:25:9-63
+73        android:allowBackup="true"
+73-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:23:9-35
+74        android:allowClearUserData="true"
+74-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:26:9-42
+75        android:allowNativeHeapPointerTagging="false"
+75-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:24:9-54
+76        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+76-->[androidx.core:core:1.9.0] C:\Users\Havoc\.gradle\caches\transforms-3\761d68ccdd62ecb8703967694e2fec50\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+77        android:dataExtractionRules="@xml/data_extraction_rules"
+77-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:25:9-65
+78        android:debuggable="true"
+79        android:extractNativeLibs="false"
+80        android:fullBackupContent="@xml/backup_rules"
+80-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:26:9-54
+81        android:icon="@mipmap/ic_launcher"
+81-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:27:9-43
+82        android:label="@string/app_name"
+82-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:27:9-41
+83        android:largeHeap="true"
+83-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:28:9-33
+84        android:roundIcon="@mipmap/ic_launcher_round"
+84-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:29:9-54
+85        android:supportsRtl="true"
+85-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:29:9-35
+86        android:testOnly="true"
+87        android:theme="@style/Theme.MapDemo"
+87-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:31:9-45
+88        android:usesCleartextTraffic="true" >
+88-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:175:9-44
+89
+90        <!-- android:icon="@drawable/icon" -->
+91
+92
+93        <!-- 应用入口 -->
+94        <activity
+94-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:33:9-55:20
+95            android:name="io.dcloud.PandoraEntry"
+95-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:34:13-50
+96            android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|fontScale"
+96-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:36:13-92
+97            android:hardwareAccelerated="true"
+97-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:37:13-47
+98            android:theme="@style/TranslucentTheme"
+98-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:35:13-52
+99            android:windowSoftInputMode="adjustResize" >
+99-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:38:13-55
+100            <intent-filter>
+100-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:39:13-45:29
+101                <data android:scheme="hbuilder" />
+101-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:40:17-50
+101-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:40:23-48
+102
+103                <action android:name="android.intent.action.VIEW" />
+103-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:41:17-68
+103-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:41:25-66
+104
+105                <category android:name="android.intent.category.DEFAULT" />
+105-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:43:17-75
+105-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:43:27-73
+106                <category android:name="android.intent.category.BROWSABLE" />
+106-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:44:17-77
+106-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:44:27-75
+107            </intent-filter>
+108            <intent-filter>
+108-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:46:13-50:29
+109                <data android:mimeType="image/*" />
+109-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:40:17-50
+109-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:47:23-49
+110
+111                <action android:name="android.intent.action.SEND" />
+111-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:48:17-68
+111-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:48:25-66
+112
+113                <category android:name="android.intent.category.DEFAULT" />
+113-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:43:17-75
+113-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:43:27-73
+114            </intent-filter>
+115            <intent-filter>
+115-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:51:13-54:29
+116                <action android:name="android.intent.action.MAIN" />
+116-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:52:17-68
+116-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:52:25-66
+117
+118                <category android:name="android.intent.category.LAUNCHER" />
+118-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:53:17-76
+118-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:53:27-74
+119            </intent-filter>
+120        </activity>
+121
+122        <meta-data
+122-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:56:9-57:35
+123            android:name="dcloud_uninview_background"
+123-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:56:20-61
+124            android:value="true" />
+124-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:57:13-33
+125
+126        <activity
+126-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:59:9-83:20
+127            android:name="io.dcloud.PandoraEntryActivity"
+127-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:60:13-58
+128            android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|fontScale|keyboard|smallestScreenSize|screenLayout|screenSize|uiMode"
+128-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:62:13-151
+129            android:hardwareAccelerated="true"
+129-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:63:13-47
+130            android:launchMode="singleTask"
+130-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:61:13-44
+131            android:permission="com.miui.securitycenter.permission.AppPermissionsEditor"
+131-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:64:13-89
+132            android:screenOrientation="user"
+132-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:65:13-45
+133            android:theme="@style/DCloudTheme"
+133-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:66:13-47
+134            android:windowSoftInputMode="adjustResize" >
+134-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:67:13-55
+135            <intent-filter>
+135-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:69:13-82:29
+136                <category android:name="android.intent.category.DEFAULT" />
+136-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:43:17-75
+136-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:43:27-73
+137                <category android:name="android.intent.category.BROWSABLE" />
+137-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:44:17-77
+137-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:44:27-75
+138
+139                <action android:name="android.intent.action.VIEW" />
+139-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:41:17-68
+139-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:41:25-66
+140
+141                <data android:scheme=" " />
+141-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:40:17-50
+141-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:40:23-48
+142            </intent-filter>
+143        </activity>
+144
+145        <meta-data
+145-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:84:9-86:64
+146            android:name="dcloud_appkey"
+146-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:85:13-41
+147            android:value="29a0b9691af9421cceffe3a71d66a315" />
+147-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:86:13-61
+148        <!-- android:value="728a9fcfb01894e5e86b466f0739c522" /> -->
+149        <!--
+150        <activity
+151            android:name="io.dcloud.imagepick.CustomGalleryActivity"
+152            android:noHistory="true"
+153            android:exported="false"/>
+154        -->
+155        <activity
+155-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:184:9-190:58
+156            android:name="io.dcloud.feature.nativeObj.photoview.PhotoActivity"
+156-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:185:13-79
+157            android:configChanges="orientation|keyboardHidden"
+157-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:186:13-63
+158            android:exported="false"
+158-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:187:13-37
+159            android:noHistory="false"
+159-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:188:13-38
+160            android:screenOrientation="behind"
+160-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:189:13-47
+161            android:theme="@style/DeviceDefault.Light" />
+161-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:190:13-55
+162        <activity
+162-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:191:9-200:58
+163            android:name="io.dcloud.WebAppActivity"
+163-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:192:13-52
+164            android:configChanges="orientation|keyboard|keyboardHidden|smallestScreenSize|screenLayout|screenSize|mcc|mnc|fontScale|navigation"
+164-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:193:13-144
+165            android:hardwareAccelerated="true"
+165-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:194:13-47
+166            android:icon="@drawable/dcloud_recent"
+166-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:195:13-51
+167            android:label="@string/stream_my"
+167-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:196:13-46
+168            android:launchMode="singleTask"
+168-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:197:13-44
+169            android:screenOrientation="portrait"
+169-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:198:13-49
+170            android:theme="@style/DCloudTheme"
+170-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:199:13-47
+171            android:windowSoftInputMode="adjustResize" />
+171-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:200:13-55
+172        <activity
+172-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:201:9-205:75
+173            android:name="io.dcloud.ProcessMediator"
+173-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:202:13-53
+174            android:excludeFromRecents="true"
+174-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:203:13-46
+175            android:exported="false"
+175-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:204:13-37
+176            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+176-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:205:13-72
+177        <activity
+177-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:206:9-212:20
+178            android:name="io.dcloud.WebviewActivity"
+178-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:207:13-53
+179            android:exported="false"
+179-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:208:13-37
+180            android:screenOrientation="portrait"
+180-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:209:13-49
+181            android:theme="@style/ThemeNoTitleBar"
+181-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:210:13-51
+182            android:windowSoftInputMode="adjustPan" >
+182-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:211:13-52
+183        </activity> <!-- gallery******start -->
+184        <activity
+184-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:215:9-220:63
+185            android:name="com.dmcbig.mediapicker.PickerActivity"
+185-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:216:13-65
+186            android:configChanges="orientation|screenSize"
+186-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:217:13-59
+187            android:exported="false"
+187-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:218:13-37
+188            android:theme="@style/DeviceDefault.Light"
+188-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:219:13-55
+189            android:windowSoftInputMode="stateAlwaysHidden" />
+189-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:220:13-60
+190        <activity
+190-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:221:9-226:63
+191            android:name="com.dmcbig.mediapicker.PreviewActivity"
+191-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:222:13-66
+192            android:configChanges="orientation|screenSize"
+192-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:223:13-59
+193            android:exported="false"
+193-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:224:13-37
+194            android:theme="@style/DeviceDefault.Light"
+194-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:225:13-55
+195            android:windowSoftInputMode="stateAlwaysHidden" /> <!-- gallery******end -->
+195-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:226:13-60
+196        <provider
+196-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:229:9-237:20
+197            android:name="io.dcloud.common.util.DCloud_FileProvider"
+197-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:230:13-69
+198            android:authorities="com.android.UniPlugin.hav.dc.fileprovider"
+198-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:231:13-67
+199            android:exported="false"
+199-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:232:13-37
+200            android:grantUriPermissions="true" >
+200-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:233:13-47
+201            <meta-data
+201-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:234:13-236:64
+202                android:name="android.support.FILE_PROVIDER_PATHS"
+202-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:235:17-67
+203                android:resource="@xml/dcloud_file_provider" />
+203-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:236:17-61
+204        </provider>
+205        <!--
+206            <meta-data
+207            android:name="DCLOUD_STREAMAPP_CHANNEL"
+208            android:value="io.dcloud.%APPID%|%APPID%|" />
+209        -->
+210        <meta-data
+210-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:244:9-246:35
+211            android:name="android.max_aspect"
+211-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:245:13-46
+212            android:value="2.4" />
+212-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:246:13-32
+213
+214        <activity
+214-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:248:9-253:63
+215            android:name="io.dcloud.feature.gallery.imageedit.IMGEditActivity"
+215-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:249:13-79
+216            android:configChanges="orientation|keyboardHidden|screenSize"
+216-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:250:13-74
+217            android:exported="false"
+217-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:251:13-37
+218            android:theme="@style/ImageEditTheme"
+218-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:252:13-50
+219            android:windowSoftInputMode="stateAlwaysHidden" /> <!-- 广告相关配置开始 -->
+219-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:253:13-60
+220        <activity
+220-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:256:9-261:55
+221            android:name="io.dcloud.sdk.activity.WebViewActivity"
+221-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:257:13-66
+222            android:exported="false"
+222-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:258:13-37
+223            android:screenOrientation="portrait"
+223-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:259:13-49
+224            android:theme="@style/ThemeNoTitleBar"
+224-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:260:13-51
+225            android:windowSoftInputMode="adjustPan" />
+225-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:261:13-52
+226
+227        <service
+227-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:263:9-266:72
+228            android:name="io.dcloud.sdk.base.service.DownloadService"
+228-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:264:13-70
+229            android:exported="false"
+229-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:265:13-37
+230            android:permission="android.permission.BIND_JOB_SERVICE" />
+230-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:266:13-69
+231
+232        <provider
+232-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:268:9-276:20
+233            android:name="io.dcloud.sdk.base.service.provider.DCloudAdFileProvider"
+233-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:269:13-84
+234            android:authorities="com.android.UniPlugin.hav.dc.fileprovider"
+234-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:270:13-67
+235            android:exported="false"
+235-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:271:13-37
+236            android:grantUriPermissions="true" >
+236-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:272:13-47
+237            <meta-data
+237-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:234:13-236:64
+238                android:name="android.support.FILE_PROVIDER_PATHS"
+238-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:235:17-67
+239                android:resource="@xml/dcloud_gg_file_provider" />
+239-->[lib.5plus.base-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\3adcc121de1a8146ad46be05f1b57d40\transformed\jetified-lib.5plus.base-release\AndroidManifest.xml:236:17-61
+240        </provider>
+241
+242        <receiver
+242-->[uniapp-v8-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\af8413f18ab909cf112553d936fa68bc\transformed\jetified-uniapp-v8-release\AndroidManifest.xml:30:9-34:20
+243            android:name="com.taobao.weex.WXGlobalEventReceiver"
+243-->[uniapp-v8-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\af8413f18ab909cf112553d936fa68bc\transformed\jetified-uniapp-v8-release\AndroidManifest.xml:31:13-65
+244            android:enabled="true"
+244-->[uniapp-v8-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\af8413f18ab909cf112553d936fa68bc\transformed\jetified-uniapp-v8-release\AndroidManifest.xml:32:13-35
+245            android:exported="false" >
+245-->[uniapp-v8-release.aar] C:\Users\Havoc\.gradle\caches\transforms-3\af8413f18ab909cf112553d936fa68bc\transformed\jetified-uniapp-v8-release\AndroidManifest.xml:33:13-37
+246        </receiver>
+247
+248        <service android:name="com.amap.api.location.APSService" />
+248-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:33:9-68
+248-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:33:18-65
+249
+250        <activity
+250-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:35:9-38:63
+251            android:name="com.amap.api.navi.AmapRouteActivity"
+251-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:36:13-63
+252            android:configChanges="orientation|keyboardHidden|screenSize|navigation"
+252-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:37:13-85
+253            android:theme="@android:style/Theme.NoTitleBar" />
+253-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:38:13-60
+254        <activity
+254-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:39:9-42:71
+255            android:name="com.example.mapdemo.SearchActivity"
+255-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:40:13-62
+256            android:exported="false"
+256-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:41:13-37
+257            android:windowSoftInputMode="stateVisible|adjustResize" />
+257-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:42:13-68
+258
+259        <service android:name="com.amap.api.location.APSService" />
+259-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:33:9-68
+259-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:33:18-65
+260
+261        <activity
+261-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:46:9-55:20
+262            android:name="com.example.mapdemo.MainActivity"
+262-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:47:13-60
+263            android:exported="true"
+263-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:48:13-36
+264            android:launchMode="singleTask" >
+264-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:49:13-44
+265            <intent-filter>
+265-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:51:13-54:29
+266                <action android:name="android.intent.action.MAIN" />
+266-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:52:17-68
+266-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:52:25-66
+267
+268                <category android:name="android.intent.category.LAUNCHER" />
+268-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:53:17-76
+268-->C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\app\src\main\AndroidManifest.xml:53:27-74
+269            </intent-filter>
+270        </activity>
+271
+272        <meta-data
+272-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:57:9-59:64
+273            android:name="com.amap.api.v2.apikey"
+273-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:58:13-50
+274            android:value="5819189d6d510b59d619d19a6607b8f2" />
+274-->[:mapDemo] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\mapDemo\build\intermediates\merged_manifest\debug\AndroidManifest.xml:59:13-61
+275
+276        <activity
+276-->[:uniplugin_module] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\uniplugin_module\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-11:20
+277            android:name="io.dcloud.uniplugin.NativePageActivity"
+277-->[:uniplugin_module] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\uniplugin_module\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-66
+278            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar" >
+278-->[:uniplugin_module] C:\Users\Havoc\Desktop\Little-tools\Travel\CFT-map-fix\uniplugin_module\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-81
+279        </activity>
+280
+281        <provider
+281-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Havoc\.gradle\caches\transforms-3\cd0e31776a03b70e2d22563fb2144838\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+282            android:name="androidx.startup.InitializationProvider"
+282-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Havoc\.gradle\caches\transforms-3\cd0e31776a03b70e2d22563fb2144838\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+283            android:authorities="com.android.UniPlugin.hav.androidx-startup"
+283-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Havoc\.gradle\caches\transforms-3\cd0e31776a03b70e2d22563fb2144838\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+284            android:exported="false" >
+284-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Havoc\.gradle\caches\transforms-3\cd0e31776a03b70e2d22563fb2144838\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+285            <meta-data
+285-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Havoc\.gradle\caches\transforms-3\cd0e31776a03b70e2d22563fb2144838\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+286                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+286-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Havoc\.gradle\caches\transforms-3\cd0e31776a03b70e2d22563fb2144838\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+287                android:value="androidx.startup" />
+287-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Havoc\.gradle\caches\transforms-3\cd0e31776a03b70e2d22563fb2144838\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+288            <meta-data
+288-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Havoc\.gradle\caches\transforms-3\e796a336715a92aed9968dfcc4668a40\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+289                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+289-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Havoc\.gradle\caches\transforms-3\e796a336715a92aed9968dfcc4668a40\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+290                android:value="androidx.startup" />
+290-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Havoc\.gradle\caches\transforms-3\e796a336715a92aed9968dfcc4668a40\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+291        </provider>
+292    </application>
+293
+294</manifest>

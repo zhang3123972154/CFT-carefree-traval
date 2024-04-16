@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.android.UniPlugin.hav.app-mergeDebugResources-31:/values-ldltr-v17/values-ldltr-v17.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Havoc\\.gradle\\caches\\transforms-3\\af8413f18ab909cf112553d936fa68bc\\transformed\\jetified-uniapp-v8-release\\res\\values-ldltr-v17\\values-ldltr-v17.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "51",
+                        "endOffsets": "102"
+                    }
+                }
+            ]
+        }
+    ]
+}

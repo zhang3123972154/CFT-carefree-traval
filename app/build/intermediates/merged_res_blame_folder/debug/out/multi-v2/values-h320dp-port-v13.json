@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.mapdemo.app-mergeDebugResources-26:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
+            "outputFile": "com.android.UniPlugin.hav.app-mergeDebugResources-31:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Vinci\\.gradle\\caches\\transforms-3\\4c4241c4c32971a6073ec7b2fcbdc410\\transformed\\material-1.9.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+                    "source": "C:\\Users\\Havoc\\.gradle\\caches\\transforms-3\\cde6b0499882c2e7e3ec47e0b02ade43\\transformed\\material-1.9.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

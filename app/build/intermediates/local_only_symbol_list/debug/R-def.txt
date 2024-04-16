@@ -1,24 +1,6 @@
 R_DEF: Internal format may change without notice
 local
-color black
-color white
-drawable ic_launcher_background
-drawable ic_launcher_foreground
-id edit_query
-id locate_button
-id map
-id navi_button
-id recyclerView
-id search_button
-id testtv2
-id text_view_item
-layout activity_main
-layout activity_search
-layout item_layout
-mipmap ic_launcher
-mipmap ic_launcher_round
+drawable icon
+drawable push
+drawable splash
 string app_name
-style Base.Theme.MapDemo
-style Theme.MapDemo
-xml backup_rules
-xml data_extraction_rules

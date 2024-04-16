@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+//    id "com.android.application"
+}
+
+android {
+    namespace 'com.example.mapdemo'   // 无法使用，这个版本, 于是需要在xml文件里表明namespace // 8.4 可以使用
+    compileSdkVersion 34
+
+    defaultConfig {
+        minSdkVersion 28
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("my-release-key.keystore")
+            storePassword 'havocantelope412'
+            keyAlias 'my-key-alias'
+            keyPassword 'havocantelope412'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly fileTree(dir: 'libs', include: ['uniapp-v8-release.aar'])
+
+    compileOnly 'androidx.legacy:legacy-support-v4:1.0.0'
+    compileOnly 'androidx.appcompat:appcompat:1.0.0'
+
+    compileOnly 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.alibaba:fastjson:1.2.83'
+
+    // ktl 好像不转化也能直接用，挺好。
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(files("libs\\AMap3DMap_9.8.3_AMapNavi_9.8.3_AMapSearch_9.7.0_AMapLocation_6.4.2_20231215.jar"))
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+}
