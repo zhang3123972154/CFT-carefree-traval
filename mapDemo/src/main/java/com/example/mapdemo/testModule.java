@@ -45,7 +45,7 @@ public class testModule extends UniModule {
     public void positionPreShow(JSONObject position) {
         Log.e(TAG, "testJson--positions--" + position);
 
-        // other...
+        // other... // eg. {"positions": ["武汉大学口腔", "武汉大学情人坡", "武汉大学(澄波门)", "武汉大学"]}
     }
 
 
