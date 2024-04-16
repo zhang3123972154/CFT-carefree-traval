@@ -1,7 +1,15 @@
+<!--info 暂时采用直接原生渲染，此页搁置-->
 <template>
     <div>
         <text>导航原生页面</text>
+        <div class="flex-horizontal">
+            <t-chip></t-chip>
+        </div>
     </div>
+    <!-- test 能调用，但是无法正常显示，主要是display无法渲染 - WEB端测试-->
+    <!-- <div class="flex-ho">
+        <t-tabbar></t-tabbar> 
+    </div> -->
 </template>
 
 <script setup>
@@ -9,6 +17,7 @@
     // com
     // store
 // DATA
+    const abd = ref(123);
 
 // FUNC
 
