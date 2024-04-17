@@ -62,8 +62,9 @@
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
     const iconInput = useDetailIconPath();  // info 原本的输入框有在用
-    import { useSpot } from "@/store/aiPlanQuestion";
+    import { useSpot, useTime } from "@/store/aiPlanQuestion";
     const spotStore = useSpot();
+    const timeStore = useTime();
 // DATA
     const emits = defineEmits(['close']);
 
@@ -89,6 +90,16 @@
         //             })
         //             return;
         //         }
+        //         break;
+        //     case 1:
+        //         if(!timeStore.finish) {
+        //             uToastRef.value.show({
+        //                 type: "error",
+        //                 message: "请选择游玩时长与出发日期"
+        //             });
+        //             return;
+        //         }
+        //         break;
         // }
 
         let index = questionIndex.value + 1;

@@ -79,3 +79,20 @@ export const useSpot = defineStore("spotStore", {
         }
     }
 })
+
+export const useTime = defineStore("timeStore", {
+    state: () : {
+        dateStart: string,
+        timeLength: number
+    } => {
+        return {
+            dateStart: "",
+            timeLength: 0
+        }
+    },
+    getters: {
+        finish(state) {
+            return state.timeLength != 0 && state.dateStart != "";
+        }
+    }
+})

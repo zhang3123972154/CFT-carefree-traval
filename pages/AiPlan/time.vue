@@ -23,12 +23,12 @@
                     <!-- <up-datetime-picker
                         hasInput
                         :show="showTimeChoose"
-                        v-model="timeStart"
+                        v-model="dateStart"
                         mode="date"
                     ></up-datetime-picker> -->
                     <uni-datetime-picker
                         type="date"
-                        :value="timeStart"
+                        :value="dateStart"
                         :start="TODAY"
                         end="2030-6-20"
                         @change="changeDate"
@@ -46,19 +46,18 @@
     import chipGroupChoose from "@/components/AiPlan/chipGroupChoose.vue";
     import chipEditable from "@/components/Com/chipEditable.vue";
     // store
+    import { useTime } from "@/store/aiPlanQuestion";
+    const timeStore = useTime();
 // DATA
     const props = defineProps({
 
     });
     const emits = defineEmits([]);
-
-    const timeLength = ref("");
     const TIME_RECOMMEND = ref(["一天", "三天", "五天", "一周"]);
 
+    const timeLength = ref("");
     const TODAY = getCurrentDateFormatted();
-    const timeStart = ref(TODAY);
-    console.info(timeStart.value);
-    const showTimeChoose = ref(false);
+    const dateStart = ref(TODAY);
 
 // FUNC
     const storeTimeLength = (value) => {
@@ -66,9 +65,12 @@
     }
     const choose = (index) => {
         timeLength.value = TIME_RECOMMEND.value[index];
+        timeStore.timeLength = timeLength.value;
     }
     const changeDate = (event) => {
-        timeStart.value = event;
+        dateStart.value = event;
+        timeStore.dateStart = event;
+        // console.info(timeStore.dateStart, timeStore.timeLength); // test
     }
 
 </script>
