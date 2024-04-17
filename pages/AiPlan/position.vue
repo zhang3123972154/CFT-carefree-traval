@@ -40,7 +40,7 @@
     import chipEditable from "@/components/Com/chipEditable.vue";
     import chipGroupFlex from "@/components/AiPlan/chipGroupFlex.vue";
     // store
-    import { useSpot } from "@/store/dataBaseArray";
+    import { useSpot } from "@/store/aiPlanQuestion";
     const spotStore = useSpot();
 // DATA
     const props = defineProps({

@@ -62,7 +62,7 @@
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
     const iconInput = useDetailIconPath();  // info 原本的输入框有在用
-    import { useSpot } from "@/store/dataBaseArray";
+    import { useSpot } from "@/store/aiPlanQuestion";
     const spotStore = useSpot();
 // DATA
     const emits = defineEmits(['close']);
