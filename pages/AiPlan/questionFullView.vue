@@ -8,7 +8,7 @@
         </view>
         <!--info 信息选择页面-->
         <view class="question-container">
-            <start-end v-show="questionIndex == 0"/>
+            <position v-show="questionIndex == 0"/>
         </view>
         <!--info 原本的输入框-->
         <!-- <u-icon class="mt-30" :name="iconPath.LOGO" size="105"></u-icon>
@@ -55,7 +55,7 @@
 <script setup>
     import { ref } from "vue";
     // com
-    import startEnd from "./startEnd.vue";
+    import position from "./position.vue";
     // store
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
