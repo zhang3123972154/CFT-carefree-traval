@@ -9,6 +9,7 @@
         <!--info 信息选择页面-->
         <view class="question-container">
             <position v-show="questionIndex == 0"/>
+            <timeView v-show="questionIndex == 1"/>
         </view>
         <!--info 原本的输入框-->
         <!-- <u-icon class="mt-30" :name="iconPath.LOGO" size="105"></u-icon>
@@ -56,6 +57,7 @@
     import { ref } from "vue";
     // com
     import position from "./position.vue";
+    import timeView from "./time.vue";
     // store
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
@@ -78,16 +80,16 @@
     const uToastRef = ref(null);
     const nextQuestion = () => {
         // info check finished ?
-        switch(questionIndex.value) {
-            case 0:  
-                if(!spotStore.finish) {
-                    uToastRef.value.show({
-                        type: "error",
-                        message: "请输入起点与终点"
-                    })
-                    return;
-                }
-        }
+        // switch(questionIndex.value) {
+        //     case 0:  
+        //         if(!spotStore.finish) {
+        //             uToastRef.value.show({
+        //                 type: "error",
+        //                 message: "请输入起点与终点"
+        //             })
+        //             return;
+        //         }
+        // }
 
         let index = questionIndex.value + 1;
         questionIndex.value = Math.min(4, index);

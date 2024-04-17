@@ -11,6 +11,7 @@
                 />
             <input v-else 
                 class="input"
+                :value="props.inputValue"
                 focus 
                 @input="handleInput"
                 @blur="handleBlur"/>
@@ -31,7 +32,11 @@
         clearTrigger: { // info 通过反转来触发 clear
             type: Boolean,
             default: false
-        }
+        },
+        uneditable: {
+            type: Boolean
+        },
+        inputValue: String
     });
     const emits = defineEmits(["textFinish"]);
     const inputValue = ref("");
@@ -49,6 +54,12 @@
         inputValue.value = "";
         inputFlag.value = false;
     });
+
+    // info 配合单选 从外部设定 input-value
+    watch(() => props.inputValue, () => {
+        inputFlag.value = true;
+        inputValue.value = props.inputValue;    // info 防止触发失焦清空
+    })
 
     // tag real
     const handleInput = (event) => {

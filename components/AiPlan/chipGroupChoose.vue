@@ -10,24 +10,11 @@
             :way-list="props.wayList"
             :spot-list="props.spotList"
             :thing-list="props.thingList"
-            :light-index="props.lightIndex"
-            @click-choose="clickChoose"
-            @click-delete="clickDelete"
+            :light-index="9999"
+            @click-choose="choose"
+            @click-delete="choose"
             belongChipGroupFlex
         >
-            <template #prefix>
-                <chip-editable light 
-                    :clear-trigger="clearTrigger"
-                    @text-finish="handleEditChip"
-                />
-            </template>
-
-            <template #suffix>
-                <t-chip :kind="props.sufKind" light @click="emits('reload')">
-                    <u-icon name="/static/icon/change-chip.svg"></u-icon>
-                </t-chip>
-            </template>
-
         </chip-group>
     </view>
 </template>
@@ -36,7 +23,6 @@
     import { ref } from "vue";
     // com
     import chipGroup from "@/components/Home/chipGroup.vue";
-    import chipEditable from "@/components/Com/chipEditable.vue";
     // store
     import { useArrowsIconPath } from "@/store/dataBase";
     const iconPath = useArrowsIconPath();
@@ -57,29 +43,16 @@
         wayList: Array,
         spotList: Array,
         thingList: Array,
-        // tag 前后操作的功能键 样式
-        preKind: String,
-        sufKind: String
     });
-    const emits = defineEmits(["add", "reload", "delete"]);
-    
+    const emits = defineEmits(["choose"]);
+
     // flag
     const openFlag = ref(props.openStart);
-    const clearTrigger = ref(false);
 
 // FUNC
-    const handleEditChip = (value) => {
-        clearTrigger.value = !clearTrigger.value;   // info 实现重置的效果
-        emits("add", value);
+    const choose = (index) => {
+        emits("choose", index);
     }
-    const clickChoose = (index) => {
-        emits("add", index);
-    }
-    const clickDelete = (index) => {
-        console.info(index);
-        emits("delete", index);
-    }
-
 
 </script>
 
