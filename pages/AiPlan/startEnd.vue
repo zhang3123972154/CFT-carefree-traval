@@ -40,8 +40,6 @@
     import chipEditable from "@/components/Com/chipEditable.vue";
     import chipGroupFlex from "@/components/AiPlan/chipGroupFlex.vue";
     // store
-    import { useAiIconPath } from "@/store/dataBase.ts";
-    const iconPath = useAiIconPath();
     import { useSpot } from "@/store/dataBaseArray";
     const spotStore = useSpot();
 // DATA

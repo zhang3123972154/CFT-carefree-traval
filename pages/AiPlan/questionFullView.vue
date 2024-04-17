@@ -1,5 +1,6 @@
 <template>
     <view class="flex-center-vertical container gap-10" @click.stop>
+        <up-toast ref="uToastRef"></up-toast>
         <!--info TITLE-->
         <view class="flex-center-both gap-30">
             <u-icon :name="iconPath.LOGO" size="40"></u-icon>
@@ -7,7 +8,7 @@
         </view>
         <!--info 信息选择页面-->
         <view class="question-container">
-            <start-end/>
+            <start-end v-show="questionIndex == 0"/>
         </view>
         <!--info 原本的输入框-->
         <!-- <u-icon class="mt-30" :name="iconPath.LOGO" size="105"></u-icon>
@@ -58,7 +59,9 @@
     // store
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
-    const iconInput = useDetailIconPath();
+    const iconInput = useDetailIconPath();  // info 原本的输入框有在用
+    import { useSpot } from "@/store/dataBaseArray";
+    const spotStore = useSpot();
 // DATA
     const emits = defineEmits(['close']);
 
@@ -72,7 +75,20 @@
         questionIndex.value = Math.max(0, index);
     }
 
+    const uToastRef = ref(null);
     const nextQuestion = () => {
+        // info check finished ?
+        switch(questionIndex.value) {
+            case 0:  
+                if(!spotStore.finish) {
+                    uToastRef.value.show({
+                        type: "error",
+                        message: "请输入起点与终点"
+                    })
+                    return;
+                }
+        }
+
         let index = questionIndex.value + 1;
         questionIndex.value = Math.min(4, index);
     }

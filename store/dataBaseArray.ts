@@ -36,6 +36,11 @@ export const useSpot = defineStore("spotStore", {
             end: "",
         }
     },
+    getters: {
+        finish(state) {
+            return state.start != "" && state.end != ""; 
+        }
+    },
     actions: {
         // todo 更加智能的切换方式，把没有选中的换出来，选中的前置。
         getProvinces(): string[] {
