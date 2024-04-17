@@ -1,8 +1,18 @@
 <template>
     <view class="flex-center-vertical container gap-10" @click.stop>
-        <u-icon class="mt-30" :name="iconPath.LOGO" size="105"></u-icon>
-        <text class="talk">您希望您的旅行是什么样的呢？</text>
-        <view class="input-container">
+        <!--info TITLE-->
+        <view class="flex-center-both gap-30">
+            <u-icon :name="iconPath.LOGO" size="40"></u-icon>
+            <text class="title">{{ titleList[questionIndex] }}</text>
+        </view>
+        <!--info 信息选择页面-->
+        <view class="question-container">
+            <start-end/>
+        </view>
+        <!--info 原本的输入框-->
+        <!-- <u-icon class="mt-30" :name="iconPath.LOGO" size="105"></u-icon>
+        <text class="talk">您希望您的旅行是什么样的呢？</text> -->
+        <!-- <view class="input-container">
             <u--textarea v-model="content" 
                 placeholder="说点什么吧......"
                 border="none"
@@ -22,10 +32,11 @@
                 </view>
                 <u-icon v-else :name="iconPath.clear" size="20" @click="clearInput"></u-icon>
             </view>
-        </view>
-        <view class="flex-center-horizontal gap-35 mt-50">
-            <t-btn variant="tonal" class="btn-base">上一题</t-btn>
-            <t-btn variant="tonal" class="btn-base">下一题</t-btn>
+        </view> -->
+        <!--info 底部按钮-->
+        <view class="flex-center-horizontal gap-35">
+            <t-btn variant="tonal" class="btn-base" @click="lastQuestion">上一题</t-btn>
+            <t-btn variant="tonal" class="btn-base" @click="nextQuestion">下一题</t-btn>
         </view>
         <view class="flex-center-horizontal gap-35 mt-10">
             <t-btn variant="outlined" class="btn-base" :custom-style="{
@@ -41,8 +52,9 @@
 </template>
 
 <script setup>
-    import { ref, computed } from "vue";
+    import { ref } from "vue";
     // com
+    import startEnd from "./startEnd.vue";
     // store
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
@@ -50,16 +62,22 @@
 // DATA
     const emits = defineEmits(['close']);
 
-    const content = ref("");
-// FUNC
-    const inputNULL = computed(() => {
-        return content.value === "";
-    });
+    const titleList = ref(["旅行地点", "旅行时间", "旅行偏好", "预算", "个性标签"]);
+    const questionIndex = ref(0);
 
-    const clearInput = () => {
-        content.value = "";
+// FUNC
+    // tag
+    const lastQuestion = () => {
+        let index = questionIndex.value - 1;
+        questionIndex.value = Math.max(0, index);
     }
 
+    const nextQuestion = () => {
+        let index = questionIndex.value + 1;
+        questionIndex.value = Math.min(4, index);
+    }
+
+    // tag router
     const gotoBack = () => {
         uni.navigateBack({ delta: 1 });
     }
@@ -68,9 +86,23 @@
         uni.navigateTo({ url: '/pages/AiTalk/AiTalkView' })
     }
 
+
+
 </script>
 
 <style scoped>
+
+.title {
+    font-size: 35px;
+    font-family: Alimama ShuHeiTi;
+}
+
+.question-container {
+    height: 60vh;
+    width: 80%;
+
+    overflow: scroll;
+}
 
 .container {
     background-color: #fff;

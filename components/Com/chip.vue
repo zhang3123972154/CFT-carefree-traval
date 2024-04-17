@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-    import { ref, computed, nextTick, onMounted } from 'vue';
+    import { ref, computed, nextTick, onMounted, watch } from 'vue';
     // com
     import similarWin from "./similarWin.vue";
 
@@ -44,9 +44,21 @@
         belongAiHeader: { // info 为了 aitalk-header 特化
             type: Boolean,
             default: false
+        },
+        light: { // info 是否保持常亮 light-hold
+            type: Boolean,
+            default: false
+        },
+        lightStart: {   // info  lightFlag 的初始值； // info 优先级 light > lightSrart
+            type: Boolean,
+            default: false
+        },
+        belongChipGroupFlex: { // info 
+            type: Boolean,
+            default: false
         }
     });
-    const emits = defineEmits(["longPress", "closeSimilarWin"]);  // todo 用于历史记录的消息传递
+    const emits = defineEmits(["longPress", "closeSimilarWin", "clickChoose", "clickDelete"]);  // todo 用于历史记录的消息传递
 
     const FONTCOLOR = ref({
         unselected: "#cccccc",
@@ -73,7 +85,7 @@
     };
 
     // flag
-    const selectFlag = ref(false);
+    const selectFlag = ref(props.light | props.lightStart);
     const similarWinFlag = ref(true);
     // test
     onMounted(() => {
@@ -87,6 +99,9 @@
     const TOP = -45;
 
 // FUNC
+    watch(() => props.lightStart, () => {
+        selectFlag.value = props.light | props.lightStart;
+    })
     const checkKind = computed(() => {
         return style[props.kind] || style.way;
     })
@@ -119,10 +134,22 @@
             similarWinAnimation.value.opacity(1).step();
         });
     }
+
     const click = () => {
-        if(!islongPress)
-            selectFlag.value = !selectFlag.value;
+        if(!islongPress && !props.light) { // info 实现常亮效果
+            // selectFlag.value = !selectFlag.value;
+            // info 向上传递具体的操作形式，判断处理形式
+            if(props.belongChipGroupFlex) {
+                if(!selectFlag.value)
+                    emits("clickChoose");
+                else
+                    emits("clickDelete");
+            }
+            else
+                selectFlag.value = !selectFlag.value;
+        }
     }
+
     const touchend = () => {
         setTimeout(() => {
             islongPress = false;

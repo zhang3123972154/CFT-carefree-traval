@@ -36,6 +36,8 @@
     align-items: flex-end; /* 根据需要，可以改为center使得子项垂直居中 */
 }
 
+/* tag vertical*/
+
 .flex-vertical {
     display: flex;
     flex-direction: column;

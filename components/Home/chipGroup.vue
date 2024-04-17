@@ -1,21 +1,44 @@
 <template>
     <view>  <!--mark 用来档外部布局的控制-->
         <view class="container" :class="{'scroll': props.scroll}">
+            <slot name="prefix"></slot>
+            <!--info main-->
             <view class="item" v-for="(item, index) in props.wayList" :key="index">
-                <t-chip kind="way" :text="item" :belongAiHeader="props.belongAiHeader" @long-press="open" @close-similar-win="close"></t-chip>
+                <t-chip kind="way" :text="item" :belongAiHeader="props.belongAiHeader"
+                    @long-press="open" @close-similar-win="close"
+
+                    :belongChipGroupFlex="props.belongChipGroupFlex"
+                    :light-start="index < props.lightIndex"
+                    @clickChoose="emits('clickChoose', index)" @clickDelete="emits('clickDelete', index)">
+                </t-chip>
             </view>
             <view class="item" v-for="(item, index) in props.spotList" :key="index">
-                <t-chip kind="spot" :text="item" :belongAiHeader="props.belongAiHeader" @long-press="open" @close-similar-win="close"></t-chip>
+                <t-chip kind="spot" :text="item" 
+                    :belongAiHeader="props.belongAiHeader" 
+                    @long-press="open" @close-similar-win="close"
+                    
+                    :belongChipGroupFlex="props.belongChipGroupFlex"
+                    :light-start="index < props.lightIndex"
+                    @clickChoose="emits('clickChoose', index)" @clickDelete="emits('clickDelete', index)">
+                </t-chip>
             </view>
             <view class="item" v-for="(item, index) in props.thingList" :key="index">
-                <t-chip kind="thing" :text="item" :belongAiHeader="props.belongAiHeader" @long-press="open" @close-similar-win="close"></t-chip>
+                <t-chip kind="thing" :text="item" :belongAiHeader="props.belongAiHeader"
+                    @long-press="open" @close-similar-win="close"
+                    
+                    :belongChipGroupFlex="props.belongChipGroupFlex"
+                    :light-start="index < props.lightIndex"
+                    @clickChoose="emits('clickChoose', index)" @clickDelete="emits('clickDelete', index)">
+                </t-chip>
             </view>
+
+            <slot name="suffix"></slot>
         </view> 
     </view>
 </template>
 
 <script setup>
-    // import { reactive } from 'vue';
+    // import { computed } from 'vue';
 
 // DATA
     const props = defineProps({
@@ -38,10 +61,20 @@
         belongAiHeader: {
             type: Boolean,
             default: false
+        },
+        lightIndex: {   // info 默认的前多少个会点亮，但暂时，只适用于单类别
+            type: Number,
+            default: 0
+        },
+        belongChipGroupFlex: {
+            type: Boolean,
+            default: false
         }
     });
-    const emits = defineEmits(['longPress', 'closeSimilarWin']);
+    const emits = defineEmits(['longPress', 'closeSimilarWin', "clickChoose", "clickDelete"]);
 
+// FUNC
+    // tag container 的切换
     const open = () => {
         emits("longPress");
     }
@@ -49,7 +82,6 @@
     const close = () => {
         emits("closeSimilarWin");
     }
-
 
 </script>
 

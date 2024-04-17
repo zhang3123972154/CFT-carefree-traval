@@ -30,6 +30,7 @@
 	@import "uni_modules/uview-plus/index.scss";
 	@import "./css/flexCF.css";
 	@import "./css/flex.css";
+	@import "./css/grid.css";
 	@import "./css/animation.css";
 	@import "./css/text.css";
 	@import "./css/position.css";
