@@ -19,7 +19,8 @@
         <view class="flex-center-horizontal gap-1">
             <t-btn-icon icon="/static/icon/list.svg" @click="settingFlag = true"></t-btn-icon>
             <t-btn-icon icon="/static/icon/more.svg" @click.stop="openFunction"></t-btn-icon>
-            <t-btn-icon icon="/static/icon/LOGO.svg" @click.stop="gotoAiPlan"></t-btn-icon>
+            <!--todo 这里换规划 -> 导航-->
+            <t-btn-icon icon="/static/icon/LOGO.svg" @click.stop=""></t-btn-icon>
         </view>
         <!--菜单功能-->
         <FunctionMenu v-show="functionFlag"
@@ -70,11 +71,12 @@
     // flag
     const settingFlag = ref(false);
     const planFlag = ref(false);
-        // mark 两个flaggoon共同维护
+        // mark 两个flag共同维护
     const functionFlag = ref(false);
-    const clickOnceFlag = ref(false);
-    // style
+    let clickOnceFlag = false;
+    // tag style - animation
     const functionAnimation = ref(null);
+
 // FUNC
     // tag menu animation
     const TIME_ANIMATION = 200;
@@ -105,15 +107,15 @@
         if(functionFlag.value) // info 在动画生效期间，如果点击过快，就会bug，flag反转，无法正常工作；所以直接打断。
             return;
         console.info("openFunction", functionFlag.value);
-        if(!clickOnceFlag.value) {
+        if(!clickOnceFlag) {
             toggleFloatWin(!functionFlag.value);
         } else {
-            clickOnceFlag.value = true;
+            clickOnceFlag = false;
         }
         if(functionFlag.value) {
-            clickOnceFlag.value = false;
+            clickOnceFlag = true;
             uni.$once("baseClick", () => {
-                clickOnceFlag.value = true;
+                clickOnceFlag = false;
                 console.info("baseClick-open", functionFlag.value); // info stop 好像成功阻止
                 toggleFloatWin(false);
             });

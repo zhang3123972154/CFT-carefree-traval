@@ -24,11 +24,19 @@ function apiTest() {
 }
 
 // tag 外部结构
-const api = {
-    apiTest: () => apiTest(),
+export const useApiUser = {
+    // apiTest: () => apiTest(),
     loginByUsername: (data) => get("/user/loginByUsername", {}, data),
     sendEmailCode: (data) => get("/user/sendEmailCode", {}, data),
+    register: (data) => post("/user/register", {}, data),
+    refreshToken: (data) => get("/usr/register", {}, data),
 
+    // tag individual
+    
 };
 
-export default api;
+export const useApiAI = {
+    getAIHistory: (date) => get("/ai/history", {}, data),
+    sendImageOCR: (data) => post("/ai/ocr/general", {}, data),
+    sendMessage: (data) => post("/ai/senwd", {}, data)
+}
