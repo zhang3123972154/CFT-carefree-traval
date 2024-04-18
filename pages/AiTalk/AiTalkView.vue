@@ -9,7 +9,7 @@
             <aiBubble/>
             <template v-for="(item, index) in talkStore.history" :key="index">
                 <ai-bubble v-if="item.side" :content="item.content"/>
-                <user-bubble v-else :content="item.content"/>
+                <user-bubble v-else :text="item.text" :images="item.images"/>
             </template>
             <view :style="{
                 height: keyboardHeight.toString() + 'px'
@@ -48,8 +48,9 @@
         gotoPageEnd(100);
     }
     // 
-    const sendUserMessage = (content) => {
-        talkStore.sendUserMessage(content);
+    const sendUserMessage = (text, images) => {
+        console.info(text, images);
+        talkStore.sendUserMessage(text, images);
         gotoPageEnd(200);
     }
 

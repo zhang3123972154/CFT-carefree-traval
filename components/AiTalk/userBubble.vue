@@ -1,7 +1,8 @@
 <template>
     <view class="flex-top-horizontal container gap-10">
-        <view class="talk-container">
-            <text class="wrap">{{ props.content }}</text>
+        <view class="talk-container flex-vertical">
+            <text class="wrap">{{ props.text }}</text>
+            <t-image-group :images="props.images"/>
         </view>
         <u-icon :name="userInfor.avatar" size="30"></u-icon>
     </view>
@@ -14,9 +15,13 @@
     const userInfor = useUserStore();
 // DATA
     const props = defineProps({
-        content: {
+        text: {
             type: String,
             default: "TEST"
+        },
+        images: {
+            type: Array,
+            default: () => []
         }
     });
     const emits = defineEmits([]);

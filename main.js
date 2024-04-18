@@ -21,6 +21,8 @@ let i18nConfig = {
 import btnIcon from "./components/Com/btnIcon.vue";
 import chip from "./components/Com/chip.vue";
 import btn from "./components/Com/Button.vue";
+import image from "./components/Com/Image/image.vue";
+import imageGroup from "./components/Com/Image/imageGroup.vue";
   // tag mid
 import tabber from "./components/Com/tabbar.vue";
 
@@ -59,6 +61,8 @@ export function createApp() {
   app.component("t-tabbar", tabber);
   app.component("t-chip", chip);
   app.component("t-btn", btn);
+  app.component("t-image", image);
+  app.component("t-image-group", imageGroup);
 
   // tag JS
   // app.config.globalProperties.$test = test; // info setup中调用好麻烦。。

@@ -14,7 +14,8 @@
     // com
     // store
     // js
-    import api from "@/request/api";
+    import { useApiUser } from "@/request/api";
+    const api = useApiUser();
 // DATA
     const emailFrom = ref({
         email: "2993167370@qq.com", // test

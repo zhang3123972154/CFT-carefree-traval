@@ -1,11 +1,12 @@
 <template>
     <tabberBase z-index="6" :bottom="moveHeight">
         <template #topfix>
-            <view class="photo-container flex-horizontal gap-5">
-                <up-image :show-loading="true" src="/static//example//1.jpg" radius="5" width="60px" height="60px"/>
-                <up-image :show-loading="true" src="/static//example//1.jpg" radius="5" width="60px" height="60px"/>
-                <up-image :show-loading="true" src="/static//example//1.jpg" radius="5" width="60px" height="60px"/>
-            </view>
+            <t-image-group v-if="photosPath"
+                close-able
+                class="photo-container"
+                :images="photosPath"
+                @close="deletePhoto"
+            />
         </template>
 
         <template #prefix>
@@ -77,6 +78,9 @@
     // flag
     const topFlodFlag = ref(true);
     const questionFlag = ref(false);
+    const menuFlag = ref(false);
+
+    const photosPath = ref(null);
     const plan = ref({
         spot: "武汉",
         day: 1,
@@ -93,13 +97,11 @@
         ]
     });
 
-    // flag
-    const menuFlag = ref(false);
-
 // FUNC
     const sendUserMessage = () => {
-        emits('sendMessage', inputContent.value);
+        emits('sendMessage', inputContent.value, photosPath.value);
         inputContent.value = "";
+        photosPath.value = null;
     }
 
     const keyboardChange = (infor) => {
@@ -107,23 +109,44 @@
         emits("keyBoardChange", infor.detail);
         moveHeight.value = infor.detail.height;
     }
-    const moveHeightPhoto = computed(() => {
-        return moveHeight.value + 50;
-    })
     
     const changeInputHeight = (infor) => {
         inputHeight.value = inputLineHeight * infor.detail.lineCount;
     }
 
+    // tag photos
     const addPhoto = () => {
         // info 关于权限，会自动申请，挺好。
         uni.chooseImage({
             count: 3,
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
-            success: ({ tempFilePaths, tempFiles }) => {},
-            fail: (error) => {}
+            success: ({ tempFilePaths, tempFiles }) => {
+                photosPath.value = tempFilePaths;
+
+                // todo
+                // test 预览图片
+                // uni.previewImage({
+                //     urls: tempFilePaths,
+                //     longPressActions: {
+                //         itemList: ['发送给朋友', '保存图片', '收藏'],
+                //         success: function(data) {
+                //             console.log('选中了第' + (data.tapIndex + 1) + '个按钮,第' + (data.index + 1) + '张图片');
+                //         },
+                //         fail: function(err) {
+                //             console.log(err.errMsg);
+                //         }
+                //     }
+                // });
+            },
+            fail: (error) => {
+
+            }
         })
+    }
+
+    const deletePhoto = (index) => {
+        photosPath.value.splice(index, 1);
     }
 
 </script>

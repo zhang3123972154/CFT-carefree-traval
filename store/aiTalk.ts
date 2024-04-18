@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
 
-function createUserMessage(content: String) {
+function createUserMessage(text: String, images: String[]) {
     return {
         side: false,
-        content: content
+        text: text,
+        images: images
     }
 }
 
@@ -13,7 +14,7 @@ export default defineStore("aiTalk", {
         history: [
             {
                 side: false,    // 代表 user
-                content: "三月想出门旅行，推荐去哪儿？"
+                text: "三月想出门旅行，推荐去哪儿？"
                 // todo time: "2023-12-10-XXX"
             },
             {
@@ -29,9 +30,10 @@ export default defineStore("aiTalk", {
                         type: "PT-spot", text: "东湖樱花园",
                         grade: 4.9, location: "武昌区鲁磨路665号", 
                         price: 55, imgPath: "/static/example/background/spot-1.png"
+                        // ... 
                     },
                     {
-                        type: "PT-spot", text: "黄鹤楼",
+                        type: "PT-thing", text: "黄鹤楼",
                         grade: 4.8, location: "武昌区蛇山西山坡特2号", 
                         price: 70, imgPath: "/static/example/background/spot-2.png"
                     },
@@ -52,7 +54,7 @@ export default defineStore("aiTalk", {
             },
             {
                 sied: false,
-                content: "武汉有什么景点推荐？"
+                text: "武汉有什么景点推荐？"
             },
             {
                 side: true,
@@ -78,8 +80,8 @@ export default defineStore("aiTalk", {
 
   },
   actions: {
-    sendUserMessage(content: String) {
-        const userContent = createUserMessage(content);
+    sendUserMessage(text: String, images: String[]) {
+        const userContent = createUserMessage(text, images);
         this.history.push(userContent);
     }
   }
