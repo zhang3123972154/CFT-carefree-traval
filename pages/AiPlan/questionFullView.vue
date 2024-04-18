@@ -10,6 +10,8 @@
         <view class="question-container">
             <position v-show="questionIndex == 0"/>
             <timeView v-show="questionIndex == 1"/>
+            <preference v-show="questionIndex == 2"/>
+            <budget v-show="questionIndex == 3"/>
         </view>
         <!--info 原本的输入框-->
         <!-- <u-icon class="mt-30" :name="iconPath.LOGO" size="105"></u-icon>
@@ -47,17 +49,20 @@
             }" @click="gotoBack">取消</t-btn>
             <t-btn variant="tonal" class="btn-base" :custom-style="{
                 color: '#FFFFFF',
-                backgroundColor: '#FFC300'
-            }" @click="gotoAiTalk">完成</t-btn>
+                backgroundColor: '#FFC300',
+                opacity: setFinishButtomOpacity
+            }" @click="gotoAiTalk">{{ finishButtonText }}</t-btn>
         </view>
     </view>
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed } from "vue";
     // com
     import position from "./position.vue";
     import timeView from "./time.vue";
+    import preference from "./preference.vue";
+    import budget from "./budget.vue";
     // store
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
@@ -72,6 +77,19 @@
     const questionIndex = ref(0);
 
 // FUNC
+    const finishButtonText = computed(() => {
+        if(questionIndex.value == titleList.value.length - 1)
+            return "完成";
+        else
+            return "跳过";
+    })
+    const finishButtonAble = computed(() => {
+        return questionIndex.value >= 2;
+    })
+    const setFinishButtomOpacity = computed(() => {
+        return finishButtonAble.value ? "1" : ".5";
+    })
+
     // tag
     const lastQuestion = () => {
         let index = questionIndex.value - 1;
@@ -112,6 +130,8 @@
     }
 
     const gotoAiTalk = () => {
+        if(!finishButtonAble.value)
+            return;
         uni.navigateTo({ url: '/pages/AiTalk/AiTalkView' })
     }
 

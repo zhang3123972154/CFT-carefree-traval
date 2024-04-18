@@ -14,6 +14,8 @@
                     :way-list="TIME_RECOMMEND"
                     :spot-list="[]"
                     :thing-list="[]"
+
+                    lightHold
                     @choose="choose"
                 />
                 <view class="flex-vertical gap-10 mt-10">

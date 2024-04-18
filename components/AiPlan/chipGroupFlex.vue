@@ -22,7 +22,7 @@
                 />
             </template>
 
-            <template #suffix>
+            <template v-if="!props.noReload" #suffix>
                 <t-chip :kind="props.sufKind" light @click="emits('reload')">
                     <u-icon name="/static/icon/change-chip.svg"></u-icon>
                 </t-chip>
@@ -46,7 +46,7 @@
             type: String,
             default: "默认标题"
         },
-        openStart: {    // info 用于初始化 openFlag 的形式
+        closeStart: {    // info 用于初始化 openFlag 的形式
             type: Boolean,
             default: false
         },
@@ -59,12 +59,16 @@
         thingList: Array,
         // tag 前后操作的功能键 样式
         preKind: String,
-        sufKind: String
+        sufKind: String,
+        noReload: {    // info 关闭后置 reload 按钮
+            type: Boolean,
+            default: false
+        }
     });
     const emits = defineEmits(["add", "reload", "delete"]);
     
     // flag
-    const openFlag = ref(props.openStart);
+    const openFlag = ref(props.closeStart);
     const clearTrigger = ref(false);
 
 // FUNC

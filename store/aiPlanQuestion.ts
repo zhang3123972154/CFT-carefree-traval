@@ -96,3 +96,34 @@ export const useTime = defineStore("timeStore", {
         }
     }
 })
+
+export const usePreference = defineStore("preference", {
+    state: () : {
+        followList: string[],
+        followChosed: string[],
+
+        themeList: string[],
+        themeChosed: string[],
+
+        // info "or" 级别
+        tightnessList: string[],
+        tightnessChosed: string[],
+
+        hotelStallList: string[],
+        hotelStallChosed: string[]
+    } => {
+        return {
+            followList: ["亲子", "情侣", "单人", "好友结伴"],
+            followChosed: [],
+            themeList: ["拍照", "美食", "购物", "自然", "人文", "休闲娱乐", "冒险刺激", "滑雪", "夜景"],
+            themeChosed: [],
+
+            tightnessList: ["宽松", "正常", "紧凑"],
+            tightnessChosed: [],
+
+            hotelStallList: ["穷游型", "平价型", "舒适型（3星级）", "奢华型（4星级）", "顶奢型（5星级以及以上）"],
+            hotelStallChosed: []
+        }
+    },
+    
+})
