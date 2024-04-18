@@ -1,7 +1,7 @@
 <!--mark AITALK 的内容-->
 <!--info 第二版-->
 <template>
-    <view class="flex-vertical">
+    <view class="flex-vertical base-color">
         <header-ai></header-ai>
         <!--bug 和 chip-similarWin 冲突 -->
         <view class="flex-vertical container-dialogue gap-10">
@@ -57,6 +57,10 @@
 </script>
 
 <style scoped>
+
+.base-color {
+    background-color: #f9f9f9;
+}
 
 .container-dialogue {
     background-color: #f9f9f9;

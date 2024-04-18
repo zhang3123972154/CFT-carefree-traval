@@ -1,5 +1,13 @@
 <template>
     <tabberBase z-index="6" :bottom="moveHeight">
+        <template #topfix>
+            <view class="photo-container flex-horizontal gap-5">
+                <up-image :show-loading="true" src="/static//example//1.jpg" radius="5" width="60px" height="60px"/>
+                <up-image :show-loading="true" src="/static//example//1.jpg" radius="5" width="60px" height="60px"/>
+                <up-image :show-loading="true" src="/static//example//1.jpg" radius="5" width="60px" height="60px"/>
+            </view>
+        </template>
+
         <template #prefix>
             <t-btn-icon :icon="iconPath.voice"></t-btn-icon>
         </template>
@@ -24,9 +32,9 @@
             </view>
         </template>
         <template #suffix>
-            <t-btn-icon :icon="iconPath.emoji"></t-btn-icon>
-            <t-btn-icon v-if="inputContent === ''" :icon="iconPath.add" @click="questionFlag = true"></t-btn-icon>
-            <view v-else class="send-container" @touchend.prevent="sendUserMessage">
+            <!-- <t-btn-icon :icon="iconPath.emoji"></t-btn-icon> -->
+            <t-btn-icon :icon="iconPath.add" @click="menuFlag = !menuFlag"></t-btn-icon>
+            <view v-if="inputContent !== ''" class="send-container" @touchend.prevent="sendUserMessage">
                 <text>发送</text>
             </view>
         </template>
@@ -36,10 +44,16 @@
     <u-overlay class="flex-center-both" :show="questionFlag" @click="questionFlag = false">
         <questionWin/>
     </u-overlay>
+    <!--info 菜单栏-->
+    <!--todo 之后写一个动画-->
+    <view v-show="menuFlag" class="flex-vertical menu-container">
+        <t-btn-icon icon="/static/icon/LOGO.svg" @click="questionFlag = true"/>
+        <t-btn-icon :icon="iconPath.photo" @click="addPhoto"/>
+    </view>
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed } from "vue";
     import { pathPoint } from "@/js/struct";
     // com
     import tabberBase from "../Com/tabberBase.vue";
@@ -77,7 +91,10 @@
             pathPoint("spot", "武汉长江大桥", ["江景"]),
             pathPoint("spot", "民宿"),
         ]
-    })
+    });
+
+    // flag
+    const menuFlag = ref(false);
 
 // FUNC
     const sendUserMessage = () => {
@@ -90,9 +107,23 @@
         emits("keyBoardChange", infor.detail);
         moveHeight.value = infor.detail.height;
     }
+    const moveHeightPhoto = computed(() => {
+        return moveHeight.value + 50;
+    })
     
     const changeInputHeight = (infor) => {
         inputHeight.value = inputLineHeight * infor.detail.lineCount;
+    }
+
+    const addPhoto = () => {
+        // info 关于权限，会自动申请，挺好。
+        uni.chooseImage({
+            count: 3,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success: ({ tempFilePaths, tempFiles }) => {},
+            fail: (error) => {}
+        })
     }
 
 </script>
@@ -120,6 +151,25 @@
     overflow-y: hidden;
     border-top: 5px solid #f9f9f9;
     border-bottom: 5px solid #f9f9f9;
+}
+
+.menu-container {
+    position: fixed;
+    right: 0;
+    bottom: 60px;
+ 
+    background-color: #ffffff;
+    border-radius: 20px 0 0 20px;
+    padding: 2px;
+    padding-right: 0;
+}
+
+.photo-container {
+    background-color: #ffffff;
+    border-top-right-radius: 15px;
+    width: 200px;
+    padding: 5px;
+    padding-bottom: 0;
 }
 
 </style>        

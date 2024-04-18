@@ -251,6 +251,9 @@ export const useAiIconPath = defineStore("iconAi", {
         list: function(): string {
             return iconDirPath + this.dir + "list.svg";
         },
+        photo: function(): string {
+            return iconDirPath + this.dir + "photo.svg";
+        }
     }
 })
 
