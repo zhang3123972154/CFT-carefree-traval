@@ -38,5 +38,5 @@ export const useApiUser = {
 export const useApiAI = {
     getAIHistory: (date) => get("/ai/history", {}, data),
     sendImageOCR: (data) => post("/ai/ocr/general", {}, data),
-    sendMessage: (data) => post("/ai/senwd", {}, data)
+    sendMessage: (data) => post("/ai/send", {}, data)
 }

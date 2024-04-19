@@ -1,10 +1,24 @@
 import { defineStore } from "pinia";
 
+import { pathToBase64 } from "@/js/image";
+
+import { useApiAI } from "../request/api";
+const api = useApiAI;
+
 function createUserMessage(text: String, images: String[]) {
     return {
         side: false,
         text: text,
         images: images
+    }
+}
+
+function createAiMessage(text: String) { // test 简单版
+    return {
+        side: true,
+        content: [
+            { type: "text", text: text}
+        ]
     }
 }
 
@@ -80,9 +94,35 @@ export default defineStore("aiTalk", {
 
   },
   actions: {
-    sendUserMessage(text: String, images: String[]) {
+    async sendUserMessage(text: String, images: String[]) {
         const userContent = createUserMessage(text, images);
         this.history.push(userContent);
+
+        if(images != null) {
+            const imagePath = images[0];
+            pathToBase64(imagePath)
+                    .then(base64 => {
+                        console.info(base64);
+                        const rse = api.sendImageOCR(base64)
+                            .then(res => {
+                                console.info("api-back", res);
+                                this.loadAiMessage(res);
+                            })
+                            .catch(error => {
+                                console.info(error);
+                            });
+                    })
+                    .catch(error => {
+                        console.info("base64", error);
+                    })
+        }
+        else {
+
+        }
+    },
+    loadAiMessage(content: String) {
+        const AiContent = createAiMessage(content);
+        this.history.push(AiContent);
     }
   }
 })

@@ -10,8 +10,8 @@
         <view class="question-container">
             <position v-show="questionIndex == 0"/>
             <timeView v-show="questionIndex == 1"/>
-            <preference v-show="questionIndex == 2"/>
-            <budget v-show="questionIndex == 3"/>
+            <budget v-show="questionIndex == 2"/>
+            <preference v-if="questionIndex == 3"/>
         </view>
         <!--info 原本的输入框-->
         <!-- <u-icon class="mt-30" :name="iconPath.LOGO" size="105"></u-icon>
@@ -73,7 +73,7 @@
 // DATA
     const emits = defineEmits(['close']);
 
-    const titleList = ref(["旅行地点", "旅行时间", "旅行偏好", "预算", "个性标签"]);
+    const titleList = ref(["旅行地点", "旅行时间", "预算", "旅行偏好", "个性标签"]);
     const questionIndex = ref(0);
 
 // FUNC
