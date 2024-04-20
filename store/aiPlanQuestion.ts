@@ -102,15 +102,18 @@ export const useTime = defineStore("timeStore", {
 // 3. 预算
 export const useBudget = defineStore("budget", {
     state: () : {
-        budget: Number
+        budget: Number,
+        maxBudget: Number
     } => {
         return {
-            budget: 1000
+            budget: 1000,
+            maxBudget: 2000
         }
     },
     actions: {
-        setBudget(money: Number) {
-            this.budget = money;
+        setBudget(money1: Number, money2: Number) {
+            this.budget = money1;
+            this.maxBudget = money2;
             console.info("budget-change", this.budget);
         }
     }
