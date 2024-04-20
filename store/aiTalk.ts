@@ -2,8 +2,8 @@ import { defineStore } from "pinia";
 
 import { pathToBase64 } from "@/js/image";
 
-import { useApiAI } from "../request/api";
-const api = useApiAI;
+import { apiAI } from "../request/api";
+const api = apiAI;
 
 function createUserMessage(text: String, images: String[]) {
     return {
@@ -103,7 +103,9 @@ export default defineStore("aiTalk", {
             pathToBase64(imagePath)
                     .then(base64 => {
                         console.info(base64);
-                        const rse = api.sendImageOCR(base64)
+                        const rse = api.sendImageOCR({
+                            image: base64
+                        })
                             .then(res => {
                                 console.info("api-back", res);
                                 this.loadAiMessage(res);

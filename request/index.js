@@ -24,6 +24,7 @@ export default class Request {
         //         mask: true
         //     });
         return new Promise((resolve, reject) => {
+            console.info("request-data", url, method, header, data);
             uni.request({
                 url: url,
                 method: method,

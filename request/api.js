@@ -19,13 +19,8 @@ function post(url, header, data) {
     })
 }
 
-function apiTest() {
-    console.info("api-test 123");
-}
-
 // tag 外部结构
-export const useApiUser = {
-    // apiTest: () => apiTest(),
+export const apiUser = {
     loginByUsername: (data) => get("/user/loginByUsername", {}, data),
     sendEmailCode: (data) => get("/user/sendEmailCode", {}, data),
     register: (data) => post("/user/register", {}, data),
@@ -35,7 +30,7 @@ export const useApiUser = {
     
 };
 
-export const useApiAI = {
+export const apiAI = {
     getAIHistory: (date) => get("/ai/history", {}, data),
     sendImageOCR: (data) => post("/ai/ocr/general", {}, data),
     sendMessage: (data) => post("/ai/send", {}, data)

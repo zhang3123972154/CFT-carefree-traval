@@ -1,40 +1,47 @@
 <template>
     <view>
         <h1>个人主页（临时）</h1>
-        <view>
-            <h2>注册</h2>
-            <h2>登录</h2>
+        <view class="flex-vertical gap-10" :style="{
+            padding: '20px'
+        }">
+            <h2>注册()</h2>
+            <t-btn @click="login">
+                登录
+            </t-btn>
+            <t-btn @click="addTag">
+                添加标签
+            </t-btn>
         </view>
         <t-tabbar />
     </view>
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, reactive } from "vue";
     // com
     // store
-    // js
-    import { useApiUser } from "@/request/api";
-    const api = useApiUser();
+    import useUserStore from "@/store/userInfor";
+    const userInfor = useUserStore();
 // DATA
-    const emailFrom = ref({
-        email: "2993167370@qq.com", // test
-        purposeIdentify: 0
-    });
+    // const emailFrom = ref({
+    //     email: "2993167370@qq.com", // test
+    //     purposeIdentify: 0
+    // });
 
-    const loginByUsername = ref({
+    const loginByUsername = reactive({
         username: "2993167370@qq.com",
         password: "123456"
     })
 
-    // const res = api.sendEmailCode(emailFrom.value);
-    const res = api.loginByUsername(loginByUsername.value).then(res => {
-        console.info("success", res);
-    }).catch(err => {
-        console.info("fail", err);
-    });
-
 // FUNC
+
+    const login = () => {
+        userInfor.login(loginByUsername.username, loginByUsername.password);
+    }
+
+    const addTag = () => {
+
+    }
 
 </script>
 
