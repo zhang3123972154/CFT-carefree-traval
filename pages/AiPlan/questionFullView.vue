@@ -10,7 +10,7 @@
         <view class="question-container">
             <position v-show="questionIndex == 0"/>
             <timeView v-show="questionIndex == 1"/>
-            <budget v-show="questionIndex == 2"/>
+            <budget v-show="questionIndex == 2" :questionIndex="questionIndex"/>
             <preference v-if="questionIndex == 3"/>
         </view>
         <!--info 原本的输入框-->
@@ -67,9 +67,10 @@
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
     const iconInput = useDetailIconPath();  // info 原本的输入框有在用
-    import { useSpot, useTime } from "@/store/aiPlanQuestion";
+    import { useSpot, useTime, useBudget } from "@/store/aiPlanQuestion";
     const spotStore = useSpot();
     const timeStore = useTime();
+    const budgetStore = useBudget();
 // DATA
     const emits = defineEmits(['close']);
 

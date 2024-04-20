@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 
 const NUM_STEP = 10;
 
+// 1. 地点相关
 export const useSpot = defineStore("spotStore", {
     state: (): {
         provinceIndex: Number,
@@ -80,6 +81,7 @@ export const useSpot = defineStore("spotStore", {
     }
 })
 
+// 2. 时间
 export const useTime = defineStore("timeStore", {
     state: () : {
         dateStart: string,
@@ -97,6 +99,24 @@ export const useTime = defineStore("timeStore", {
     }
 })
 
+// 3. 预算
+export const useBudget = defineStore("budget", {
+    state: () : {
+        budget: Number
+    } => {
+        return {
+            budget: 1000
+        }
+    },
+    actions: {
+        setBudget(money: Number) {
+            this.budget = money;
+            console.info("budget-change", this.budget);
+        }
+    }
+})
+
+// 4. 多种风格设定
 export const usePreference = defineStore("preference", {
     state: () : {
         followList: string[],
