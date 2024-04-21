@@ -229,6 +229,8 @@ export const useIndividual = defineStore("individualStore", {
     },
     actions: {
         getSubTitleListData(index: Number) {
+            if(index >= this.subTitleList.length)
+                return this.subTitleList[0].content;
             return this.subTitleList[index].content;
         }
     }

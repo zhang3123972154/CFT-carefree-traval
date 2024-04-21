@@ -46,7 +46,7 @@
     // com
     import Search from "@/components/Com/search.vue";
     import Card from "@/components/Home/card.vue";
-    import planStartVue from './planStart.vue';
+    // import planStartVue from './planStart.vue';
     import starVue from './star.vue';
     import tHeader from '@/components/Com/header.vue';
 

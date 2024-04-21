@@ -20,7 +20,7 @@
             <t-btn-icon icon="/static/icon/list.svg" @click="settingFlag = true"></t-btn-icon>
             <t-btn-icon icon="/static/icon/more.svg" @click.stop="openFunction"></t-btn-icon>
             <!--todo 这里换规划 -> 导航-->
-            <t-btn-icon icon="/static/icon/LOGO.svg" @click.stop=""></t-btn-icon>
+            <t-btn-icon icon="/static/icon/LOGO.svg" @click.stop="planFlag = true"></t-btn-icon>
         </view>
         <!--菜单功能-->
         <FunctionMenu v-show="functionFlag"
@@ -42,20 +42,21 @@
         <Setting />
     </u-popup>
     <!--规划功能-->
-    <!-- <u-overlay class="flex-center-both" :show="planFlag" @click="planFlag = false">
-        未有规划之时
-        <questionFullView/>
-        已有规划之时
+    <u-overlay class="flex-center-both" :show="planFlag" @click="planFlag = false">
+        <!-- 未有规划之时 -->
+        <!-- <questionFullView/> -->
+        <!-- 已有规划之时 -->
         <view class="flex-center-both">
-            <planStartVue />
+            <planStart />
         </view>
-    </u-overlay> -->
+    </u-overlay>
 </template>
 
 <script setup>
     import { ref, nextTick } from "vue";
     import FunctionMenu from "./functionFloat.vue";
     import Setting from "./setting.vue";
+    import planStart from '@/pages/Home/planStart.vue';
     // store
     import usePhoneInfor from "@/store/phoneInfor";
     const phoneInforStore = usePhoneInfor();
