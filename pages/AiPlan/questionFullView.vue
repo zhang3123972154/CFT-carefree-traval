@@ -12,6 +12,7 @@
             <timeView v-show="questionIndex == 1"/>
             <budget v-show="questionIndex == 2" :questionIndex="questionIndex"/>
             <preference v-if="questionIndex == 3"/>
+            <individual-tag v-if="questionIndex == 4"/> <!-- -->
         </view>
         <!--info 原本的输入框-->
         <!-- <u-icon class="mt-30" :name="iconPath.LOGO" size="105"></u-icon>
@@ -63,6 +64,7 @@
     import timeView from "./time.vue";
     import preference from "./preference.vue";
     import budget from "./budget.vue";
+    import individualTag from "./individualTag.vue";
     // store
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();

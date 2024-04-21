@@ -119,7 +119,7 @@ export const useBudget = defineStore("budget", {
     }
 })
 
-// 4. 多种风格设定
+// 4. 基础风格设定
 export const usePreference = defineStore("preference", {
     state: () : {
         followList: string[],
@@ -149,4 +149,87 @@ export const usePreference = defineStore("preference", {
         }
     },
     
+})
+
+interface SubTitle {
+    title: string,
+    tags: string[]
+}
+
+interface SubTitleList {
+    content: SubTitle[]
+}
+
+// 4. individual tags
+export const useIndividual = defineStore("individualStore", {
+    state: (): {
+        mainTitle: string[],
+        subTitleList: SubTitleList[],
+    } => {
+        return {
+            mainTitle: ["旅行主题", "旅行风格", "旅行感受", 
+                "情感+地点", "情感+地点+项目", "地点+项目", "情感+风格"],
+            subTitleList: [
+                {
+                    content: [
+                        {
+                            "title": "自然风光",
+                            "tags": ["山川湖海", "森林草原", "星空秘境", "花海梯田"],
+                        },
+                        {
+                            "title": "人文景观",
+                            "tags": ["古镇古村", "历史遗迹", "文化体验", "宗教朝圣"]
+                        },
+                        {
+                            "title": "城市风情",
+                            "tags": ["时尚潮流", "美食购物", "文艺气息", "夜生活"]
+                        },
+                        {
+                            "title": "休闲度假",
+                            "tags": ["温泉spa", "海岛度假", "乡村别墅", "亲子乐园"]
+                        },
+                        {
+                            "title": "户外探险",
+                            "tags": ["徒步登山", "极限运动", "露营野炊", "房车旅行"]
+                        }
+                    ]
+                    
+                },
+                {
+                    content: [
+                        {
+                            "title": "自由行",
+                            "tags": ["随心所欲", "不受约束", "深度体验"]
+                        },
+                        {
+                            "title": "跟团游",
+                            "tags": ["省心省力", "无忧无虑", "结识朋友"]
+                        },
+                        {
+                            "title": "自驾游",
+                            "tags": ["说走就走", "自由自在", "沿途风光"]
+                        },
+                        {
+                            "title": "奢华游",
+                            "tags": ["高端享受", "顶级服务", "尊贵体验"]
+                        },
+                        {
+                            "title": "背包旅行",
+                            "tags": ["轻装简行", "经济实惠", "贴近自然"]
+                        },
+                        {
+                            "title": "其他",
+                            "tags": ["骑行旅行", "徒步旅行", "志愿服务", "特殊人群旅行"]
+                        }
+                    ]
+                    
+                }
+            ]
+        }   
+    },
+    actions: {
+        getSubTitleListData(index: Number) {
+            return this.subTitleList[index].content;
+        }
+    }
 })

@@ -153,8 +153,6 @@
         hotelStallList.value.splice(preferStore.hotelStallChosed.length, 0, data);
     }
 
-
-
 </script>
 
 <style scoped>
