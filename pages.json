@@ -44,6 +44,9 @@
     },
     {
       "path": "pages/NavigationGaode/navigationView"  
+    },
+    {
+      "path": "pages/AiTalk/talkAndPlan"
     }
   ],
   "globalStyle": {

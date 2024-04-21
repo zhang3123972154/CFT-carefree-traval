@@ -9,7 +9,8 @@
         </template>
         <template #suffix>
             <t-btn-icon :icon="iconPath.phone"></t-btn-icon>
-            <t-btn-icon :icon="iconPath.information"></t-btn-icon>
+            <!--test 先放到这里-->
+            <t-btn-icon :icon="iconPath.information" @click="gotoChoose"></t-btn-icon>
         </template>
         <!--info 本次的个性标签库-->
         <template #flodfix>
@@ -108,6 +109,11 @@
 
     const close = () => {
       longPressFlag.value = false;
+    }
+
+    // test
+    const gotoChoose = () => {
+      uni.navigateTo({ url: '/pages/AiTalk/talkAndPlan' })
     }
 
 </script>
