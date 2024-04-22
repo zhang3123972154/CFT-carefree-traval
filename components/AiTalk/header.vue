@@ -1,6 +1,10 @@
 <template>
-    <headerBase :flodZIndexTop="flodZIndexTop">
+    <headerBase :flodZIndexTop="flodZIndexTop"  back-delete>
         <template #prefix>
+            <!--update 还是得考虑一下到选择页面的方式-->
+            <u-icon @click="gotoChoose"
+              class="flex-center-both top-icon" size="18" :name="iconArrowPath.left">
+            </u-icon>
             <u-icon class="flex-center-both top-icon" size="30" :name="iconPath.AI"></u-icon>
             <text @click="toggleOverlay(true)" class="ai-name ml-5">旅行助手</text>
         </template>
@@ -40,8 +44,9 @@
     import usePhoneInfor from "@/store/phoneInfor";
     const phoneInforStore = usePhoneInfor();
 
-    import { useAiIconPath } from "@/store/dataBase";
+    import { useAiIconPath, useArrowsIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();
+    const iconArrowPath = useArrowsIconPath();
 // DATA
     const props = defineProps({
 

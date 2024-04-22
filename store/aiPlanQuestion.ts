@@ -2,6 +2,16 @@ import { defineStore } from "pinia";
 
 const NUM_STEP = 10;
 
+export const useTitle = defineStore("titleStore", {
+    state: (): {
+        title: string[]
+    } => {
+        return {
+            title: ["旅行地点", "旅行时间", "预算", "旅行偏好", "个性标签"]
+        }
+    }
+})
+
 // 1. 地点相关
 export const useSpot = defineStore("spotStore", {
     state: (): {
@@ -151,6 +161,7 @@ export const usePreference = defineStore("preference", {
     
 })
 
+// 5. individual tags
 interface SubTitle {
     title: string,
     tags: string[]
@@ -160,7 +171,6 @@ interface SubTitleList {
     content: SubTitle[]
 }
 
-// 4. individual tags
 export const useIndividual = defineStore("individualStore", {
     state: (): {
         mainTitle: string[],

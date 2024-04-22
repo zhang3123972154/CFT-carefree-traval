@@ -8,7 +8,7 @@
         <u-icon :name="openFlag ? iconPath.down : iconPath.up" 
             @click="openFlag = !openFlag"/>
     </view>
-    <view v-if="openFlag" class="flex-vertical gap-5 dialog-container">
+    <view v-if="openFlag" class="flex-vertical gap-10 dialog-container">
         <dialog-item/>
         <dialog-item/>
         <dialog-item/>

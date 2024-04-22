@@ -69,14 +69,15 @@
     import { useAiIconPath, useDetailIconPath } from "@/store/dataBase.ts";
     const iconPath = useAiIconPath();
     const iconInput = useDetailIconPath();  // info 原本的输入框有在用
-    import { useSpot, useTime, useBudget } from "@/store/aiPlanQuestion";
+    import { useSpot, useTime, useBudget, useTitle } from "@/store/aiPlanQuestion";
+    const titleStore = useTitle();
     const spotStore = useSpot();
     const timeStore = useTime();
     const budgetStore = useBudget();
 // DATA
     const emits = defineEmits(['close']);
 
-    const titleList = ref(["旅行地点", "旅行时间", "预算", "旅行偏好", "个性标签"]);
+    const titleList = ref(titleStore.title);
     const questionIndex = ref(0);
 
 // FUNC
@@ -135,7 +136,8 @@
     const gotoAiTalk = () => {
         if(!finishButtonAble.value)
             return;
-        uni.navigateTo({ url: '/pages/AiTalk/AiTalkView' })
+        uni.redirectTo({ url: '/pages/AiTalk/AiTalkView' })
+        // info 关闭问卷view，AiTalkView 返回时将会回到 Home
     }
 
 
