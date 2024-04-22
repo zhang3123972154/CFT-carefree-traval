@@ -1,7 +1,7 @@
 <template>
     <!--info 强行捕获 touchmove-->
     <view @click.stop="closeFunctionWin" @touchstart="closeFunctionWin" 
-        @touchmove.capture="scrollHandle" @touchend.cap@touchmove.capture="scrollEnd">
+        @touchmove.capture="scrollHandle" @touchend.capture="scrollEnd">
         <!-- @touchmove.capture="scrollHandle" @touchend.capture="scrollEnd"> -->
         <!-- info 捕获操作-->
         <!--top function-->

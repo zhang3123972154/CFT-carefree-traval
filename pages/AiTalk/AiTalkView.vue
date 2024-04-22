@@ -1,7 +1,7 @@
 <!--mark AITALK 的内容-->
 <!--info 第二版-->
 <template>
-    <view class="flex-vertical base-color">
+    <view class="flex-vertical base-color" @click="closeWin" @touchmove="closeWin">
         <header-ai></header-ai>
         <!--bug 和 chip-similarWin 冲突 -->
         <view class="flex-vertical container-dialogue gap-10">
@@ -34,6 +34,10 @@
     const keyboardHeight = ref(0);
 
 // FUNC
+    const closeWin = () => {   // mark 最基本的全局监听点击事件，
+        uni.$emit("baseClick");
+    }
+
     const gotoPageEnd = (time) => {
         nextTick(() => {
             uni.pageScrollTo({ scrollTop: 99999, duration: time });

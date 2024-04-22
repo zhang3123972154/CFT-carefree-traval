@@ -34,7 +34,7 @@
         </template>
         <template #suffix>
             <!-- <t-btn-icon :icon="iconPath.emoji"></t-btn-icon> -->
-            <t-btn-icon :icon="iconPath.add" @click="menuFlag = !menuFlag"></t-btn-icon>
+            <t-btn-icon :icon="iconPath.add" @click="toggleMenu"></t-btn-icon>
             <view v-if="inputContent !== ''" class="send-container" @touchend.prevent="sendUserMessage">
                 <text>发送</text>
             </view>
@@ -47,7 +47,7 @@
     </u-overlay>
     <!--info 菜单栏-->
     <!--todo 之后写一个动画-->
-    <view v-show="menuFlag" class="flex-vertical menu-container">
+    <view v-show="menuFlag" class="flex-vertical menu-container" @click.stop>
         <t-btn-icon icon="/static/icon/LOGO.svg" @click="questionFlag = true"/>
         <t-btn-icon :icon="iconPath.photo" @click="addPhoto"/>
     </view>
@@ -142,6 +142,13 @@
 
     const deletePhoto = (index) => {
         photosPath.value.splice(index, 1);
+    }
+
+    const toggleMenu = () => {
+        menuFlag.value = !menuFlag.value;
+        uni.$once("baseClick", () => {
+            menuFlag.value = false;
+        })
     }
 
 </script>
