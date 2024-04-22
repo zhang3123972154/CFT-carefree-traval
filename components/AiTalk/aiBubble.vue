@@ -1,6 +1,6 @@
 <template>
     <view class="flex-top-horizontal container gap-10">
-        <u-icon :name="iconPath.AI" size="30"></u-icon>
+        <u-icon :name="props.avatar" size="30"></u-icon>
         <view class="talk-container wrap">
             <component :is="item.type" v-for="(item, index) in props.content" :key="index">
                 <template v-if="item.type === 'endl'">
@@ -50,6 +50,10 @@
     const iconPath = useAiIconPath();
 // DATA
     const props = defineProps({
+        avatar: {
+            type: String,
+            default: "/static/icon/AiTalk/AI.svg"
+        },
         content: {
             type: Array,
             default: () => [
@@ -63,6 +67,7 @@
                 { type: "text", text: "接下来是规划测试..."},
             ]
         },
+        time: String // todo 
         // ... 如何处理 tags
     });
     const emits = defineEmits([]);

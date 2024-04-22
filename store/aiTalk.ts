@@ -23,9 +23,11 @@ function createAiMessage(text: String) { // test 简单版
     }
 }
 
-export const aiTalkHistory = defineStore("aiTalk", {
+export const aiTalk = defineStore("aiTalkContent", {
   state: () => {
     return {
+        avatar: "/static/icon/AiTalk/AI.svg",
+        name: "旅行助手",
         history: [
             {
                 side: false,    // 代表 user
@@ -126,6 +128,10 @@ export const aiTalkHistory = defineStore("aiTalk", {
     loadAiMessage(content: String) {
         const AiContent = createAiMessage(content);
         this.history.push(AiContent);
+    },
+    loadAnohterTalk(avatar: string, name: string) {
+        this.avatar = avatar;
+        this.name = name;
     }
   }
 })

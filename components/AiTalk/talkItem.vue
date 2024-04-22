@@ -22,6 +22,10 @@
     // store
     import { useArrowsIconPath } from "@/store/dataBase";
     const iconPath = useArrowsIconPath();
+
+    import { aiTalk } from "@/store/aiTalk";
+    const aiTalkStore = aiTalk();
+
 // DATA
     const props = defineProps({
         name: {
@@ -41,8 +45,10 @@
 
 // FUNC
     const gotoAiTalk = (index) => {
-        // todo 
-        uni.navigateTo({ url: '/pages/AiTalk/AiTalkView' })
+        aiTalkStore.loadAnohterTalk(props.avatar, props.name);
+
+        // todo 请求历史对话
+        uni.redirectTo({ url: '/pages/AiTalk/AiTalkView' })
     }
 
 </script>

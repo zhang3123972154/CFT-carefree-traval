@@ -3,9 +3,10 @@
         <template v-for="(point, index) in props.path" :key="index">
             <u-icon v-if="index != 0" :name="iconPath.arrow" size="10"></u-icon>
 
-            <t-chip :kind="point.type" :text="point.text"></t-chip>
+            <t-chip :kind="point.type" :text="point.text" lightStart></t-chip>
 
             <t-chip 
+                lightStart
                 v-for="(thing, index) in point.things" :key="index"
                 kind="thing" :text="thing">
             </t-chip>

@@ -2,13 +2,16 @@
 <!--info 第二版-->
 <template>
     <view class="flex-vertical base-color" @click="closeWin" @touchmove="closeWin">
-        <header-ai></header-ai>
+        <header-ai :avatar="talkStore.avatar" :name="talkStore.name"></header-ai>
         <!--bug 和 chip-similarWin 冲突 -->
         <view class="flex-vertical container-dialogue gap-10">
             <userBubble/>
-            <aiBubble/>
+            <aiBubble :avatar="talkStore.avatar"/>
             <template v-for="(item, index) in talkStore.history" :key="index">
-                <ai-bubble v-if="item.side" :content="item.content"/>
+                <ai-bubble v-if="item.side" 
+                    :avatar="talkStore.avatar"
+                    :content="item.content"
+                />
                 <user-bubble v-else :text="item.text" :images="item.images"/>
             </template>
             <view :style="{
@@ -27,8 +30,8 @@
     import userBubble from "@/components/AiTalk/userBubble.vue";
     import aiBubble from "@/components/AiTalk/aiBubble.vue";
     // store
-    import { aiTalkHistory } from "@/store/aiTalk";
-    const talkStore = aiTalkHistory();
+    import { aiTalk } from "@/store/aiTalk";
+    const talkStore = aiTalk();
 // DATA
     // animation
     const keyboardHeight = ref(0);
