@@ -43,8 +43,8 @@ export const useSpot = defineStore("spotStore", {
             ],
             cityChosed: [],
 
-            start: "",
-            end: "",
+            start: "起点",
+            end: "终点",
         }
     },
     getters: {
@@ -95,11 +95,11 @@ export const useSpot = defineStore("spotStore", {
 export const useTime = defineStore("timeStore", {
     state: () : {
         dateStart: string,
-        timeLength: number
+        timeLength: String
     } => {
         return {
-            dateStart: "",
-            timeLength: 0
+            dateStart: "2024-4-20",
+            timeLength: "三天"
         }
     },
     getters: {
@@ -147,15 +147,15 @@ export const usePreference = defineStore("preference", {
     } => {
         return {
             followList: ["亲子", "情侣", "单人", "好友结伴"],
-            followChosed: [],
+            followChosed: ["友人"],
             themeList: ["拍照", "美食", "购物", "自然", "人文", "休闲娱乐", "冒险刺激", "滑雪", "夜景"],
-            themeChosed: [],
+            themeChosed: ["自然"],
 
             tightnessList: ["宽松", "正常", "紧凑"],
-            tightnessChosed: [],
+            tightnessChosed: ["正常"],
 
             hotelStallList: ["穷游型", "平价型", "舒适型（3星级）", "奢华型（4星级）", "顶奢型（5星级以及以上）"],
-            hotelStallChosed: []
+            hotelStallChosed: ["平价型"]
         }
     },
     

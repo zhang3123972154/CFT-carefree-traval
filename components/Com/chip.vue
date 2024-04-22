@@ -38,7 +38,7 @@
             default: "way"
         },
         text: {
-            type: String,
+            type: [String, Number],
             default: "风格"
         },
         belongAiHeader: { // info 为了 aitalk-header 特化
