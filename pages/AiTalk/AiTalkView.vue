@@ -27,8 +27,8 @@
     import userBubble from "@/components/AiTalk/userBubble.vue";
     import aiBubble from "@/components/AiTalk/aiBubble.vue";
     // store
-    import useTalkStore from "@/store/aiTalk";
-    const talkStore = useTalkStore();
+    import { aiTalkHistory } from "@/store/aiTalk";
+    const talkStore = aiTalkHistory();
 // DATA
     // animation
     const keyboardHeight = ref(0);

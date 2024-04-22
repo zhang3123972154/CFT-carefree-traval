@@ -8,10 +8,10 @@
         <u-icon :name="openFlag ? iconPath.down : iconPath.up" 
             @click="openFlag = !openFlag"/>
     </view>
-    <view v-if="openFlag" class="flex-vertical gap-10 dialog-container">
-        <dialog-item/>
-        <dialog-item/>
-        <dialog-item/>
+    <view v-if="openFlag" class="flex-vertical gap-20 dialog-container">
+        <template v-for="(item, index) in props.childTalk" key="index">
+            <dialog-item :title="item.title" :time="item.time" @click="gotoAiTalk(index)"/>
+        </template>
     </view>
 </template>
 
@@ -31,7 +31,8 @@
         avatar: {
             type: String,
             default: "/static/example/User/avatar-3.svg"
-        }
+        },
+        childTalk: Array
     });
     const emits = defineEmits([]);
 
@@ -39,6 +40,10 @@
     const openFlag = ref(false);
 
 // FUNC
+    const gotoAiTalk = (index) => {
+        // todo 
+        uni.navigateTo({ url: '/pages/AiTalk/AiTalkView' })
+    }
 
 </script>
 

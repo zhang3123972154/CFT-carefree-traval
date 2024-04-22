@@ -1,5 +1,5 @@
 <template>
-    <view class="flex-center-horizontal">
+    <view class="flex-center-horizontal container">
         <text class="title">{{ props.title }}</text>
         <text class="time">{{ props.time }}</text>
     </view>
@@ -26,6 +26,11 @@
 </script>
 
 <style scoped>
+
+.container {
+    padding: 5px;
+    border-bottom: 1px solid #00000020;
+}
 
 .title {
     font-size: 14px;

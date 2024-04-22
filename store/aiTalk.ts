@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 import { pathToBase64 } from "@/js/image";
 
 import { apiAI } from "../request/api";
+import { aiTalkHistory } from './aiTalk';
 const api = apiAI;
 
 function createUserMessage(text: String, images: String[]) {
@@ -22,7 +23,7 @@ function createAiMessage(text: String) { // test 简单版
     }
 }
 
-export default defineStore("aiTalk", {
+export const aiTalkHistory = defineStore("aiTalk", {
   state: () => {
     return {
         history: [
@@ -127,4 +128,70 @@ export default defineStore("aiTalk", {
         this.history.push(AiContent);
     }
   }
+})
+
+
+// tag Ai Talk List
+
+interface subTalk {
+    title: string,
+    time: string
+}
+
+interface AiHead {
+    avatar: string,
+    name: string,
+    childTalk: subTalk[]
+}
+
+function creatAiHead(avatar: string, name: string) {
+    return {
+        avatar, name
+    }
+}
+
+
+export const aiTalkList = defineStore("aiTalkList", {
+    state: () : {
+        aiTalkList: AiHead[]
+    } => {
+        return {
+            aiTalkList: [
+                { 
+                    avatar: "/static/example/User/avatar-1.svg",
+                    name: "小A",
+                    childTalk: [
+                        { title: "子问题-1", time: "2024-4-20" },
+                        { title: "子问题-2", time: "2024-4-18" },
+                        { title: "子问题-3", time: "2024-3-20" }
+                    ]
+                },
+                { 
+                    avatar: "/static/example/User/avatar-2.svg",
+                    name: "小B",
+                    childTalk: [
+                        { title: "子问题-1", time: "2024-4-20" },
+                        { title: "子问题-2", time: "2024-4-18" },
+                        { title: "子问题-3", time: "2024-3-20" }
+                    ]
+                },
+                { 
+                    avatar: "/static/example/User/avatar-3.svg",
+                    name: "小C",
+                    childTalk: [
+                        { title: "子问题-1", time: "2024-4-20" },
+                        { title: "子问题-2", time: "2024-4-18" },
+                        { title: "子问题-3", time: "2024-3-20" }
+                    ]
+                }
+            ]
+        }
+    },
+    actions: {
+        // todo 一个根据 time 的重新排序
+        addAiHelper(avatar: string, name: string, time: string) {
+            const newTalk = creatAiHead(avatar, name, time);
+            this.aiTalkHistory.unshift(newTalk);
+        }
+    }
 })

@@ -1,9 +1,12 @@
 <template>
     <view class="flex-vertical container gap-10">
-        <!-- <text>对话列表</text> -->
-        <talk-item/>
-        <talk-item/>
-        <talk-item/>
+        <template v-for="(item, index) in talkList.aiTalkList" :key="index">
+            <talk-item 
+                :avatar="item.avatar"
+                :name="item.name"
+                :child-talk="item.childTalk"
+            />
+        </template>
     </view>
 </template>
 
@@ -12,6 +15,8 @@
     // com
     import talkItem from "@/components/AiTalk/talkItem.vue";
     // store
+    import { aiTalkList } from "@/store/aiTalk";
+    const talkList = aiTalkList();
 // DATA
     const props = defineProps({
 
