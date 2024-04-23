@@ -21,6 +21,7 @@
                 '--status-bar-height': phoneInforStore.statusBarHeight.toString() + 'px'
             }">
                 <Search @click="gotoSearch"/>
+                <chip-group v-show="searchTouchTop" scroll :lightIndex="999"/>
             </view>
             <!--waterfall-->
             <view class="waterfall gap-5 of-x-hidden">
@@ -49,6 +50,7 @@
     // import planStartVue from './planStart.vue';
     import starVue from './star.vue';
     import tHeader from '@/components/Com/header.vue';
+    import chipGroup from "@/components/Home/chipGroup.vue";
 
 // DATA
     const cardList = ref([  
