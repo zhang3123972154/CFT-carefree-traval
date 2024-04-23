@@ -47,8 +47,11 @@
     },
     {
       "path": "pages/AiTalk/talkAndPlan"
+    },
+    {
+      "path": "components/linzq-citySelect/linzq-citySelect" // 城市选择
     }
-  ],
+],
   "globalStyle": {
     "navigationStyle": "custom"
   },

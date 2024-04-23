@@ -21,10 +21,11 @@
             "delay" : 0
         },
         "usingComponents" : true,
-        "nvueCompiler" : "uni-app", 
+        "nvueCompiler" : "uni-app",
         "compilerVersion" : 3,
         "modules" : {
-            "Webview-x5" : {}
+            "Webview-x5" : {},
+            "Geolocation" : {}
         },
         "distribute" : {
             "android" : {
@@ -58,7 +59,15 @@
                 "dSYMs" : false
             },
             "sdkConfigs" : {
-                "ad" : {}
+                "ad" : {},
+                "geolocation" : {
+                    "amap" : {
+                        "name" : "amap0RawXtER",
+                        "__platform__" : [ "android" ],
+                        "appkey_ios" : "",
+                        "appkey_android" : "5819189d6d510b59d619d19a6607b8f2"
+                    }
+                }
             },
             "icons" : {
                 "android" : {

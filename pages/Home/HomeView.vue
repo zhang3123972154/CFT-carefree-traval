@@ -90,7 +90,7 @@
     const checkSearch = () => {
         query.boundingClientRect((data) => {
             // console.log("得到布局位置信息" + JSON.stringify(data));
-            console.log("节点离页面顶部的距离为" + data.top);
+            // console.log("节点离页面顶部的距离为" + data.top);
             if(data.top <= phoneInforStore.statusBarHeight + 60)
                 searchTouchHeader.value = true;
             else {

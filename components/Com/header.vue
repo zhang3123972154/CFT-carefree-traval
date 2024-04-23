@@ -3,19 +3,8 @@
             '--status-height': phoneInforStore.statusBarHeight.toString() + 'px',
         }" @click.stop>
         <!--update 滑块有一些错位-->
-        <u-tabs :list="TabList" :current="tabIndex" @scroll="test" line-color="#ffc300" line-height="2"
-            line-width="36" :activeStyle="{
-                color: '#000000',
-                fontSize: '18px',
-                lineHeight: '16.5px'
-            }" :inactiveStyle="{
-                color: '#333333',
-                fontWeight: '300',
-                lineHeight: '14.5px'
-            }" :itemStyle="{
-                paddingBottom: '7px',
-                paddingTop: '5px',
-            }" />
+        <tab-group class="tab-container" :tab-list="tabList"
+            @change-index="changeIndex"/>
         <view class="flex-center-horizontal gap-1">
             <t-btn-icon icon="/static/icon/list.svg" @click="settingFlag = true"></t-btn-icon>
             <t-btn-icon icon="/static/icon/more.svg" @click.stop="openFunction"></t-btn-icon>
@@ -53,20 +42,24 @@
 </template>
 
 <script setup>
-    import { ref, nextTick } from "vue";
+    import { ref, nextTick, onMounted, watch } from "vue";
+    // com
+    import tabGroup from "@/components/Home/tabGroup.vue";
     import FunctionMenu from "./functionFloat.vue";
     import Setting from "./setting.vue";
     import planStart from '@/pages/Home/planStart.vue';
     // store
     import usePhoneInfor from "@/store/phoneInfor";
     const phoneInforStore = usePhoneInfor();
+    import { useLocation } from "@/store/location";
+    const locationStore = useLocation();
 // DATA
     const props = defineProps({
 
     });
     const emits = defineEmits([]);
     //todo 第一个词条需要和定位绑定，以及处理“定位失效”时的容错。
-    const TabList = ref([{name: "武汉"}, {name: "关注"}, {name: "规划"}, {name: "推荐"}]);
+    const tabList = ref(["地点", "关注", "规划", "推荐"]);
     const tabIndex = ref(0);   // bug 好像无效
     const MenuList = ref({})
     // flag
@@ -79,6 +72,13 @@
     const functionAnimation = ref(null);
 
 // FUNC
+    onMounted(() => {
+       locationStore.getLocation();
+    })
+    watch(() => locationStore.city, () => {
+        tabList.value[0] = locationStore.city;
+    })
+
     // tag menu animation
     const TIME_ANIMATION = 200;
     const toggleFloatWin = (show) => { // update 之后最好封装好一下。
@@ -130,16 +130,25 @@
     const gotoAiPlan = () => {
         uni.navigateTo({ url: '/pages/AiPlan/questionFullView'})
     }
+
+    // tag tag-group
+    const changeIndex = (index) => {
+        tabIndex.value = index;
+    }
+
     // test
-    function test() {
-        // console.info(tabIndex.value);
-        console.info("scroll run");
+    const getLocation = () => {
+        
     }
     
 </script>
 
 <style scoped>
 /* TOP */
+.tab-container {
+    padding: 0 10px;
+}
+
 .container {
     position: sticky;
     top: 0px;
