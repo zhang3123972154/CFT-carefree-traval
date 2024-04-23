@@ -21,7 +21,8 @@
                 '--status-bar-height': phoneInforStore.statusBarHeight.toString() + 'px'
             }">
                 <Search @click="gotoSearch"/>
-                <chip-group v-show="searchTouchTop" scroll :lightIndex="999"/>
+                <!--info 及其占用加载时间-->
+                <chip-group v-if="searchTouchTop" scroll :lightIndex="999"/>
             </view>
             <!--waterfall-->
             <view class="waterfall gap-5 of-x-hidden">

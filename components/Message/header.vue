@@ -1,5 +1,8 @@
 <template>
     <headerBase back-delete>
+        <template #prefix>
+            <view class="divider">-----------</view>
+        </template>
         <template #midfix>
             <text class="title">消息</text>
         </template>
@@ -30,6 +33,10 @@
 
 .title {
     font-size: 18px;
+}
+
+.divider {
+    color: #FFFFFF;
 }
 
 </style>        
