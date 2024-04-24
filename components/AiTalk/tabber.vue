@@ -35,8 +35,9 @@
         <template #suffix>
             <!-- <t-btn-icon :icon="iconPath.emoji"></t-btn-icon> -->
             <t-btn-icon :icon="iconPath.add" @click="toggleMenu"></t-btn-icon>
-            <view v-if="inputContent !== ''" class="send-container" @touchend.prevent="sendUserMessage">
-                <text>发送</text>
+            <view v-if="inputContent !== ''" class="send-container flex-horizontal gap-5" @touchend.prevent="sendUserMessage">
+                <view v-if="talkStore.loading" class="loader"/>
+                <text>{{ talkStore.loading ? "停止" : "发送" }}</text>
             </view>
         </template>
     </tabberBase>
@@ -65,6 +66,8 @@
     // store
     import { useAiIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();
+    import { aiTalk } from "@/store/aiTalk";
+    const talkStore = aiTalk();
 
 // DATA
     const props = defineProps({
@@ -194,6 +197,20 @@
     width: 200px;
     padding: 5px;
     padding-bottom: 0;
+}
+
+.loader {
+  border: 3px solid #ffffff6b; /* 浅灰色背景 */
+  border-top: 3px solid #ffffff; /* 蓝色 */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 </style>        

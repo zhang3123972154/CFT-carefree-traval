@@ -35,7 +35,7 @@
                         </view>
                     </view>
                 </template>
-                <template v-else>
+                <template v-else> <!--text || loading-->
                     <span :class="item.type">{{ item.text }}</span>
                 </template>
             </component>
@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-    import { ref, computed } from "vue";
+    import { ref, watch, onMounted } from "vue";
     // store
     import { useAiIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();

@@ -3,7 +3,6 @@ import { defineStore } from "pinia";
 import { pathToBase64 } from "@/js/image";
 
 import { apiAI } from "../request/api";
-import { aiTalkHistory } from './aiTalk';
 const api = apiAI;
 
 function createUserMessage(text: String, images: String[]) {
@@ -14,12 +13,22 @@ function createUserMessage(text: String, images: String[]) {
     }
 }
 
-function createAiMessage(text: String) { // test 简单版
+function createAiMessage(type: string = "loading", text: string = "...") { // test 简单版
     return {
         side: true,
         content: [
-            { type: "text", text: text}
+            { 
+                type, 
+                text 
+            }
         ]
+    }
+}
+
+function createAiMessageItem(type: string, text: string) { 
+    return {
+        type, 
+        text 
     }
 }
 
@@ -59,14 +68,6 @@ export const aiTalk = defineStore("aiTalkContent", {
                         grade: 4.9, location: "武昌区八一路299号", 
                         price: 0, imgPath: "/static/example/background/spot-3.png"
                     }
-                    // { type: "spot", text: "东湖樱花园" },
-                    // { type: "text", text: "是武汉市规模最大、品种最多的樱花园之一。" },
-                    // { type: "endl" },
-                    // { type: "spot", text: "武汉大学" },
-                    // { type: "text", text: "是武汉市最有影响力的赏樱景区。" },
-                    // { type: "endl" },
-                    // { type: "spot", text: "黄鹤楼" },
-                    // { type: "text", text: "公园是武汉著名的历史文化风景区之一。" },
                 ]
             },
             {
@@ -90,18 +91,26 @@ export const aiTalk = defineStore("aiTalkContent", {
                     { type: "text", text: "公园是武汉著名的历史文化风景区之一。" },
                 ]
             },
-        ]
+        ],
+        loading: false, // info 访问 api 时不允许再次发送。
+        loadingClear: false
     }
   },
   getters: {
-
+    lastIndex(state) {
+        return state.history.length-1;
+    }
   },
   actions: {
     async sendUserMessage(text: String, images: String[]) {
         const userContent = createUserMessage(text, images);
         this.history.push(userContent);
-
-        if(images != null) {
+        
+        const aiContent = createAiMessage();
+        this.history.push(aiContent);
+        this.loadingClear = false;
+        this.loading = true;
+        if(images != null) { // info image
             const imagePath = images[0];
             pathToBase64(imagePath)
                     .then(base64 => {
@@ -121,13 +130,38 @@ export const aiTalk = defineStore("aiTalkContent", {
                         console.info("base64", error);
                     })
         }
-        else {
-
+        else { // info text
+            // todo 访问后端接口获取 需要的
+            const eventSourse = new EventSource('http://localhost:8080/test/sse');
+            eventSourse.onmessage = (event) => {
+                // console.info("New message", event.data);
+                this.addAiMessage(event.data);
+            }
+            eventSourse.onerror = (event) => {
+                // if(eventSourse.readyState === EventSource.CLOSED) {
+                //     eventSourse.close();
+                //     console.log('The connection has been closed by the server.');
+                // } else {
+                //     console.error('SSE error:', event);
+                // }
+                console.error(event);
+                eventSourse.close();    // test 直接关闭
+                this.loading = false;
+            };
         }
     },
-    loadAiMessage(content: String) {
-        const AiContent = createAiMessage(content);
-        this.history.push(AiContent);
+    addAiMessage(content: String) { // test
+        var obj = JSON.parse(content);
+        const aiMessage = obj;
+        const index = this.history.length - 1;
+        if(this.loadingClear)
+            this.history[index]["content"].push(aiMessage);
+        else {
+            this.history[index]["content"] = [
+                aiMessage
+            ];
+            this.loadingClear = true;
+        }
     },
     loadAnohterTalk(avatar: string, name: string) {
         this.avatar = avatar;

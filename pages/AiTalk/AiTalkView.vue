@@ -11,6 +11,7 @@
                 <ai-bubble v-if="item.side" 
                     :avatar="talkStore.avatar"
                     :content="item.content"
+                    :index="index"
                 />
                 <user-bubble v-else :text="item.text" :images="item.images"/>
             </template>
@@ -23,7 +24,7 @@
 </template>
 
 <script setup>
-    import { ref, nextTick, onMounted, computed } from "vue";
+    import { ref, nextTick, onMounted, watch } from "vue";
     // com
     import headerAi from "@/components/AiTalk/header.vue";
     import tabberAi from "@/components/AiTalk/tabber.vue";
@@ -46,9 +47,15 @@
             uni.pageScrollTo({ scrollTop: 99999, duration: time });
         });
     }
+
     onMounted(() => {
         gotoPageEnd(0);
     })
+    watch(talkStore.history, () => {
+        // todo 增加关于 滑动范围的判定。
+        gotoPageEnd(100);
+    })
+
     // animation
     const handleKeyBoard = (infor) => {
         keyboardHeight.value = infor.height;
@@ -60,6 +67,7 @@
         talkStore.sendUserMessage(text, images);
         gotoPageEnd(200);
     }
+
 
 
 </script>
