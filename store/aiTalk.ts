@@ -93,7 +93,8 @@ export const aiTalk = defineStore("aiTalkContent", {
             },
         ],
         loading: false, // info 访问 api 时不允许再次发送。
-        loadingClear: false
+        loadingClear: false,
+
     }
   },
   getters: {
@@ -134,16 +135,12 @@ export const aiTalk = defineStore("aiTalkContent", {
             // todo 访问后端接口获取 需要的
             const eventSourse = new EventSource('http://localhost:8080/test/sse');
             eventSourse.onmessage = (event) => {
-                // console.info("New message", event.data);
+                if(!this.loading)   // 打断 直接关闭
+                    eventSourse.close();
+                // console.info("New message", event);
                 this.addAiMessage(event.data);
             }
             eventSourse.onerror = (event) => {
-                // if(eventSourse.readyState === EventSource.CLOSED) {
-                //     eventSourse.close();
-                //     console.log('The connection has been closed by the server.');
-                // } else {
-                //     console.error('SSE error:', event);
-                // }
                 console.error(event);
                 eventSourse.close();    // test 直接关闭
                 this.loading = false;
@@ -162,6 +159,10 @@ export const aiTalk = defineStore("aiTalkContent", {
             ];
             this.loadingClear = true;
         }
+    },
+    stopAiTalk() { // 中断当前 sse 连接
+        if(this.loading) 
+            this.loading = false;
     },
     loadAnohterTalk(avatar: string, name: string) {
         this.avatar = avatar;

@@ -1,6 +1,9 @@
 <template>
     <view class="flex-top-horizontal container gap-10">
-        <u-icon :name="props.avatar" size="30"></u-icon>
+        <view class="relative">
+            <u-icon :name="props.avatar" size="30"></u-icon>
+            <view v-if="props.wordByWord" class="loader"/>
+        </view>
         <view class="talk-container wrap">
             <component :is="item.type" v-for="(item, index) in props.content" :key="index">
                 <template v-if="item.type === 'endl'">
@@ -30,13 +33,14 @@
                             <view v-else>
                                 <span style="font-size: 10px;">￥</span>
                                 <span style="font-size: 18px;">{{ item.price }}</span>
-                                <span style="font-size: 8px;">起</span>
+                                <span style="font-size: 8px;">均</span>
                             </view>
                         </view>
                     </view>
                 </template>
                 <template v-else> <!--text || loading-->
-                    <span :class="item.type">{{ item.text }}</span>
+                    <span v-if="!props.wordByWord" :class="item.type">{{ item.text }}</span>
+                    <word-by-word v-else :class="item.type" :text="item.text"/>
                 </template>
             </component>
         </view>
@@ -45,6 +49,8 @@
 
 <script setup>
     import { ref, watch, onMounted } from "vue";
+    // com
+    import wordByWord from "./wordByWord.vue";
     // store
     import { useAiIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();
@@ -67,8 +73,9 @@
                 { type: "text", text: "接下来是规划测试..."},
             ]
         },
-        time: String // todo 
+        time: String, // todo 
         // ... 如何处理 tags
+        wordByWord: Boolean
     });
     const emits = defineEmits([]);
 
@@ -156,6 +163,27 @@
 
 .t-ship {
     flex-shrink: 0;
+}
+
+/* animation */
+.loader {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+
+    border: 1px solid #6464646b; /* 浅灰色背景 */
+    border-top: 2px solid #000000; /* 蓝色 */
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: spin 2s linear infinite;
+
+    background-color: #fff;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 </style>        

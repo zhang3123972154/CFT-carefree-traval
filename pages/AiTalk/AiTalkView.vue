@@ -11,7 +11,7 @@
                 <ai-bubble v-if="item.side" 
                     :avatar="talkStore.avatar"
                     :content="item.content"
-                    :index="index"
+                    :word-by-word="index === talkStore.lastIndex && talkStore.loading"
                 />
                 <user-bubble v-else :text="item.text" :images="item.images"/>
             </template>
