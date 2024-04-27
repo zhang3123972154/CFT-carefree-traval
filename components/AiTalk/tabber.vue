@@ -1,5 +1,5 @@
 <template>
-    <tabberBase z-index="6" :bottom="moveHeight">
+    <tabberBase z-index="7" :bottom="moveHeight">
         <template #topfix>
             <t-image-group v-if="photosPath"
                 close-able

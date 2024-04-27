@@ -46,7 +46,7 @@
         },
         location: {
             type: String,
-            default: "你武。balabalabalabala"
+            default: "这是一段基本介绍：balabalabalabala"
         }
     });
     const emits = defineEmits([]);
@@ -86,6 +86,7 @@
 
 .mid-container {
     overflow-x: auto;
+    /* margin-right: -10px; */
 }
 
 </style>        

@@ -70,7 +70,7 @@
 
 .btn-group {
     position: absolute;
-    bottom: 15px;
+    bottom: 40px;
     width: 88%;
 
     gap: 20px;

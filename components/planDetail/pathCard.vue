@@ -23,7 +23,10 @@
                 </view>
             </spotDetail>
             <trafficDetail/>
-            <spotDetail :things="props.path[0].things">
+            <spotDetail 
+                :text="props.path[0].text" 
+                :things="props.path[0].things"
+                :img-path="props.path[0].imgPath">
                 <view class="flex-center-both spot-time-container gap-5">
                     <timeLine></timeLine>
                     <view class="flex-vertical">
@@ -62,7 +65,7 @@
             type: Array,
             // todo traffic 的详细 UI 形式 ？
             default: [
-                pathSpot("民宿", ["I", "II"], "/static/example/background/home.png",
+                pathSpot("武汉大学", ["樱花", "老斋舍"], "/static/example/spot/pk-3.png",
                     4.9, "XXX", "00：00", "07：30"),
                 pathTraffic("高铁", "07：30", "08：00"),
                 pathSpot("民宿", ["I", "II"], "/static/example/background/home.png",
@@ -112,7 +115,7 @@
 .spot-time-container {
     border-radius: 10px;
     background-color: #F9F9F9;
-    padding: 10px;
+    padding: 10px 0;
 
     font-size: 10px;
     line-height: 12px;

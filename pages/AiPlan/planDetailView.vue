@@ -2,7 +2,7 @@
 <template>
     <view class="flex-vertical">
         <header-plan/>
-        <view class="container">
+        <view class="z-1">
             <!--main - informatino-->
             <view class="flex-vertical main-container">
                 <view class="flex-horizontal gap-10">
@@ -23,7 +23,6 @@
                 <pathCard/>
             </view>
         </view>
-
         <tabber-ai></tabber-ai>
     </view>
 </template>
@@ -50,7 +49,7 @@
 <style scoped>
 
 .container {
-    z-index: 3000;
+    z-index: 1000;
 }
 
 .main-container {

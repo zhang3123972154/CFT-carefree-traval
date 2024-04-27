@@ -1,6 +1,6 @@
 <template>
     <view class="flex-center-horizontal gap-10">
-        <img :src="iconPath.timedown">
+        <up-icon class="icon" size="25" :name="iconPath.timedown"/>
         <view class="flex-center-vertical time">
             <text>{{ props.timeStart }}</text>
             <text>{{ props.timeEnd }}</text>
@@ -37,6 +37,11 @@
     line-height: 12px;
     font-weight: 300;
     color: #333333;
+}
+
+.icon {
+    width: 10px;
+    height: 25px;
 }
 
 </style>        

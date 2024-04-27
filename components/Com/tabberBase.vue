@@ -3,12 +3,13 @@
     :style="{
         '--bottom': setBottom
     }"
+    :class="{
+        [setZIndex]: true
+    }"
     @click.stop>
         <slot name="topfix"></slot>
         <view class="flex-bottom-horizontal bottom-container" 
-        :class="{
-            [setZIndex]: true
-        }">
+        >
             <view class="flex-center-horizontal">
                 <slot name="prefix"></slot>
             </view>

@@ -11,7 +11,11 @@
         </template>
 
         <template #flodfix>
-            <img class="img-bg" src="/static/example/background/bg-default.png" :width="phoneInfor.phoneWidth"/>
+            <!-- <u-icon class="img-bg" name="/static/example/background/baskground.svg" :size="phoneInfor.phoneWidth + 50"/> -->
+            <up-image class="img-bg" lazy-loding fade 
+                src="/static/example/background/bg-default.png" 
+                :width="phoneInfor.phoneWidth"
+                :height="phoneInfor.phoneWidth + 50"/>
         </template>
     </headerBase>
 </template>

@@ -55,12 +55,12 @@
 
 // DATA
     const cardList = ref([  
-        {imgPath: "/static/example/Nothing.jpg" },
-        {imgPath: "/static/example/avatar.png" },
+        {imgPath: "/static/example/spot/pk-3.png" },
+        {imgPath: "/static/example/spot/pk-4.png" },
         {imgPath: "/static/example/spot/pk-1.png" },
         {imgPath: "/static/example/spot/pk-2.png" },
-        {imgPath: "/static/example/avatar.png" },
-        {imgPath: "/static/example/avatar.png" },
+        {imgPath: "/static/example/spot/pk-5.png" },
+        {imgPath: "/static/example/spot/pk-6.png" },
     ])
     //flag
     const searchTouchTop = ref(false);
