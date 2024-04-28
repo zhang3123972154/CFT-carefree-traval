@@ -40,7 +40,7 @@
                 </template>
                 <template v-else> <!--text || loading-->
                     <span v-if="!props.wordByWord" :class="item.type">{{ item.text }}</span>
-                    <word-by-word v-else :class="item.type" :text="item.text"/>
+                    <word-by-word v-else :classCustom="item.type" :text="item.text"/>
                 </template>
             </component>
         </view>

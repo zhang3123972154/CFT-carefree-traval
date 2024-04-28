@@ -638,7 +638,7 @@
 </script>
 
 <style lang="scss">
-	$uni-primary: #007aff !default;
+	$uni-primary: #ffc300 !default;
 
 	.uni-calendar {
 		/* #ifndef APP-NVUE */

@@ -829,7 +829,7 @@
 </script>
 
 <style lang="scss">
-	$uni-primary: #007aff !default;
+	$uni-primary: #ffc300 !default;
 
 	.uni-date {
 		width: 100%;

@@ -3,13 +3,13 @@
         :customStyle="{
             borderBottomLeftRadius: '20px'
         }" @close="close"> -->
-        <view class="container top-container">
+        <view class="container top-container flex-vertical">
             <Box title="旅行风格" :tag-list="Array1"/>
             <Box title="旅行季节" :tag-list="Array2"/>
             <Box title="旅行人群"/>
             <Box title="旅行城市"/>
             <Box title="旅行出发" :tag-list="Array3"/>
-            <!-- <view class="spacer"></view> -->
+            <view class="divider shrink"></view>
             <view class="flex-center-horizontal btn-group">
                 <u-button :customStyle="{
                     padding: '10px 0',
@@ -56,21 +56,19 @@
 
 .container {
     padding: 18px 15px 32px 20px;
-    height: 100%;
+    height: 100vh;
 
     display: flex;
-    flex-direction: column;
     gap: 25px;
     
     background-color: #fff;
     /* border-bottom-left-radius: 20px; */
-
     /* transition: width 0.5s ease-in-out; */
 }
 
 .btn-group {
     position: absolute;
-    bottom: 40px;
+    bottom: 10px;
     width: 88%;
 
     gap: 20px;
