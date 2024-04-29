@@ -19,8 +19,8 @@
             </view>
             <!--detail days - information-->
             <view class="flex-vertical detail-container gap-5">
-                <pathCard/>
-                <pathCard/>
+                <pathCard spot="武汉"/>
+                <pathCard :day="2" spot="武汉"/>
             </view>
         </view>
         <tabber-ai></tabber-ai>

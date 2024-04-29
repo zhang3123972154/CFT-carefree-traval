@@ -9,10 +9,10 @@
         </view>
         <!--wataerfall-->
         <view class="waterfall">
-            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
-            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
-            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
-            <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
+            <Card img-path="/static/example/spot/pk-1.png" :img-width="phoneInforStore.cardWidth_similarWin_2" />
+            <Card img-path="/static/example/spot/pk-2.png" :img-width="phoneInforStore.cardWidth_similarWin_2" />
+            <Card img-path="/static/example/spot/pk-3.png" :img-width="phoneInforStore.cardWidth_similarWin_2" />
+            <Card img-path="/static/example/spot/pk-4.png" :img-width="phoneInforStore.cardWidth_similarWin_2" />
             <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
             <Card :img-width="phoneInforStore.cardWidth_similarWin_2" img-height="180" />
         </view>

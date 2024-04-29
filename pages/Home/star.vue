@@ -99,7 +99,7 @@
       const query = uni.createSelectorQuery().in(this);
       query.selectAll('.tag').fields({ size: true, rect: true,}, 
         (tagsRects) => { 
-          tags = [];  // 重置！
+          tags = [];  // 重置
           tagsRects.forEach((tagRect, i) => {
             // 计算 3D 模型的位置
             const k = (2 * (i + 1) - 1) / tagsRects.length - 1;
@@ -124,10 +124,9 @@
     let alpha = 0;
     if(radius)
       alpha = (tag.z + radius) / (2 * radius) + 0.1;
-    const offsetX = tag.x - 10; // mark 这里手动调整了一下。
+    const offsetX = tag.x - 10;
     const offsetY = tag.y;
 
-    // console.info(index, scale, alpha, offsetX, offsetY);
     tagsStyles.value[index] = {
       transform: `translate3d(${offsetX}px, ${offsetY}px, 0) scale(${scale})`,
       opacity: alpha,
