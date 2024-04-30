@@ -15,6 +15,10 @@
         <result property="organization" column="organization"/>
         <result property="isDeleted" column="is_deleted"/>
     </resultMap>
+    <select id="selectRandomIndividual" resultType="com.xiaoyao.travel.common.vo.response.IntegerAndStringVo">
+        SELECT i.individuality_id as id,i.key_about_post as text
+        from individuality i order by RAND() LIMIT #{count}
+    </select>
 
 
 </mapper>

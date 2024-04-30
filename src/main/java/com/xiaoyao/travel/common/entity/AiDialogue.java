@@ -23,11 +23,11 @@ public class AiDialogue implements Serializable {
 	 * 和ai对话记录id
 	 */
 	@TableId
-	private Integer dialogueId;
+	private Long dialogueId;
 	/**
 	 * 用户id
 	 */
-	private Integer userId;
+	private Long userId;
 	/**
 	 * 一次的消息
 	 */

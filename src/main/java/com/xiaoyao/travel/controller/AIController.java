@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,9 +38,8 @@ public class AIController {
     return ResponseBean.success(aiService.getMsgHistory(startTime,endTime));
   }
   @PostMapping("/orc/general")
-  @ApiOperation(value = "调用百度api识别图片文字",httpMethod = "POST")
-  public String getOrcGeneral(@RequestBody String image) {
-    return aiService.getOrcGeneral(image);
+  @ApiOperation(value = "调用百度api识别图片文字",httpMethod = "POST",notes = "image需要前端进行base64编码")
+  public ResponseBean getOrcGeneral(@RequestBody String image) {return ResponseBean.success(aiService.getOrcGeneral(image));
   }
 
 }

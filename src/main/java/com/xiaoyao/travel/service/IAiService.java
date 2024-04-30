@@ -19,10 +19,10 @@ import java.util.List;
  */
 
 public interface IAiService {
-  ResponseBean sendMsg(SendToAiMsgVo sendToAiMsgVo);
+  Object sendMsg(SendToAiMsgVo sendToAiMsgVo);
 
 
   List<DialogueHistoryVo> getMsgHistory(Date startTime, Date endTime);
 
-  String getOrcGeneral(String image);
+  List<String> getOrcGeneral(String image);
 }

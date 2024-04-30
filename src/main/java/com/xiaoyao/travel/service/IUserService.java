@@ -1,7 +1,9 @@
 package com.xiaoyao.travel.service;
 
 
+import com.xiaoyao.travel.common.vo.response.IntegerAndStringVo;
 import com.xiaoyao.travel.common.vo.response.LoginResponseVo;
+import com.xiaoyao.travel.common.vo.response.PageDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -26,6 +28,12 @@ public interface IUserService {
 
   LoginResponseVo refreshToken(String refreshToken);
 
+
+    void uploadIndividual(List<String> individual);
+
+  PageDTO<IntegerAndStringVo> searchIndividual(String keyword, Integer pageSize, Integer pageNum);
+
+    List<IntegerAndStringVo> randomIndividual();
 
 
 }

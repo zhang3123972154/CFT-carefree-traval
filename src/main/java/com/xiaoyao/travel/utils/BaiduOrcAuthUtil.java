@@ -3,7 +3,6 @@ package com.xiaoyao.travel.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.xiaoyao.travel.common.vo.response.ResponseBean;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;

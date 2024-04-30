@@ -4,6 +4,7 @@ import com.xiaoyao.travel.common.constants.ResultCode;
 import com.xiaoyao.travel.common.dao.UserMapper;
 import com.xiaoyao.travel.common.exception.ServiceException;
 import com.xiaoyao.travel.common.utils.RSAUtils;
+import com.xiaoyao.travel.common.vo.response.IntegerAndStringVo;
 import com.xiaoyao.travel.common.vo.response.LoginResponseVo;
 import com.xiaoyao.travel.common.vo.response.ResponseBean;
 import com.xiaoyao.travel.service.IUserService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 import static com.xiaoyao.travel.common.utils.RSAUtils.keyMap;
@@ -86,6 +88,30 @@ public class UserController {
       return ResponseBean.fail(e.getResultCode(),e.getMessage());
     }
     return ResponseBean.success(loginResponseVo);
+  }
+
+  @PostMapping("/uploadIndividual")
+  @ApiOperation(value = "上传个性标签",httpMethod = "POST",notes = "参数为list数组，放在body中")
+  public ResponseBean uploadIndividual(@RequestBody List<String> individual) {
+    userService.uploadIndividual(individual);
+    return ResponseBean.success();
+  }
+  @GetMapping("/individual/search")
+  @ApiOperation(value = "查询所有的个性标签",httpMethod = "GET",notes = "分页")
+  @ApiImplicitParams({
+          @ApiImplicitParam(name = "keyword",value = "关键词"),
+          @ApiImplicitParam(name = "pageSize",value = "页面大小"),
+          @ApiImplicitParam(name = "pageNum",value = "第几页")
+  })
+  public ResponseBean searchIndividual(@RequestParam String keyword,
+                                       @RequestParam Integer pageSize,
+                                       @RequestParam Integer pageNum) {
+    return ResponseBean.success(userService.searchIndividual(keyword,pageSize,pageNum));
+  }
+  @GetMapping("/individual/random")
+  @ApiOperation(value = "获取随机的个性标签",httpMethod = "GET",notes = "目前随机获取50个")
+  public  ResponseBean<List<IntegerAndStringVo>> randomIndividual() {
+    return ResponseBean.success(userService.randomIndividual());
   }
 //  @PostMapping("/update")
 //  @ApiOperation(value = "修改用户基本信息",httpMethod = "POST")

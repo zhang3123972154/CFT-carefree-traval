@@ -27,7 +27,7 @@ public class Individuality implements Serializable {
 	/**
 	 * 用户id
 	 */
-	private Integer userId;
+	private Long userId;
 	/**
 	 * 自己选择的关键词
 	 */

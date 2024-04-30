@@ -29,5 +29,5 @@ public class SendToAiMsgVo {
   private String message;
   @ApiModelProperty("发送消息的时间")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private LocalTime sendTime;
+  private Date sendTime;
 }

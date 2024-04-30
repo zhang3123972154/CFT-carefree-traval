@@ -22,11 +22,11 @@ public class AiResponse implements Serializable {
   private static final long serialVersionUID = 1819775643078L;
 
   @TableId
-  private Integer aiResponseId;
+  private Long aiResponseId;
   /**
    * 用户id
    */
-  private Integer dialogueId;
+  private Long dialogueId;
   /**
    * 一次的消息
    */

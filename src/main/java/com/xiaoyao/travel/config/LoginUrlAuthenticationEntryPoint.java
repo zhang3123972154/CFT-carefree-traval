@@ -31,6 +31,7 @@ import java.io.PrintWriter;
 public class LoginUrlAuthenticationEntryPoint implements AuthenticationEntryPoint {
   @Override
   public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+    System.out.println(e.getMessage());
     httpServletResponse.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
     PrintWriter out = httpServletResponse.getWriter();
     out.write(JSONUtil.toJsonStr(ResponseBean.fail(String.valueOf(ResultCode.MISS_TOKEN))));

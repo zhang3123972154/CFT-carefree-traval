@@ -1,9 +1,11 @@
 package com.xiaoyao.travel;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@MapperScan("com.xiaoyao.travel.common.dao")
 public class TravelApplication {
 
   public static void main(String[] args) {

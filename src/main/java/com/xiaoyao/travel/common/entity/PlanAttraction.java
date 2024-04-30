@@ -23,11 +23,11 @@ public class PlanAttraction implements Serializable {
 	 * 
 	 */
 	@TableId
-	private Integer planAttractionId;
+	private Long planAttractionId;
 	/**
 	 * 旅行规划id
 	 */
-	private Integer travelPlanId;
+	private Long travelPlanId;
 	/**
 	 * 
 	 */
@@ -42,8 +42,8 @@ public class PlanAttraction implements Serializable {
 	private String detail;
 
 	private Date endTime;
-	private Integer nextNode;
+	private Long nextNode;
 
-	private Integer nextDay;
+	private Long nextDay;
 
 }

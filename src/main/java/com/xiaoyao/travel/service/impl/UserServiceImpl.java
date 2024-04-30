@@ -4,22 +4,34 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xiaoyao.travel.common.constants.CaptchaPurpose;
 import com.xiaoyao.travel.common.constants.ResultCode;
+import com.xiaoyao.travel.common.dao.IndividualityMapper;
 import com.xiaoyao.travel.common.dao.UserMapper;
+import com.xiaoyao.travel.common.entity.Individuality;
 import com.xiaoyao.travel.common.entity.User;
 import com.xiaoyao.travel.common.exception.ServiceException;
+import com.xiaoyao.travel.common.vo.response.IndividualVo;
+import com.xiaoyao.travel.common.vo.response.IntegerAndStringVo;
 import com.xiaoyao.travel.common.vo.response.LoginResponseVo;
+import com.xiaoyao.travel.common.vo.response.PageDTO;
 import com.xiaoyao.travel.service.IUserService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.ReactiveRedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.*;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
@@ -40,6 +52,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import static com.xiaoyao.travel.common.constants.CaptchaPurpose.REGISTER;
 import static com.xiaoyao.travel.common.constants.RedisConstants.LOGIN_CODE_TTL;
@@ -69,6 +82,9 @@ public class UserServiceImpl implements IUserService {
 
   @Value("${security.oauth2.client.access-token-url}")
   private String accessTokenUrl;
+
+  @Autowired
+  private IndividualityMapper individualityMapper;
 
 
   @Override
@@ -150,6 +166,44 @@ public class UserServiceImpl implements IUserService {
     LoginResponseVo loginResponseVo = new LoginResponseVo();
     BeanUtil.copyProperties(responseEntity.getBody(),loginResponseVo);
     return loginResponseVo;
+  }
+
+  @Override
+  public void uploadIndividual(List<String> individual) {
+    org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    String userId = user.getUsername();
+    if (userId.isEmpty()) {
+      throw new ServiceException(ResultCode.ERROR_TOKEN_FORMAT);
+    }
+
+    for (String s : individual) {
+      List<Individuality> individualities = individualityMapper.selectList(new LambdaQueryWrapper<Individuality>().eq(Individuality::getKeyAboutPost, s));
+      if (!individualities.isEmpty()) {
+        continue;
+      }
+      Individuality individuality = new Individuality();
+      individuality.setUserId(Long.parseLong(userId));
+      individuality.setKeyAboutPost(s);
+      individuality.setBudget(0);
+      individualityMapper.insert(individuality);
+    }
+  }
+
+  @Override
+  public PageDTO<IntegerAndStringVo> searchIndividual(String keyword, Integer pageSize, Integer pageNum) {
+    Page<Individuality> page = new Page<>(pageNum,pageSize);
+    IPage<Individuality> individualities = individualityMapper.selectPage(page, new LambdaQueryWrapper<Individuality>()
+            .like(!keyword.isEmpty(), Individuality::getKeyAboutAi, keyword)
+            .or().like(!keyword.isEmpty(), Individuality::getKeyAboutPost, keyword));
+    List<IntegerAndStringVo> data = individualities.getRecords().stream().map(e -> new IntegerAndStringVo(e.getIndividualityId(), e.getKeyAboutPost().isEmpty() ?
+            e.getKeyAboutAi() : e.getKeyAboutPost())).collect(Collectors.toList());
+    return new PageDTO<IntegerAndStringVo>(pageNum,pageSize,data.size(),data);
+
+  }
+
+  @Override
+  public List<IntegerAndStringVo> randomIndividual() {
+    return userMapper.selectRandomIndividual(50);
   }
 
   private void send(String to, String code) {

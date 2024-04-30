@@ -2,7 +2,10 @@ package com.xiaoyao.travel.common.dao;
 
 import com.xiaoyao.travel.common.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xiaoyao.travel.common.vo.response.IntegerAndStringVo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * 用户表，存储用户的基本信息
@@ -13,5 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
-	
+
+    List<IntegerAndStringVo> selectRandomIndividual(Integer count);
 }
