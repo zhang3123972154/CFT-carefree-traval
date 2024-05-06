@@ -67,6 +67,57 @@ export const aiTalk = defineStore("aiTalkContent", {
                     { type: "spot", text: "武汉" },
                     { type: "text", text: "素来有“江城”之称，确实是旅行的不错之选！！！" },
                 ]
+            },
+            {
+                side: true,
+                content: [
+                    {
+                        type: "IB-spot", text: "黄鹤楼",
+                        introduce: "作为武汉的地标，黄鹤楼不仅是历史悠久的古建筑，还能远眺长江美景。",
+                        grade: 4.8, location: "武昌区蛇山西山坡特2号", 
+                        price: 70, imgPath: "/static/example/spot/spot-1.png"
+                    },
+                    {
+                        type: "IB-spot", text: "东湖风景区",
+                        introduce: "这里有美丽的自然风光，适合散步和骑行。",
+                        grade: 4.9, location: "武昌区鲁磨路665号", 
+                        price: 55, imgPath: "/static/example/spot/spot-2.png"
+                        // ... 
+                    },
+                    {
+                        type: "IB-spot", text: "武汉大学",
+                        introduce: "春天的武汉大学樱花盛开，是拍照的好地方。",
+                        grade: 4.9, location: "武昌区八一路299号", 
+                        price: 0, imgPath: "/static/example/spot/spot-3.png"
+                    },
+                    {
+                        type: "IB-spot", text: "户部巷",
+                        introduce: "这里聚集了各种地道的小吃，可以体验地道的武汉生活。",
+                        grade: 4.8, location: "武昌区八一路299号", 
+                        price: 0, imgPath: "/static/example/spot/spot-4.png"
+                    },
+                    {
+                        type: "IB-spot", text: "江汉路步行街",
+                        introduce: "这里有很多购物和娱乐场所，是体验武汉现代都市生活的好地方。",
+                        grade: 4.7, location: "武昌区八一路299号", 
+                        price: 0, imgPath: "/static/example/spot/spot-5.png"
+                    }
+                ]
+            },
+            {
+                side: true,
+                content: [
+                    { type: "text", text: "小主人！很多游客去武汉旅行会问这些问题哦！" },
+                    {   
+                        type: "OP", // info Optional problem
+                        list: [
+                            "武汉有哪些适合拍照的景点？",
+                            "武汉有哪些著名的夜市？",
+                            "武汉的住宿推荐有哪些？",
+                            "武汉的购物场所有哪些？"
+                        ]
+                     }
+                ]
             }
             // {
             //     side: false,    // 代表 user

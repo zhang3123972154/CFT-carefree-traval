@@ -1,10 +1,9 @@
 <!--info 用 aitalk 一般的点位信息块展示-->
 <template>
-    <view class="flex-center-horizontal PT-container block gap-10">
-        <!-- <view class="flex-horizontal gap-10"> -->
+    <view class="flex-top-horizontal PT-container block gap-10">
         <!--bug chip会收到 text 的宽度影响-->
             <view class="relative">
-            <up-image :src="props.imgPath" fade radius="5" width="50" height="50"/>
+            <up-image :src="props.imgPath" fade radius="5" width="80" height="80"/>
             <view class="img-grade">{{ props.grade }}</view>
         </view>
         <view class="shrink">
@@ -12,19 +11,7 @@
                 <t-chip class="t-ship" :kind="props.type" :text="props.text"></t-chip>
                 <view class="shrink"></view>
             </view>
-            <text class="location-text">{{ props.location }}</text>
-            <!-- <view class="location-text">{{ props.location }}</view> -->
-        </view>
-        <!-- </view> -->
-        <view class="flex-center-both price-container">
-            <view v-if="props.price === 0" style="justify-content: flex-end;">
-                <span style="font-size: 18px;">免费</span>
-            </view>
-            <view v-else>
-                <span style="font-size: 10px;">￥</span>
-                <span style="font-size: 18px;">{{ props.price }}</span>
-                <span style="font-size: 8px;">均</span>
-            </view>
+            <text class="location-text">{{ props.introduce }}</text>
         </view>
     </view>
 </template>
@@ -36,7 +23,7 @@
     const props = defineProps({
         type: {
             type: String,
-            default: "PT-spot"
+            default: "spot"
         }, 
         text: {
             type: String,
@@ -57,6 +44,10 @@
         imgPath: {
             type: String,
             default: ""
+        },
+        introduce: {
+            type: String,
+            default: "基本介绍"
         }
     });
     const emits = defineEmits([]);
@@ -68,7 +59,7 @@
 <style scoped>
 
 .PT-container {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 
@@ -81,24 +72,14 @@
     border-radius: 3px;
     background-color: #00000080;
 
-    font-size: 10px;
+    font-size: 16px;
     font-family: Alimama ShuHeiTi;
     color: #ffc300;
 }
 
-.price-container {
-    padding: 8px 0;
-    background-color: #ffc300;
-    border-radius: 5px;
-    width: 50px;
-    height: 30px;
-
-    color: #fff;
-    font-family: Alimama ShuHeiTi;
-}
-
 .location-text {
     font-size: 10px;
+    font-weight: 300;
     color: #a68f47;
 }
 

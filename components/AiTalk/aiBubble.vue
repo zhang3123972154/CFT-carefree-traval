@@ -12,7 +12,7 @@
                 <template v-else-if="item.type[0] === 'P'"> <!--info 为了方便，只比较了 ‘P’-->
                     <!--info 原版直接展示-->
                     <!-- <pt-item
-                        :type="item.type"
+                        :type="getType(item.type)"
                         :text="item.text"
                         :grade="item.grade"
                         :price="item.price"
@@ -30,7 +30,22 @@
                         :reply="item.reply"
                     />
                 </template>
-    
+                <template v-else-if="item.type[0] === 'I'">
+                    <ib-item
+                        :type="getType(item.type)"
+                        :text="item.text"
+                        :grade="item.grade"
+                        :price="item.price"
+                        :img-path="item.imgPath"
+                        :location="item.location"
+                        :introduce="item.introduce"
+                    />
+                </template>
+                <template v-else-if="item.type[0] === 'O'">
+                    <optional-problem
+                        :list="item.list"
+                    />
+                </template>
                 <template v-else> <!--text || loading-->
                     <span v-if="!props.wordByWord" :class="item.type">{{ item.text }}</span>
                     <word-by-word v-else :classCustom="item.type" :text="item.text"/>
@@ -66,8 +81,10 @@
     // com
     import wordByWord from "./wordByWord.vue";
     import ptItem from "./ptItem.vue";
+    import ibItem from "./ibItem.vue";
     import triggerFunc from "./triggerFunc.vue";
     import chipGroupSingleChoose from "@/components/AiTalk/chipGroupSingleChoose.vue";
+    import optionalProblem from "./optionalProblem.vue";
     // store
     import { useAiIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();
