@@ -9,7 +9,7 @@
                 <t-chip 
                     :kind="props.tagKind" 
                     :text="item"
-                    :belongChipGroupFlex="props.reply"
+                    :belongChipGroupSingle="props.reply"
                     @clickChoose="emits('clickChoose', index)">
                 </t-chip>
                 <!--info belongChipGroupFlex 启用点击监听-->

@@ -57,6 +57,17 @@ export const aiTalk = defineStore("aiTalkContent", {
                     }
                 ]
             },
+            {
+                side: false,
+                text: "武汉"
+            },
+            {
+                side: true,
+                content: [
+                    { type: "spot", text: "武汉" },
+                    { type: "text", text: "素来有“江城”之称，确实是旅行的不错之选！！！" },
+                ]
+            }
             // {
             //     side: false,    // 代表 user
             //     text: "三月想出门旅行，推荐去哪儿？"

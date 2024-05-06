@@ -60,7 +60,8 @@
         belongChipGroupFlex: { // info 
             type: Boolean,
             default: false
-        }
+        },
+        belongChipGroupSingle: Boolean
     });
     const emits = defineEmits(["longPress", "closeSimilarWin", "clickChoose", "clickDelete"]);  // todo 用于历史记录的消息传递
 
@@ -148,6 +149,13 @@
                     emits("clickChoose");
                 else
                     emits("clickDelete");
+            }
+            else if(props.belongChipGroupSingle) {
+                if(!selectFlag.value)
+                    emits("clickChoose");
+                else
+                    emits("clickDelete");
+                selectFlag.value = !selectFlag.value;
             }
             else
                 selectFlag.value = !selectFlag.value;
