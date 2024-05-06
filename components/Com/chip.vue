@@ -61,7 +61,8 @@
             type: Boolean,
             default: false
         },
-        belongChipGroupSingle: Boolean
+        // todo 优化整理 三个 belong，
+        belongChipGroupSingle: Boolean 
     });
     const emits = defineEmits(["longPress", "closeSimilarWin", "clickChoose", "clickDelete"]);  // todo 用于历史记录的消息传递
 
@@ -135,7 +136,6 @@
                 duration: TIME_ANIMATION,
                 timingFunction: 'ease'
             })
-
             similarWinAnimation.value.opacity(1).step();
         });
     }
