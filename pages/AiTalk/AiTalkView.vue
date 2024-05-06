@@ -5,7 +5,6 @@
         <header-ai :avatar="talkStore.avatar" :name="talkStore.name"></header-ai>
         <!--bug 和 chip-similarWin 冲突 -->
         <view class="flex-vertical container-dialogue gap-10">
-            <ai-bubble avatar="/static/example/AI/AI.svg"/>
             <template v-for="(item, index) in talkStore.history" :key="index">
                 <ai-bubble v-if="item.side" 
                     :avatar="talkStore.avatar"
