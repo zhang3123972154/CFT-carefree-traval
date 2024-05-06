@@ -5,8 +5,7 @@
         <header-ai :avatar="talkStore.avatar" :name="talkStore.name"></header-ai>
         <!--bug 和 chip-similarWin 冲突 -->
         <view class="flex-vertical container-dialogue gap-10">
-            <userBubble/>
-            <aiBubble :avatar="talkStore.avatar"/>
+            <ai-bubble avatar="/static/example/AI/AI.svg"/>
             <template v-for="(item, index) in talkStore.history" :key="index">
                 <ai-bubble v-if="item.side" 
                     :avatar="talkStore.avatar"
@@ -68,8 +67,6 @@
         gotoPageEnd(200);
     }
 
-
-
 </script>
 
 <style scoped>
@@ -80,6 +77,7 @@
 
 .container-dialogue {
     background-color: #f9f9f9;
+    min-height: 87vh;
 
     overflow-y: scroll;
     padding: 5px 10px;

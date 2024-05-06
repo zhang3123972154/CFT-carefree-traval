@@ -1,4 +1,5 @@
-<template>
+<!--info 适用于三种样式混合展示-->
+<template> 
     <view>  <!--mark 用来档外部布局的控制-->
         <view class="container" :class="{'scroll': props.scroll}">
             <slot name="prefix"></slot>

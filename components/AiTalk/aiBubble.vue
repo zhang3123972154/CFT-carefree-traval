@@ -10,7 +10,7 @@
                     <view>{{ item.text }}</view>
                 </template>
                 <template v-else-if="item.type[0] === 'P'"> <!--info 为了方便，只比较了 ‘P’-->
-                    <!--info 原版直接展示，新版集中展示-->
+                    <!--info 原版直接展示-->
                     <!-- <pt-item
                         :type="item.type"
                         :text="item.text"
@@ -19,13 +19,25 @@
                         :img-path="item.imgPath"
                         :location="item.location"  
                     /> -->
+                    <!--info 新版集中展示-->
                     <trigger-func :item="item" @emit-back-object="loadinPTList"/>
                 </template>
+                <template  v-else-if="item.type[0] === 'C'">
+                    <chip-group-single-choose
+                        :tag-kind="getType(item.type)"
+                        :tag-list="item.list"
+                        :reload="item.reload"
+                        :reply="item.reply"
+                    />
+                </template>
+    
                 <template v-else> <!--text || loading-->
                     <span v-if="!props.wordByWord" :class="item.type">{{ item.text }}</span>
                     <word-by-word v-else :classCustom="item.type" :text="item.text"/>
                 </template>
             </component>
+            <!--test-->
+            <!--info 用于存放左右滑动版本的PT信息块-->
             <swiper v-if="PTList != []"
                 class="swiper"
                 :style="{
@@ -55,6 +67,7 @@
     import wordByWord from "./wordByWord.vue";
     import ptItem from "./ptItem.vue";
     import triggerFunc from "./triggerFunc.vue";
+    import chipGroupSingleChoose from "@/components/AiTalk/chipGroupSingleChoose.vue";
     // store
     import { useAiIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();
@@ -101,12 +114,26 @@
         return height.toString() + "px";
     })
 
+    // info 会填入到 左右滑动栏 的版本
     const loadinPTList = (item) => {
         if(PTList.value.length == 0 || PTList.value[PTList.value.length-1].length == 3)
             PTList.value.push([]);
         PTList.value[PTList.value.length-1].push(item);
         console.info(PTList.value);
         return "";
+    }
+
+    // info re正则获取结点类别
+    const getType = (type) => {
+        const regexp = /-(.*)/;
+        const matches = type.match(regexp);
+
+        if (matches && matches.length > 1) {
+            console.log(matches[1]); // 输出: spot
+            return matches[1];
+        } else {
+            console.log("没有找到匹配的字符串");
+        }
     }
 
 
