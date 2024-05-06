@@ -37,6 +37,9 @@
       "path": "pages/AiPlan/questionFullView"
     },
     {
+      "path": "pages/AiTalk/talkStart"
+    },
+    {
       "path": "pages/AiTalk/AiTalkView" // 规划对话
     },
     {

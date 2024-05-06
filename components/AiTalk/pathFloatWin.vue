@@ -86,13 +86,13 @@
     right: 0;
     bottom: var(--bottom);   /* 可以写成可拖动 */
 
-    width: 20px;
+    width: 30px;
     height: 60px;
 
     border-radius: 10px 0 0 10px;
     border: 1px solid #CCCCCC66;
     border-right: none;
-    background-color: #00000066; /* todo */
+    background-color: #ffc300; /* todo */
 
     box-sizing: border-box;
 
@@ -102,13 +102,13 @@
 .line {
     position: relative;
     top: 14px;
-    left: 5px;
+    left: 10px;
 
-    width: 1px;
+    width: 2px;
     height: 30px;
     border-radius: 1px;
 
-    background-color: #cccccc66;
+    background-color: #FFFFFF;
 }
 
 .float-container {

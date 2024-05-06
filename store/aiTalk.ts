@@ -35,8 +35,10 @@ function createAiMessageItem(type: string, text: string) {
 export const aiTalk = defineStore("aiTalkContent", {
   state: () => {
     return {
-        avatar: "/static/icon/AiTalk/AI.svg",
-        name: "旅行助手",
+        // avatar: "/static/icon/AiTalk/AI.svg",    // info 原版本
+        // name: "旅行助手",
+        avatar: "/static/example/AI/AI.svg",
+        name: "旅行助手—萧萧",
         history: [
             {
                 side: false,    // 代表 user
