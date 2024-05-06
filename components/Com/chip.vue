@@ -1,5 +1,5 @@
 <template>
-    <view class="flex-center-both basic" :class="getClass" :style="{
+    <view class="flex-center-both basic" :class="[getClass, props.shape]" :style="{
         '--border-radius': checkKind.borderRadius,
         '--color': selectFlag ? checkKind.fontColorSelected : checkKind.fontColor,
         '--back-color': checkKind.backColor,   
@@ -8,7 +8,7 @@
             {{ props.text }}
         </slot>
         <!--info tag 的介绍框框-->
-        <view v-show="similarWinFlag"
+        <view v-if="similarWinFlag"
             :animation="similarWinAnimation"
             class="z-9 detail-container"
             :style="{
@@ -40,6 +40,10 @@
         text: {
             type: [String, Number],
             default: "风格"
+        },
+        shape: {
+            type: String,
+            default: "rectangle"
         },
         belongAiHeader: { // info 为了 aitalk-header 特化
             type: Boolean,
@@ -175,7 +179,6 @@
 
 .basic {
     height: 30px;
-    padding: 10px;
 
     border-radius: var(--border-radius);
 
@@ -188,6 +191,14 @@
     flex-shrink: 0;
     flex-basis: auto;
     white-space: nowrap;
+}
+
+.rectangle {
+    padding: 10px;
+}
+
+.square {
+    padding: 10px 5px;
 }
 
 .default {
