@@ -1,3 +1,4 @@
+<!--info 新版：一天分时间段的展示-->
 <template>
     <view v-if="!openFlag" class="open-beside"     
     :style="{
@@ -9,17 +10,26 @@
     </view>
     <floatBase v-else shadow z-index="9" :bottom="setBottom_floatwin">
         <view class="float-container">
+            <!--header-->
             <view class="flex-center-horizontal">
                 <view class="time-container flex-horizontal gap-10">
-                    <text>DAY {{ props.day }}</text>
-                    <text class="spot-font">{{ props.spot }}</text>
+                    <text>DAY {{ dateIndex + 1 }}</text>
+                    <text class="spot-font">{{ spot }}</text>
                 </view>
                 <view class="flex-horizontal gap-20">
                     <u-icon :name="iconPath.detail" size="24"></u-icon>
                     <u-icon :name="iconPath.LOGO" size="20" @click="gotoPlanDetail"></u-icon>
                 </view>
             </view>
-            <chipGroupPath class="chips-container" :path="props.path"/>
+            <!--info 左右滑动-->
+            
+            <swiper class="swiper" circular indicator-dots>
+                <template v-for="(item, index) in talkStore.plan" :key="index">
+                    <swiper-item>
+                        <path-item :list="item.list"/>
+				    </swiper-item>
+                </template>
+			</swiper>
         </view>
     </floatBase>
     <!--info 简易的遮罩。-->
@@ -27,29 +37,17 @@
 </template>
 
 <script setup>
-    import { ref, computed } from "vue";
+    import { ref, computed, onMounted } from "vue";
     // com
-    import floatBase from "../Com/floatBase.vue";
-    import chipGroupPath from "./chipGroupPath.vue";
+    import floatBase from "../../Com/floatBase.vue";
+    import pathItem from "./item.vue";
     // store
     import { useAiIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();
+    import { aiTalk } from "@/store/aiTalk";
+    const talkStore = aiTalk();
 // DATA
     const props = defineProps({
-        day: {
-            type: [Number, String],
-            default: 1
-        },
-        spot: {
-            type: String,
-            default: "默认地点"
-        },
-        path: {
-            type: Array,
-            default: [{
-                spot: "暂无规划"
-            }]
-        },
         moveHeight: {
             type: Number,
             default: 0
@@ -57,12 +55,17 @@
     });
     const emits = defineEmits([]);
 
+    // core data
+    const dateIndex = ref(0);
+    const spot = ref("");
+
     // flag
     const openFlag = ref(false);
 
     // const
     const BOTTOM_SWITCH = 72;
     const BOTTOM_FLOATWIN = 60;
+
 // FUNC
     // animation
     const setBottom_swtich = computed(() => {
@@ -76,6 +79,13 @@
     const gotoPlanDetail = () => {
         uni.navigateTo({ url: '/pages/AiPlan/planDetailView' })
     }
+
+    // handle data
+    onMounted(() => {
+        spot.value = talkStore.plan[dateIndex.value].spot;
+        console.info(spot.value);
+    })
+
 
 </script>
 
@@ -122,11 +132,11 @@
     height: 40px;
 
     font-family: Alimama ShuHeiTi;
-    font-size: 20px;
 }
 
 .spot-font {
     color: #FFF;
+    font-size: 14px;
 }
 
 .chips-container {
@@ -139,6 +149,11 @@
     height: 100%;
     width: 100%;
     /* background-color: #00000030; 但是依旧能起到一个遮罩的效果 */
+}
+
+.swiper {
+    height: 260px;
+    padding-top: 10px;
 }
 
 </style>        

@@ -32,6 +32,7 @@ function createAiMessageItem(type: string, text: string) {
     }
 }
 
+// mark core talk history load
 export const aiTalk = defineStore("aiTalkContent", {
   state: () => {
     return {
@@ -215,7 +216,50 @@ export const aiTalk = defineStore("aiTalkContent", {
         ],
         loading: false, // info 访问 api 时不允许再次发送。
         loadingClear: false,
-
+        plan: [
+            {   // info day 1
+                spot: "武汉", 
+                list: [
+                    [
+                        { type: "traffic", text: "出发" }
+                    ],
+                    [
+                        { type: "spot", text: "" }  // info ""  表示待定，用户可以自行填写
+                    ],
+                    [
+                        { type: "spot", text: "黄鹤楼" }
+                    ],
+                    [
+                        { type: "spot", text: "" }
+                    ],
+                    [
+                        { type: "spot", text: "户部巷" },
+                        { type: "spot", text: "宜必思酒店" }
+                    ]
+                ]
+            },
+            { 
+                spot: "武汉", 
+                list: [
+                    [
+                        { type: "spot", text: "宝通寺" }
+                    ],
+                    [
+                        { type: "spot", text: "街道口" }
+                    ],
+                    [
+                        { type: "spot", text: "武汉大学" }
+                    ],
+                    [
+                        { type: "spot", text: "街道口" }
+                    ],
+                    [
+                        { type: "spot", text: "武昌江滩" },
+                        { type: "spot", text: "宜必思酒店" }
+                    ]
+                ]
+            }
+        ]
     }
   },
   getters: {

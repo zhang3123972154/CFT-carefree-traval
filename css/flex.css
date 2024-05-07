@@ -24,11 +24,18 @@
     align-items: center;
 }
 
+.flex-top-left-horizontal {
+    display: flex;
+    align-items: flex-start; /* 根据需要，可以改为center使得子项垂直居中 */
+}
+
 .flex-top-horizontal {
     display: flex;
     justify-content: space-between;
     align-items: flex-start; /* 根据需要，可以改为center使得子项垂直居中 */
 }
+
+
 
 .flex-bottom-horizontal {
     display: flex;

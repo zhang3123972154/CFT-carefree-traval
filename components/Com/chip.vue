@@ -62,7 +62,10 @@
             default: false
         },
         // todo 优化整理 三个 belong，
-        belongChipGroupSingle: Boolean 
+        belongChipGroupSingle: Boolean,
+
+        // info !!!
+        chipType: String
     });
     const emits = defineEmits(["longPress", "closeSimilarWin", "clickChoose", "clickDelete"]);  // todo 用于历史记录的消息传递
 
@@ -104,7 +107,13 @@
     // const
     const TOP = -45;
 
+    // info chip type flag
+
 // FUNC
+    onMounted(() => {
+
+    })
+
     watch(() => props.lightStart, () => {
         selectFlag.value = props.light | props.lightStart;
     })
