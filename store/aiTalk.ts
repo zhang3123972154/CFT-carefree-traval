@@ -236,7 +236,8 @@ export const aiTalk = defineStore("aiTalkContent", {
                         { type: "spot", text: "户部巷" },
                         { type: "spot", text: "宜必思酒店" }
                     ]
-                ]
+                ],
+                length: 6 // info 统计单个结点数量
             },
             { 
                 spot: "武汉", 
@@ -255,9 +256,10 @@ export const aiTalk = defineStore("aiTalkContent", {
                     ],
                     [
                         { type: "spot", text: "武昌江滩" },
-                        { type: "spot", text: "宜必思酒店" }
+                        // { type: "spot", text: "宜必思酒店" }
                     ]
-                ]
+                ],
+                length: 5
             }
         ]
     }

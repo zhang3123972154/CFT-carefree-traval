@@ -23,7 +23,11 @@
             </view>
             <!--info 左右滑动-->
             
-            <swiper class="swiper" circular indicator-dots>
+            <swiper class="swiper" circular indicator-dots 
+                :style="{
+                    '--swiper-height': swiperHeight + 'px'
+                }"
+                @change="changeSwiper">
                 <template v-for="(item, index) in talkStore.plan" :key="index">
                     <swiper-item>
                         <path-item :list="item.list"/>
@@ -58,6 +62,7 @@
     // core data
     const dateIndex = ref(0);
     const spot = ref("");
+    const swiperHeight = ref(258);
 
     // flag
     const openFlag = ref(false);
@@ -65,6 +70,7 @@
     // const
     const BOTTOM_SWITCH = 72;
     const BOTTOM_FLOATWIN = 60;
+    const CHIP_HEIGHT = 43;
 
 // FUNC
     // animation
@@ -82,9 +88,18 @@
 
     // handle data
     onMounted(() => {
-        spot.value = talkStore.plan[dateIndex.value].spot;
-        console.info(spot.value);
+        loadSeting();
     })
+
+    const loadSeting = () => {
+        spot.value = talkStore.plan[dateIndex.value].spot;
+        swiperHeight.value = CHIP_HEIGHT * talkStore.plan[dateIndex.value].length;
+    }
+
+    const changeSwiper = (event) => {
+        dateIndex.value = event.detail.current;
+        loadSeting();
+    }
 
 
 </script>
@@ -152,8 +167,10 @@
 }
 
 .swiper {
-    height: 260px;
+    height: var(--swiper-height);
     padding-top: 10px;
+
+    transition: height .5s ease;
 }
 
 </style>        
