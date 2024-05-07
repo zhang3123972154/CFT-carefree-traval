@@ -28,6 +28,7 @@
                         :tag-list="item.list"
                         :reload="item.reload"
                         :reply="item.reply"
+                        :light="item.light"
                     />
                 </template>
                 <template v-else-if="item.type[0] === 'I'">

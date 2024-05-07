@@ -4,6 +4,7 @@
             :tag-kind="props.tagKind"
             :tag-list="tagList"
             :reply="props.reply"
+            :light="props.light"
             
             @clickChoose="reply"
         >

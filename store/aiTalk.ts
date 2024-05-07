@@ -40,7 +40,7 @@ export const aiTalk = defineStore("aiTalkContent", {
         avatar: "/static/example/AI/AI.svg",
         name: "旅行助手—萧萧",
         history: [
-            {
+            {   // info 可选作为回复的 个性标签
                 side: true,
                 content: [
                     { type: "text", text: "小主人！萧萧在这里为您推荐了一些热门旅游城市，有您喜欢的吗？" },
@@ -53,7 +53,8 @@ export const aiTalk = defineStore("aiTalkContent", {
                             "呼和浩特", "哈尔滨", "长春", "沈阳", "太原", "石家庄"
                         ],
                         reload: true,
-                        reply: true
+                        reply: true,
+                        light: false
                     }
                 ]
             },
@@ -68,7 +69,7 @@ export const aiTalk = defineStore("aiTalkContent", {
                     { type: "text", text: "素来有“江城”之称，确实是旅行的不错之选！！！" },
                 ]
             },
-            {
+            {   // info 样图展示
                 side: true,
                 content: [
                     {
@@ -104,7 +105,7 @@ export const aiTalk = defineStore("aiTalkContent", {
                     }
                 ]
             },
-            {
+            {   // info 可选问答模板
                 side: true,
                 content: [
                     { type: "text", text: "小主人！很多游客去武汉旅行会问这些问题哦！" },
@@ -117,6 +118,45 @@ export const aiTalk = defineStore("aiTalkContent", {
                             "武汉的购物场所有哪些？"
                         ]
                      }
+                ]
+            },
+            {   // info 规划 模板
+                side: true,
+                content: [
+                    { type: "text", text: "小主人！萧萧已经为您制定好了基础规划，点击右侧悬浮窗可以查看规划细节。" },
+                    { type: "endl" },
+                    { type: "text", text: "第一天：" },
+                    { 
+                        type: "CG-spot", 
+                        list: ["黄鹤楼", "户部巷"],
+                        reload: false,
+                        reply: false,
+                        light: true
+                    },
+                    { type: "text", text: "第二天：" },
+                    { 
+                        type: "CG-spot", 
+                        list: ["宝通寺", "街道口", "街道口", "武昌江滩"],
+                        reload: false,
+                        reply: false,
+                        light: true
+                    },
+                    { type: "text", text: "第三天：" },
+                    { 
+                        type: "CG-spot", 
+                        list: ["古德寺", "江汉路", "汉口江滩"],
+                        reload: false,
+                        reply: false,
+                        light: true
+                    },
+                    { type: "text", text: "第四天：" },
+                    { 
+                        type: "CG-spot", 
+                        list: ["湖北省博物馆", "楚河汉街", "昙华林"],
+                        reload: false,
+                        reply: false,
+                        light: true
+                    },
                 ]
             }
             // {
@@ -185,6 +225,8 @@ export const aiTalk = defineStore("aiTalkContent", {
   },
   actions: {
     async sendUserMessage(text: String, images: String[]) {
+        if(this.loading)    // info 如果AI正在回复，那么无法发送消息。
+            return;
         const userContent = createUserMessage(text, images);
         this.history.push(userContent);
         

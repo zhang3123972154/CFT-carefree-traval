@@ -9,6 +9,7 @@
                 <t-chip 
                     :kind="props.tagKind" 
                     :text="item"
+                    :light="props.light"
                     :belongChipGroupSingle="props.reply"
                     @clickChoose="emits('clickChoose', index)">
                 </t-chip>
