@@ -159,7 +159,25 @@ export const aiTalk = defineStore("aiTalkContent", {
                         light: true
                     },
                 ]
-            }
+            },
+            {   // info 可选作为回复的 个性标签
+                side: true,
+                content: [
+                    { type: "text", text: "小主人！萧萧在这里为您推荐了一些热门旅游城市，有您喜欢的吗？" },
+                    { 
+                        type: "CG-spot", 
+                        list: [
+                            "武汉", "长沙", "郑州", "合肥", "北京", "南昌", "重庆", "西安",
+                            "济南", "南京", "杭州", "广州", "福州", "天津", "上海", "成都",
+                            "昆明", "贵阳", "南宁", "拉萨", "乌鲁木齐", "西宁", "兰州", "银川",
+                            "呼和浩特", "哈尔滨", "长春", "沈阳", "太原", "石家庄"
+                        ],
+                        reload: true,
+                        reply: true,
+                        light: false
+                    }
+                ]
+            },
             // {
             //     side: false,    // 代表 user
             //     text: "三月想出门旅行，推荐去哪儿？"

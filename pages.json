@@ -24,7 +24,7 @@
       "path": "pages/Person/PersonView"
     },
     {
-      "path": "pages/Test/test"
+      "path": "pages/Test/test" // test 模块
     },
     // base 5
     {
