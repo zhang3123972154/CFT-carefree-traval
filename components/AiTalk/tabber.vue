@@ -104,7 +104,7 @@
 
 // FUNC
     const sendUserMessage = () => {
-        // todo 根据 talkStore.loading 的状态来判断不同的操作
+        // info 根据 talkStore.loading 的状态来判断不同的操作
         if(talkStore.loading) {
             talkStore.stopAiTalk();
         } else {

@@ -299,24 +299,29 @@ export const aiTalk = defineStore("aiTalkContent", {
         this.loadingClear = false;
         this.loading = true;
         if(images != null) { // info image
-            const imagePath = images[0];
-            pathToBase64(imagePath)
-                    .then(base64 => {
-                        console.info(base64);
-                        const rse = api.sendImageOCR({
-                            image: base64
-                        })
-                            .then(res => {
-                                console.info("api-back", res);
-                                this.loadAiMessage(res);
-                            })
-                            .catch(error => {
-                                console.info(error);
-                            });
-                    })
-                    .catch(error => {
-                        console.info("base64", error);
-                    })
+            // const imagePath = images[0];
+            // pathToBase64(imagePath)
+            //         .then(base64 => {
+            //             console.info(base64);
+            //             const rse = api.sendImageOCR({
+            //                 image: base64
+            //             })
+            //                 .then(res => {
+            //                     console.info("api-back", res);
+            //                     this.loadAiMessage(res);
+            //                 })
+            //                 .catch(error => {
+            //                     console.info(error);
+            //                 });
+            //         })
+            //         .catch(error => {
+            //             console.info("base64", error);
+            //         })
+            // const formData = new FormData();
+            // formData.appendFile("File", )
+            // api.uploadImg({
+            //     file: 
+            // })
         }
         else { // info text
             // todo 访问后端接口获取 需要的
@@ -357,7 +362,6 @@ export const aiTalk = defineStore("aiTalkContent", {
     }
   }
 })
-
 
 // tag Ai Talk List
 

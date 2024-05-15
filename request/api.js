@@ -24,7 +24,7 @@ export const apiUser = {
     loginByUsername: (data) => get("/user/loginByUsername", {}, data),
     sendEmailCode: (data) => get("/user/sendEmailCode", {}, data),
     register: (data) => post("/user/register", {}, data),
-    refreshToken: (data) => get("/usr/register", {}, data),
+    refreshToken: (data) => get("/user/register", {}, data),
 
     // tag individual
     
@@ -33,5 +33,6 @@ export const apiUser = {
 export const apiAI = {
     getAIHistory: (date) => get("/ai/history", {}, data),
     sendImageOCR: (data) => post("/ai/ocr/general", {}, data),
-    sendMessage: (data) => post("/ai/send", {}, data)
+    sendMessage: (data) => post("/ai/send", {}, data),
+    uploadImg: (data) => post("/ai/upload", {}, data),
 }
