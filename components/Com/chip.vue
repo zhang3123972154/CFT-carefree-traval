@@ -30,6 +30,10 @@
     import { ref, computed, nextTick, onMounted, watch } from 'vue';
     // com
     import similarWin from "./similarWin.vue";
+    // store
+    import useChipsStore from "@/store/chips";
+    const chipStore = useChipsStore();
+    // todo 自点亮也写在这里就可以了。
 
 // DATA
     const props = defineProps({
@@ -151,13 +155,19 @@
 
     const click = () => {
         if(!islongPress && !props.light) { // info 实现常亮效果
-            // selectFlag.value = !selectFlag.value;
-            // info 向上传递具体的操作形式，判断处理形式
+            // selectFlag.value = !selectFlag.value; // info 向上传递具体的操作形式，判断处理形式
+            // info chip store
+            if(!selectFlag.value)
+                chipStore.add(props.text, props.kind);
+            else
+                var a = 1; // todo 删除
+            
+
             if(props.belongChipGroupFlex) {
                 if(!selectFlag.value)
                     emits("clickChoose");
                 else
-                    emits("clickDelete");
+                    emits("clickDelete");  
             }
             else if(props.belongChipGroupSingle) {
                 if(!selectFlag.value)

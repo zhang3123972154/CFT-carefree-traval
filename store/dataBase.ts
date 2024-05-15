@@ -201,7 +201,7 @@ export const useDetailIconPath = defineStore("iconDetail", {
     }
 });
 
-// tag Ai
+// tag Ai Talk icon
 export const useAiIconPath = defineStore("iconAi", {
     state: (): {
         dir: string,

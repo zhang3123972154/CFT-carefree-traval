@@ -12,11 +12,10 @@
             <view @click="toggleOverlay(true)" class="block-width" style="color: #fff;">-</view>
         </template>
         <template #suffix>
-            <t-btn-icon :icon="iconPath.phone"></t-btn-icon>
-            <!--test 先放到这里-->
+            <t-btn-icon :icon="iconPath.list" @click="collectFlag = true"></t-btn-icon>
             <t-btn-icon :icon="iconPath.information" @click="gotoChoose"></t-btn-icon>
         </template>
-        <!--info 本次的个性标签库-->
+        <!--info 本次的个性标签库 之后打算做成随机推荐-->
         <template #flodfix>
           <!--info v-show放在外层效果最佳。-->
             <view v-show="openFlag"
@@ -28,11 +27,26 @@
             :animation="overlayAnimation" 
              @click="toggleOverlay(false)">
                 <view class="chips-container" @click.stop :animation="chipsAnimation">
-                    <chipGroup belong-ai-header @long-press="open" @close-similar-win="close"/>
+                    <chipGroup belong-ai-header @long-press="openChipsGroup" @close-similar-win="closeChipsGroup"/>
                 </view>
             </view>
         </template>
     </headerBase>
+    <!--info chip 收藏栏-->
+    <u-popup mode="right" overlayOpacity="0.3" safeAreaInsetTop 
+      :show="collectFlag" 
+      :customStyle="{
+        borderBottomLeftRadius: '20px'
+      }" @close="collectFlag = false">
+      <view class="flex-vertical chip-collect-container gap-5">
+        <text class="title mb-10">个性词条库</text>
+        <template v-for="(item, index) in chipStore.chipsGroup" :key="index">
+          <t-chip lightStart
+            :kind="item.kind" :text="item.text"
+          />
+        </template>
+      </view>
+    </u-popup>
 </template>
 
 <script setup>
@@ -47,6 +61,10 @@
     import { useAiIconPath, useArrowsIconPath } from "@/store/dataBase";
     const iconPath = useAiIconPath();
     const iconArrowPath = useArrowsIconPath();
+
+    import useChipsStore from "@/store/chips";
+    const chipStore = useChipsStore();
+
 // DATA
     const props = defineProps({
       avatar: {
@@ -63,12 +81,14 @@
     // flag
     const openFlag = ref(false);
     const longPressFlag = ref(false);
+    const collectFlag = ref(false);
 
     // animation
     const overlayAnimation  = ref(uni.createAnimation());
     const chipsAnimation = ref(uni.createAnimation());
     // style
     const OVERLAY_COLOR = "rgba(0, 0, 0, .1)";
+
 // FUNC
     // style
     const setColor = computed(() => {
@@ -115,11 +135,11 @@
     }
 
     // similar Win
-    const open = () => {
+    const openChipsGroup = () => {
       longPressFlag.value = true;
     }
 
-    const close = () => {
+    const closeChipsGroup = () => {
       longPressFlag.value = false;
     }
 
@@ -156,6 +176,17 @@
     background-color: #fff;
 
     transform: translateY(-70%);  /* 有效触发动画 ？ */
+}
+
+.chip-collect-container {
+  padding: 10px;
+
+  min-width: 100px;
+}
+
+
+.title {
+  font-weight: bold;
 }
 
 </style>        
