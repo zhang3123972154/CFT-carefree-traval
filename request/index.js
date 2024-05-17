@@ -9,9 +9,10 @@ export default class Request {
         // const hideLoading = param.hideLoading || false; // info toast 的显示
         // Run
         if(method == "POST") {
-            header = Object.assign({
-                'content-type': "application/x-www-form-urlencoded"
-            }, param.hedaer)
+            header = param.hedaer;
+            // Object.assign({  // info 换成直接替换的形式。
+            //     'content-type': "application/x-www-form-urlencoded"
+            // }, param.hedaer)
         } else { // tag GET
             header = Object.assign({
                 'content-type': "application/json"

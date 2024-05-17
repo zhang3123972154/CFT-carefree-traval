@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
-import { apiUser } from "@/request/api";
-const api = apiUser;
+// import { apiUser } from "@/request/api";
+// const api = apiUser;
 
 interface LoginData {
   username: string,

@@ -22,6 +22,8 @@
     // store
     import useUserStore from "@/store/userInfor";
     const userInfor = useUserStore();
+    import api from "@/request/api";
+    const API = api();
 // DATA
     // const emailFrom = ref({
     //     email: "2993167370@qq.com", // test
@@ -36,7 +38,7 @@
 // FUNC
 
     const login = () => {
-        userInfor.login(loginByUsername.username, loginByUsername.password);
+        API.login(loginByUsername.username, loginByUsername.password);
     }
 
     const addTag = () => {
